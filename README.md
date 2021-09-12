@@ -1,2 +1,2 @@
-# premio
-Web startup template. Rust + TypeScript.
+# Premio
+Web startup template.
