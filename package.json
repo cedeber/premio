@@ -7,7 +7,8 @@
     "test": "jest --passWithNoTests && wasm-pack test --node",
     "dev:js": "vite",
     "dev:wasm": "cargo watch -w src -- wasm-pack build --target web",
-    "build": "wasm-pack build --release --target web && vite build"
+    "build": "wasm-pack build --release --target web && vite build",
+    "preview": "npm run build && vite preview"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

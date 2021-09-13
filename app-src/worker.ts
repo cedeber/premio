@@ -1,4 +1,6 @@
 import init, { add, async_add } from "../pkg/primio";
+// Workaround because Vite is using window.location in Web Workers
+import wasm from "../pkg/primio_bg.wasm?url";
 
 // Declare ctx as Worker and not as Window
 const ctx = self as unknown as Worker;
@@ -22,7 +24,8 @@ ctx.async_wasm_cb = (str: string) =>
 ctx.addEventListener("message", async (event) => {
     const { a, b } = event.data;
 
-    await init();
+    // Workaround because the path is relative to the js file (in assets) and not to the root.
+    await init("../" + wasm);
 
     // Sync
     ctx.postMessage(add(a, b));
