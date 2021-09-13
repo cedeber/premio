@@ -10,29 +10,11 @@ import init, {
 } from "../pkg/primio";
 import MyWorker from "./worker?worker";
 import "./styles.scss";
+import * as extern from "./extern";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
-window.wasm_cb = (str: string) => {
-    console.log("(main thread)", str);
-};
-
-// Could also be async/await
-window.async_wasm_cb = (str: string) =>
-    new Promise((resolve) => {
-        window.setTimeout(() => {
-            console.log("(main thread + async)", str);
-            resolve(4); // will add 4 to the next async_add() call
-        }, 2000);
-    });
-
-window.try_catch = () => {
-    throw new Error("This is a JS Error");
-};
-
-window.async_try_catch = async () => {
-    throw new Error("This is a JS Error");
-};
+window.__extern__ = extern;
 
 /* --- Wasm in the main thread --- */
 async function main() {

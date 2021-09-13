@@ -24,17 +24,17 @@ extern "C" {
 
     // Need to define catch + Result here for tests.
     // We better consider that every JS function may fail anyways.
-    #[wasm_bindgen(catch)]
+    #[wasm_bindgen(js_namespace = __extern__, catch)]
     fn wasm_cb(s: &str) -> Result<(), JsValue>;
 
     // The `async` can be combined with the `catch` attribute to manage errors from the JS promise
-    #[wasm_bindgen(catch)]
+    #[wasm_bindgen(js_namespace = __extern__, catch)]
     async fn async_wasm_cb(s: &str) -> Result<JsValue, JsValue>;
 
-    #[wasm_bindgen(catch)]
+    #[wasm_bindgen(js_namespace = __extern__, catch)]
     fn try_catch() -> Result<(), JsValue>;
 
-    #[wasm_bindgen(catch)]
+    #[wasm_bindgen(js_namespace = __extern__, catch)]
     async fn async_try_catch() -> Result<(), JsValue>;
 }
 
@@ -104,8 +104,8 @@ pub async fn async_request() -> String {
 
 #[cfg(test)]
 mod tests {
-    use wasm_bindgen_test::*;
     use super::*;
+    use wasm_bindgen_test::*;
 
     #[wasm_bindgen_test]
     fn it_works() {
