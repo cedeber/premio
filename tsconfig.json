@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "importsNotUsedAsValues": "error",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCaseOnly" // default of esbuild plugin
+        }
+      }
+    ]
+  },
+  "include": ["src", "pkg", "app-src"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"]
+}

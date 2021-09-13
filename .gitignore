@@ -1,0 +1,20 @@
+# Build
+/target/
+/dist/
+
+# IDE
+.idea
+.vscode
+
+# Node.js
+node_modules
+
+# Jest
+coverage
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other
+*.log

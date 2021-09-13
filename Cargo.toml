@@ -1,0 +1,49 @@
+[package]
+name = "primio"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook", "wee_alloc", "console_log"]
+
+[profile.release]
+# It will make the .wasm smaller, but it will also make it faster at runtime!
+lto = true
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
+# Also see https://rustwasm.github.io/book/reference/code-size.html#use-the-wasm-opt-tool
+
+[dependencies]
+wasm-bindgen = { version = "0.2.77", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.27" # Promises <-> Futures
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.6", optional = true }
+
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+wee_alloc = { version = "0.4.5", optional = true }
+
+# JS and DOM APIs
+js-sys = "0.3.54"
+web-sys = "0.3.54"
+
+# Log
+console_log = { version = "0.2", features = ["color"], optional = true }
+log = "0.4.14"
+
+# Other
+reqwest = { version = "0.11.4", features = ["json"] }
+serde = { version = "1.0.130", features = ["derive"] }
+serde_derive = "1.0.130"
+serde_json = "1.0.67"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.27"
