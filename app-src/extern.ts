@@ -4,7 +4,7 @@ const wasm_cb: Extern["wasm_cb"] = (str) => {
 
 const async_wasm_cb: Extern["async_wasm_cb"] = async (str) =>
     new Promise((resolve) => {
-        (window ?? self).setTimeout(() => {
+        setTimeout(() => {
             console.log("(main thread + async)", str);
             resolve(4); // will add 4 to the next async_add() call
         }, 2000);
