@@ -1,3 +1,5 @@
+import React, { useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom";
 import init, {
     add,
     async_add,
@@ -9,34 +11,15 @@ import init, {
     async_try_catch_rust,
 } from "../pkg/primio";
 import MyWorker from "./worker?worker";
-import "./styles.scss";
 import * as extern from "./extern";
+import style from "./main.module.scss";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
 window.__extern__ = extern;
 
 /* --- Wasm in the main thread --- */
-async function main() {
-    // init is main();
-    await init(); // Accept a path as param if the .wasm file is not package_bg.wasm
-
-    // Will do i32 casting: "3.2" => 3, 3.98 => 3
-    const res = add("3.2", 3.98);
-    console.log("result:", res);
-
-    // -- Synchronous --
-    const syncEl = document.getElementById("sync");
-    syncEl!.innerHTML = String(add(3, 2));
-
-    // -- Async: Request --
-    const requestEl = document.getElementById("request");
-    requestEl!.innerHTML = await async_request();
-
-    // -- Asynchronous: Promise <-> Futures --
-    const asyncEl = document.getElementById("async");
-    asyncEl!.innerHTML = String(await async_add(3, 2));
-
+async function failures() {
     try {
         // Function that returns a Result/Err from Rust
         error();
@@ -64,21 +47,63 @@ async function main() {
     panic();
 }
 
-/* --- Wasm in the worker thread --- */
-function worker() {
-    const workerEl = document.getElementById("worker");
-    // const worker = new Worker("./worker.js", { type: "module" });
-    const worker = new MyWorker();
+const App: React.FC = () => {
+    const worker = useRef(new MyWorker());
 
-    worker.addEventListener("message", (event) => {
-        workerEl!.innerHTML = event.data;
-    });
+    const [ip, setIp] = useState<string>();
+    const [plus, setPlus] = useState<number>();
+    const [asyncPlus, setAsyncPlus] = useState<number>();
+    const [workr, setWork] = useState<number>();
 
-    worker.postMessage({ a: 3, b: 2 });
-}
+    useEffect(() => {
+        worker.current.addEventListener("message", (event) => {
+            setWork(event.data);
+        });
 
-// -> Launch
-main().catch((e) => {
-    console.warn("Err/panic:", e);
-});
-worker();
+        init().then(() => {
+            // -- Synchronous --
+            // Will do i32 casting: "3.2" => 3, 2.98 => 2
+            setPlus(add("3.2", 2.98));
+
+            // -- Asynchronous: Promise <-> Futures --
+            async_add(3, 2).then(setAsyncPlus);
+
+            // -- Async: Request --
+            async_request()
+                .then((res) => JSON.parse(res))
+                .then((res) => setIp(res.origin));
+
+            // -- Wasm in the worker thread --
+            worker.current.postMessage({ a: 3, b: 2 });
+
+            // -- Test some failures between Wasm <-> JS
+            failures().catch((e) => {
+                console.warn("Err/panic:", e);
+            });
+        });
+    }, []);
+
+    return (
+        <div className={style.container}>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sync</th>
+                        <th>Async</th>
+                        <th>Worker &times; Async</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{plus ?? <>&mdash;</>}</td>
+                        <td>{asyncPlus ?? <>&mdash;</>}</td>
+                        <td>{workr ?? <>&mdash;</>}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Your IP: {ip}</p>
+        </div>
+    );
+};
+
+ReactDOM.render(<App />, document.getElementById("app"));
