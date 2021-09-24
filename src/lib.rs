@@ -40,7 +40,8 @@ extern "C" {
 
 #[wasm_bindgen]
 pub fn add(a: i32, b: i32) -> i32 {
-    wasm_cb("Hello from Rust!");
+    info!("add() called");
+    wasm_cb("wasm_cb() called");
     a + b
 }
 
@@ -48,12 +49,23 @@ pub fn add(a: i32, b: i32) -> i32 {
 pub async fn async_add(a: i32, b: i32) -> Result<i32, JsValue> {
     info!("async_add() called");
     // Wait from JS
-    let c = async_wasm_cb("Hello from Async Rust!")
+    let c = async_wasm_cb("async_wasm_cb() called")
         .await?
         .as_f64()
         .unwrap() as i32;
-    trace!("will return addition result");
     Ok(a + b + c)
+}
+
+#[wasm_bindgen]
+pub async fn async_request() -> String {
+    let resp = reqwest::get("https://httpbin.org/ip")
+        .await
+        .unwrap()
+        .text()
+        .await
+        .unwrap();
+
+    resp
 }
 
 /// This will throw an error in the JS world. So use try/catch.
@@ -88,18 +100,6 @@ pub fn try_catch_rust() -> Result<(), JsValue> {
 #[wasm_bindgen]
 pub async fn async_try_catch_rust() -> Result<(), JsValue> {
     async_try_catch().await
-}
-
-#[wasm_bindgen]
-pub async fn async_request() -> String {
-    let resp = reqwest::get("https://httpbin.org/ip")
-        .await
-        .unwrap()
-        .text()
-        .await
-        .unwrap();
-
-    resp
 }
 
 #[cfg(test)]
