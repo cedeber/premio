@@ -15,7 +15,7 @@ const try_catch: Extern["try_catch"] = () => {
 };
 
 const async_try_catch: Extern["async_try_catch"] = async () => {
-    throw new Error("This is a JS Error");
+    throw new Error("This is an async JS Error");
 };
 
 export { wasm_cb, async_wasm_cb, try_catch, async_try_catch };
