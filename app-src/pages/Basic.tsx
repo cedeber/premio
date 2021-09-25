@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import init, {
     add as _add,
     async_add as _asyncAdd,
@@ -8,7 +8,7 @@ import { NumberField } from "../components/NumberField";
 import { Tag, TagIntent } from "../components/Tag";
 import style from "./styles/default.module.scss";
 
-const Basic: React.FC = () => {
+const Basic: FC = () => {
     // Will do i32 casting: "3.2" => 3, 2.98 => 2
     const [a, setA] = useState<number>("3.2");
     const [b, setB] = useState<number>(2.98);

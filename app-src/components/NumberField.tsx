@@ -1,12 +1,9 @@
-import React from "react";
-import { useNumberFieldState } from "@react-stately/numberfield";
-import { useLocale } from "@react-aria/i18n";
-import { useButton } from "@react-aria/button";
-import { useRef } from "react";
-import { useNumberField } from "react-aria";
+import { FC, useRef } from "react";
+import { useButton, useLocale, useNumberField } from "react-aria";
 import type { NumberFieldProps } from "@react-types/numberfield";
+import { useNumberFieldState } from "react-stately";
 
-const NumberField: React.FC<NumberFieldProps> = (props) => {
+const NumberField: FC<NumberFieldProps> = (props) => {
     const { locale } = useLocale();
     const state = useNumberFieldState({ ...props, locale });
     const inputRef = useRef<HTMLInputElement>(null);

@@ -1,4 +1,4 @@
-import React from "react";
+import type { FC } from "react";
 import { classNames } from "@cedeber/frontafino";
 import style from "./styles/Tag.module.scss";
 
@@ -13,7 +13,7 @@ enum TagIntent {
     Error,
 }
 
-const Tag: React.FC<Tag> = (props) => {
+const Tag: FC<Tag> = (props) => {
     return (
         <span
             className={classNames({

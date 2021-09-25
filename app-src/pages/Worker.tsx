@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import MyWorker from "../worker?worker";
 import init from "../../pkg";
 import style from "./styles/default.module.scss";
 import { Tag, TagIntent } from "../components/Tag";
 
-const Worker: React.FC = () => {
+const Worker: FC = () => {
     const worker = useRef(new MyWorker());
     const [workr, setWork] = useState<number>();
 
