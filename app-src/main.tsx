@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import * as extern from "./extern";
-import { Worker } from "./pages/Worker";
 import { Menu } from "./components/Menu";
-import "./reset.scss";
+import * as extern from "./extern";
 import { Basic } from "./pages/Basic";
 import { Failures } from "./pages/Failures";
+import "./reset.scss";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
@@ -17,9 +16,6 @@ const App: React.FC = () => {
         <Router basename={import.meta.env.BASE_URL}>
             <Menu />
             <Switch>
-                <Route path="/worker">
-                    <Worker />
-                </Route>
                 <Route path="/failures">
                     <Failures />
                 </Route>

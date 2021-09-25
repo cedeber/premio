@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import init, {
     add as _add,
     async_add as _asyncAdd,
@@ -7,6 +7,7 @@ import init, {
 import { NumberField } from "../components/NumberField";
 import { Tag, TagIntent } from "../components/Tag";
 import style from "./styles/default.module.scss";
+import MyWorker from "../worker?worker";
 
 const Basic: FC = () => {
     // Will do i32 casting: "3.2" => 3, 2.98 => 2
@@ -24,11 +25,21 @@ const Basic: FC = () => {
     const [asyncRequest, setAsyncRequest] = useState<typeof _asyncRequest>();
     const [ip, setIp] = useState<string>();
 
+    const worker = useRef(new MyWorker());
+    const [workrLoading, setWorkrLoading] = useState(false);
+    const [workr, setWorkr] = useState<number>();
+
     useEffect(() => {
         init().then(() => {
             setAdd(() => _add);
             setAsyncAdd(() => _asyncAdd);
             setAsyncRequest(() => _asyncRequest);
+        });
+
+        // -- Wasm in the worker thread --
+        worker.current.addEventListener("message", (event) => {
+            setWorkr(event.data);
+            setWorkrLoading(false);
         });
     }, []);
 
@@ -51,6 +62,11 @@ const Basic: FC = () => {
             .then(JSON.parse)
             .then((response) => setIp(response.origin));
     }, [asyncRequest]);
+
+    useEffect(() => {
+        setWorkrLoading(true);
+        worker.current.postMessage({ a, b });
+    }, [a, b]);
 
     return (
         <>
@@ -135,6 +151,16 @@ const Basic: FC = () => {
             </p>
             <h3>Your IP</h3>
             <p className={style.result}>{ip ?? <>&mdash;</>}</p>
+            <h2>Worker</h2>
+            <p>Loading Wasm from the Worker is very close to what one does from the main thread.</p>
+            <p className={style.result}>
+                {a}&nbsp;+&nbsp;{b}&nbsp;+&nbsp;4&nbsp;=&nbsp;
+                {workrLoading ? (
+                    <Tag intent={TagIntent.Error}>Loading...</Tag>
+                ) : (
+                    workr ?? <>&mdash;</>
+                )}
+            </p>
         </>
     );
 };

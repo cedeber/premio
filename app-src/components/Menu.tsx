@@ -32,7 +32,8 @@ const Menu: FC = () => {
             name: "🌿 Basic",
             ref: useRef<HTMLDivElement>(null),
             match: useRouteMatch("/")?.isExact,
-            tooltip: "Synchronous and Asynchronous WebAssembly",
+            tooltip:
+                "Synchronous and Asynchronous WebAssembly in the main thread or in a Web Worker",
         },
         {
             to: "/failures",
@@ -40,13 +41,6 @@ const Menu: FC = () => {
             ref: useRef<HTMLDivElement>(null),
             match: useRouteMatch("/failures")?.isExact,
             tooltip: "Promise rejection, panic and crashes",
-        },
-        {
-            to: "/worker",
-            name: "👷‍ Worker",
-            ref: useRef<HTMLDivElement>(null),
-            match: useRouteMatch("/worker")?.isExact,
-            tooltip: "Multi-threading",
         },
     ];
 
