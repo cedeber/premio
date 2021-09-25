@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import MyWorker from "../worker?worker";
 import init from "../../pkg";
 import style from "./styles/default.module.scss";

@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { NavLink, useLocation, useRouteMatch } from "react-router-dom";
 import style from "./styles/Menu.module.scss";
 import {
