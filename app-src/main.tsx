@@ -14,7 +14,7 @@ window.__extern__ = extern;
 
 const App: React.FC = () => {
     return (
-        <Router basename={(process.env.PUBLIC_URL as string) ?? "/"}>
+        <Router basename={`${import.meta.env.BASE_URL}/`}>
             <Menu />
             <Switch>
                 <Route path="/worker">
