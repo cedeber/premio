@@ -41,9 +41,7 @@ jobs:
           PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
         run: pnpm run build
       - name: Tests
-        run: |
-          cargo test
-          pnpm test
+        run: pnpm test
       - name: GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
