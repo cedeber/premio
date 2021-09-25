@@ -37,6 +37,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
+        env:
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
         run: pnpm run build
       - name: Tests
         run: |
