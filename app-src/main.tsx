@@ -14,7 +14,7 @@ window.__extern__ = extern;
 
 const App: React.FC = () => {
     return (
-        <Router basename={`${import.meta.env.BASE_URL}/`}>
+        <Router basename={import.meta.env.BASE_URL}>
             <Menu />
             <Switch>
                 <Route path="/worker">
