@@ -1,4 +1,4 @@
-use log::{info, trace, Level};
+use log::{info, Level};
 use wasm_bindgen::prelude::*;
 
 #[cfg(feature = "wee_alloc")]
@@ -41,7 +41,7 @@ extern "C" {
 #[wasm_bindgen]
 pub fn add(a: i32, b: i32) -> i32 {
     info!("add() called");
-    wasm_cb("wasm_cb() called");
+    wasm_cb("wasm_cb() called").expect("wasm_cb() crashed");
     a + b
 }
 
