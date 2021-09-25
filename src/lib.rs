@@ -41,7 +41,7 @@ extern "C" {
 #[wasm_bindgen]
 pub fn add(a: i32, b: i32) -> i32 {
     info!("add() called");
-    wasm_cb("wasm_cb() called").expect("wasm_cb() crashed");
+    wasm_cb("wasm_cb() called");
     a + b
 }
 
