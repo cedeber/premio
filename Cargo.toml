@@ -17,8 +17,8 @@ opt-level = "s"
 # Also see https://rustwasm.github.io/book/reference/code-size.html#use-the-wasm-opt-tool
 
 [dependencies]
-wasm-bindgen = { version = "0.2.77", features = ["serde-serialize"] }
-wasm-bindgen-futures = "0.4.27" # Promises <-> Futures
+wasm-bindgen = { version = "0.2.78", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.28"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
@@ -32,18 +32,18 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 
 # JS and DOM APIs
-js-sys = "0.3.54"
-web-sys = "0.3.54"
+js-sys = "0.3.55"
+web-sys = "0.3.55"
 
 # Log
-console_log = { version = "0.2", features = ["color"], optional = true }
+console_log = { version = "0.2.0", features = ["color"], optional = true }
 log = "0.4.14"
 
 # Other
 reqwest = { version = "0.11.4", features = ["json"] }
 serde = { version = "1.0.130", features = ["derive"] }
 serde_derive = "1.0.130"
-serde_json = "1.0.67"
+serde_json = "1.0.68"
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.27"
+wasm-bindgen-test = "0.3.28"
