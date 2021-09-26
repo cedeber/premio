@@ -27,7 +27,7 @@ Web startup with WebAssembly.
 
 - [wasm-bindgen](https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen/index.html)
 - [wasm-bindgen-futures](https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen_futures/index.html)
-- [wasm-bindgen-test]()
+- [wasm-bindgen-test](https://rustwasm.github.io/docs/wasm-bindgen/wasm-bindgen-test/index.html)
 
 These libraries bellow help you to call the JavaScript world into WebAssembly. For instance you could call `fetch()` instead of using `reqwest`. Or do some DOM manipulation, draw on a `canvas` with the canvas API or [`piet`](https://github.com/linebender/piet), etc.
 
@@ -36,9 +36,7 @@ These libraries bellow help you to call the JavaScript world into WebAssembly. F
 
 #### Memory
 
-A slower but smaller Memory allocator designed for WebAssembly. Replaces the Rust's one.
-
-- [wee_alloc](https://docs.rs/wee_alloc/)
+- [wee_alloc](https://docs.rs/wee_alloc/) - A slower but smaller Memory allocator designed for WebAssembly. Replaces the Rust's one.
 
 #### Browser console
 
@@ -51,8 +49,8 @@ Also allow to log properly from Rust to the console.
 
 #### Other
 
-- [serde](https://serde.rs) Serialization
-- [reqwest](https://docs.rs/reqwest) Web request
+- [serde](https://serde.rs) - Serialization
+- [reqwest](https://docs.rs/reqwest) - Web request
 
 ## TypeScript & React
 
@@ -72,4 +70,4 @@ Let's be honest, I use React because of React-aria and not the other way around.
 - [React](https://reactjs.org)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) - A library of React Hooks that provides accessible UI primitives for your design system.
 - [Frontafino](https://www.npmjs.com/package/@cedeber/frontafino) - JavaScript Utilities and React Hooks.
-- [Ramda](https://ramdajs.com) A practical functional library. Also used in Frontafino.
+- [Ramda](https://ramdajs.com) - A practical functional library. Also used in Frontafino.
