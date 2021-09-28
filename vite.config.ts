@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [reactRefresh()],
     base: `${process.env.PUBLIC_URL ?? ""}/`,
-    css: { modules: { localsConvention: "camelCase" } },
+    css: { modules: { localsConvention: "camelCaseOnly" } },
 });
