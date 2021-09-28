@@ -65,8 +65,6 @@ Everything you need to bundle, lint, test and format code of you web application
 
 ### Libraries
 
-Let's be honest, I use React because of React-aria and not the other way around. Fortunately React hooks helps a lot to make React nice to use.
-
 - [React](https://reactjs.org)
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) - A library of React Hooks that provides accessible UI primitives for your design system.
 - [Frontafino](https://www.npmjs.com/package/@cedeber/frontafino) - JavaScript Utilities and React Hooks.
