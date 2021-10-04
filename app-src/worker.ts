@@ -1,4 +1,4 @@
-import init, { async_add } from "../pkg/primio";
+import init, { async_add } from "../pkg/premio";
 import * as extern from "./extern";
 
 // Declare ctx as Worker and not as Window
