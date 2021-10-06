@@ -1,4 +1,3 @@
-import React from "react";
 import type { FC } from "react";
 import { classNames } from "@cedeber/frontafino";
 import style from "./styles/Tag.module.scss";

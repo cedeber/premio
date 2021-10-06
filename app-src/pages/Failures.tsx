@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import init, {
     async_error as _async_error,
     async_try_catch_rust as _async_try_catch_rust,
