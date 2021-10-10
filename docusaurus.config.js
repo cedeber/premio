@@ -9,12 +9,7 @@ module.exports = {
     tagline: "Web startup with WebAssembly.",
     plugins: [
         "docusaurus-plugin-sass",
-        [
-            "@docusaurus/plugin-content-docs",
-            {
-                routeBasePath: "/",
-            },
-        ],
+        ["@docusaurus/plugin-content-docs", { routeBasePath: "/" }],
     ],
     themes: ["@docusaurus/theme-classic"],
     themeConfig: {

@@ -1,19 +1,34 @@
 ---
-title: Hello
+title: Tags
 slug: /
 ---
 
 import CodeBlock from "@theme/CodeBlock";
-import { Tag } from "../app-src/components/Tag";
+import { Tag, TagIntent } from "../app-src/components/Tag";
 
-## Hello from Premio
+## Examples
 
-:::info
-Some **content** with _markdown_ `syntax`.
-:::
+```tsx
+<Tag intent={TagIntent.Default}>A component</Tag>
 
-<CodeBlock className="language-tsx" title="/src/myComponent.tsx">
-    const foo: string = "bar";
-</CodeBlock>
-
+// or for default:
 <Tag>A component</Tag>
+```
+
+| Intent              | Example                                       |
+| ------------------- | --------------------------------------------- |
+| `TagIntent.Default` | <Tag intent={TagIntent.Default}>default</Tag> |
+| `TagIntent.Warning` | <Tag intent={TagIntent.Warning}>warning</Tag> |
+| `TagIntent.Error`   | <Tag intent={TagIntent.Error}>error</Tag>     |
+
+### Special
+
+```tsx
+<Tag intent={TagIntent.Comment}>
+    This is a comment with a <Tag>tag</Tag> inside
+</Tag>
+```
+
+<Tag intent={TagIntent.Comment}>
+    This is a comment with a <Tag>tag</Tag> inside
+</Tag>
