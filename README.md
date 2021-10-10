@@ -62,6 +62,7 @@ Everything you need to bundle, lint, test and format code of you web application
 - [Eslint](https://eslint.org) - TypeScript/JavaScript linter.
 - [Prettier](https://prettier.io) - Code Formatter.
 - [Jest](https://jestjs.io) - JavaScript Testing Framework.
+- [Docusaurus](https://docusaurus.io) - Documentation site in no time.
 
 ### Libraries
 
@@ -69,3 +70,4 @@ Everything you need to bundle, lint, test and format code of you web application
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) - A library of React Hooks that provides accessible UI primitives for your design system.
 - [Frontafino](https://www.npmjs.com/package/@cedeber/frontafino) - JavaScript Utilities and React Hooks.
 - [Ramda](https://ramdajs.com) - A practical functional library. Also used in Frontafino.
+- [Fuse.js](https://fusejs.io) - Powerful and lightweight fuzzy-search library
