@@ -10,7 +10,10 @@
 node_modules
 
 # Jest
-coverage
+/coverage/
+
+# Docusaurus
+/.docusaurus/
 
 # OS
 .DS_Store

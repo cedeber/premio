@@ -18,6 +18,12 @@
     "importHelpers": true,
     "removeComments": true,
     "importsNotUsedAsValues": "error",
+    "types": [
+      "node",
+      "vite/client",
+      "@docusaurus/module-type-aliases",
+      "@docusaurus/theme-classic"
+    ],
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
