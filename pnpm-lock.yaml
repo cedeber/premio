@@ -7,7 +7,6 @@ specifiers:
   '@babel/preset-typescript': ^7.15.0
   '@cedeber/frontafino': ^1.0.0-beta.2
   '@docusaurus/core': ^2.0.0-beta.6
-  '@docusaurus/module-type-aliases': ^2.0.0-beta.6
   '@docusaurus/plugin-content-docs': ^2.0.0-beta.6
   '@docusaurus/theme-classic': ^2.0.0-beta.6
   '@mdx-js/react': ^1.6.22
@@ -72,7 +71,6 @@ devDependencies:
   '@babel/preset-react': 7.14.5_@babel+core@7.15.8
   '@babel/preset-typescript': 7.15.0_@babel+core@7.15.8
   '@docusaurus/core': 2.0.0-beta.6_react-dom@17.0.2+react@17.0.2
-  '@docusaurus/module-type-aliases': 2.0.0-beta.6
   '@docusaurus/plugin-content-docs': 2.0.0-beta.6_react-dom@17.0.2+react@17.0.2
   '@docusaurus/theme-classic': 2.0.0-beta.6_react-dom@17.0.2+react@17.0.2
   '@mdx-js/react': 1.6.22_react@17.0.2
@@ -1639,10 +1637,6 @@ packages:
       - uglify-js
       - utf-8-validate
       - webpack-cli
-    dev: true
-
-  /@docusaurus/module-type-aliases/2.0.0-beta.6:
-    resolution: {integrity: sha512-TrJ0u4F3mZ7uQNga22why3SsoNwlHp6vltDLlWI80jZmZpnk9BJglpcR8MPOTSEjyUgMxJ6B3q0PA/rWzupWZA==}
     dev: true
 
   /@docusaurus/plugin-content-blog/2.0.0-beta.6_react-dom@17.0.2+react@17.0.2:
