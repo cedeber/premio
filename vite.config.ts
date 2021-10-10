@@ -1,12 +1,29 @@
-import { defineConfig } from "vite";
-import reactRefresh from "@vitejs/plugin-react-refresh";
+import { defineConfig, UserConfig } from "vite";
+// import reactRefresh from "@vitejs/plugin-react-refresh";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
-    plugins: [reactRefresh()],
-    esbuild: {
-        jsxInject: 'import React from "react";',
-    },
-    base: `${process.env.PUBLIC_URL ?? ""}/`,
-    css: { modules: { localsConvention: "camelCaseOnly" } },
+export default defineConfig(({ command }) => {
+    const config: UserConfig = {
+        base: `${process.env.PUBLIC_URL ?? ""}/`,
+        css: { modules: { localsConvention: "camelCaseOnly" } },
+    };
+
+    if (command === "build") {
+        return {
+            ...config,
+            esbuild: {
+                jsxInject: 'import React from "react";',
+            },
+        };
+    } else {
+        return {
+            ...config,
+            plugins: [
+                react({
+                    // Exclude storybook stories
+                    exclude: /\.stories\.(t|j)sx?$/,
+                }),
+            ],
+        };
+    }
 });
