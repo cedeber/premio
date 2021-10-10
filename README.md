@@ -62,6 +62,7 @@ Everything you need to bundle, lint, test and format code of you web application
 - [Eslint](https://eslint.org) - TypeScript/JavaScript linter.
 - [Prettier](https://prettier.io) - Code Formatter.
 - [Jest](https://jestjs.io) - JavaScript Testing Framework.
+- [Docusaurus](https://docusaurus.io) - Documentation site in no time.
 
 ### Libraries
 
