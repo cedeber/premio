@@ -70,3 +70,4 @@ Everything you need to bundle, lint, test and format code of you web application
 - [React Aria](https://react-spectrum.adobe.com/react-aria/index.html) - A library of React Hooks that provides accessible UI primitives for your design system.
 - [Frontafino](https://www.npmjs.com/package/@cedeber/frontafino) - JavaScript Utilities and React Hooks.
 - [Ramda](https://ramdajs.com) - A practical functional library. Also used in Frontafino.
+- [Fuse.js](https://fusejs.io) - Powerful and lightweight fuzzy-search library
