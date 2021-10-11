@@ -15,8 +15,6 @@ const preCacheFiles = [];
 ctx.addEventListener("fetch", (fetchEvent) => {
     const requestUrl = new URL(fetchEvent.request.url);
 
-    console.log(requestUrl);
-
     if (fetchEvent.request.method === "POST") {
         fetchEvent.respondWith(networkOnly(fetchEvent));
     }

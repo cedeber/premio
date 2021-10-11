@@ -2,7 +2,7 @@
     "short_name": "Premio",
     "name": "Premio",
     "description": "Web startup with WebAssembly.",
-    "start_url": "/",
+    "start_url": "./",
     "display": "minimal-ui",
     "theme_color": "#242526",
     "background_color": "#242526",
