@@ -1,0 +1,23 @@
+{
+    "short_name": "Premio",
+    "name": "Premio",
+    "description": "Web startup with WebAssembly.",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "theme_color": "#242526",
+    "background_color": "#242526",
+    "icons": [
+        {
+            "src": "icons/touch-icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icons/touch-icon-large.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
