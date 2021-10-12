@@ -10,5 +10,6 @@ module.exports = {
          * @see https://www.typescriptlang.org/tsconfig#jsx
          */
         ["@babel/preset-react", { runtime: "automatic" }],
+        "babel-preset-vite",
     ],
 };
