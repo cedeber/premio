@@ -11,19 +11,9 @@ export default defineConfig(({ command }) => {
     if (command === "build") {
         return {
             ...config,
-            esbuild: {
-                jsxInject: 'import React from "react";',
-            },
+            esbuild: { jsxInject: 'import React from "react";' },
         };
     } else {
-        return {
-            ...config,
-            plugins: [
-                react({
-                    // Exclude storybook stories
-                    exclude: /\.stories\.(t|j)sx?$/,
-                }),
-            ],
-        };
+        return { ...config, plugins: [react()] };
     }
 });

@@ -7,9 +7,10 @@
     "test": "jest --passWithNoTests && wasm-pack test --node",
     "dev:js": "vite",
     "dev:wasm": "cargo watch -w src -- wasm-pack build --target web",
-    "build": "wasm-pack build --release --target web && vite build",
     "doc": "docusaurus start",
-    "preview": "vite preview"
+    "build": "wasm-pack build --release --target web && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -21,6 +22,7 @@
     "@docusaurus/theme-classic": "^2.0.0-beta.6",
     "@mdx-js/react": "^1.6.22",
     "@react-types/numberfield": "^3.1.0",
+    "@tauri-apps/cli": "^1.0.0-beta.10",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
@@ -56,6 +58,7 @@
   "dependencies": {
     "@cedeber/frontafino": "^1.0.0-beta.4",
     "@popperjs/core": "^2.10.2",
+    "@tauri-apps/api": "^1.0.0-beta.8",
     "fuse.js": "^6.4.6",
     "history": "^5.0.1",
     "ramda": "^0.27.1",
