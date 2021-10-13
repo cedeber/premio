@@ -27,6 +27,6 @@
       }
     ]
   },
-  "include": ["src", "pkg", "app-src"],
+  "include": ["src-app", "pkg"],
   "exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }
