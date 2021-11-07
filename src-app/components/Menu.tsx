@@ -1,22 +1,15 @@
-import { FC, useCallback, useEffect, useRef, useState } from "react";
-import { NavLink, useLocation, useRouteMatch } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState, VFC } from "react";
+import { NavLink, useLocation, useMatch } from "react-router-dom";
 import style from "./styles/Menu.module.scss";
-import {
-    FocusRing,
-    mergeProps,
-    useFocusWithin,
-    useHover,
-    useTooltip,
-    useTooltipTrigger,
-} from "react-aria";
-import { useTooltipTriggerState } from "react-stately";
-import { createPortal } from "react-dom";
-import { usePopper } from "react-popper";
+import { FocusRing, mergeProps, useFocusWithin, useHover } from "react-aria";
 import { classNames } from "@cedeber/frontafino";
+import { useTooltip } from "../hooks/useTooltip";
+import { Tooltip } from "./Tooltip";
+import { useDatGui } from "../hooks/useDatGui";
 
 type Rect = Pick<DOMRect, "left" | "top" | "width" | "height">;
 
-const Menu: FC = () => {
+const Menu: VFC = () => {
     const hoverBackgroundRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const activeRef = useRef<HTMLAnchorElement>(null);
@@ -31,7 +24,7 @@ const Menu: FC = () => {
             to: "/",
             name: "🌿 Basic",
             ref: useRef<HTMLDivElement>(null),
-            match: useRouteMatch("/")?.isExact,
+            match: !!useMatch("/"),
             tooltip:
                 "Synchronous and Asynchronous WebAssembly in the main thread or in a Web Worker",
         },
@@ -39,7 +32,7 @@ const Menu: FC = () => {
             to: "/failures",
             name: "🧨 Failures",
             ref: useRef<HTMLDivElement>(null),
-            match: useRouteMatch("/failures")?.isExact,
+            match: !!useMatch("/failures"),
             tooltip: "Promise rejection, panic and crashes",
         },
     ];
@@ -162,55 +155,25 @@ interface MenuNavProps {
     tooltip: JSX.Element | string;
 }
 
-const MenuNav: FC<MenuNavProps> = (props) => {
-    const state = useTooltipTriggerState();
-    const ref = useRef<HTMLAnchorElement>(null);
-    const { triggerProps, tooltipProps: tooltipTriggerProps } = useTooltipTrigger({}, state, ref);
-    const { tooltipProps } = useTooltip(tooltipTriggerProps, state);
+const MenuNav: VFC<MenuNavProps> = (props) => {
+    const showTooltip = useDatGui("Tooltip", false);
+    const offset = useDatGui("Tooltip", 4, 0, 15, 1);
+
+    const triggerRef = useRef<HTMLAnchorElement>(null);
     const tooltipRef = useRef<HTMLDivElement>(null);
-    const { styles } = usePopper(ref.current, tooltipRef.current, {
-        strategy: "fixed",
+    const { triggerProps, tooltipProps, arrowProps, state } = useTooltip(triggerRef, tooltipRef, {
         placement: "bottom",
-        modifiers: [{ name: "offset", options: { offset: [0, 15] } }],
+        offset,
+        isOpen: showTooltip || undefined,
     });
-
-    useEffect(() => {
-        if (!tooltipRef.current) return;
-
-        // Need to set it first in order to retrieve the matrix transformation
-        tooltipRef.current.style.transform = styles.popper.transform ?? "none";
-        const transform = window.getComputedStyle(tooltipRef.current).transform;
-        const match = transform.match(/-?\d+\.?\d+|\d+/g);
-        const x = Number(match?.[4] ?? 0);
-        const y = Number(match?.[5] ?? 0);
-
-        tooltipRef.current
-            .animate(
-                {
-                    transform: `translate3d(${x}px, ${y + (state.isOpen ? -5 : 5)}px, 0)`,
-                    opacity: state.isOpen ? 1 : 0,
-                },
-                {
-                    duration: 180,
-                    easing: "ease-out",
-                    fill: "forwards", // Keep the changes applied once finished
-                },
-            )
-            .finished.then((anim) => {
-                // Apply the styles to the element
-                anim.commitStyles();
-                anim.cancel();
-            });
-    }, [state.isOpen]);
 
     return (
         <>
             <NavLink
                 to={props.to}
-                className={style.link}
-                exact
-                activeClassName={style.active}
-                ref={ref}
+                end
+                className={({ isActive }) => classNames(style.link, { [style.active]: isActive })}
+                ref={triggerRef}
                 {...triggerProps}
             >
                 {[...props.name].map((str, index) => (
@@ -219,17 +182,10 @@ const MenuNav: FC<MenuNavProps> = (props) => {
                     </span>
                 ))}
             </NavLink>
-            {createPortal(
-                <div
-                    style={styles.popper}
-                    className={style.tooltip}
-                    aria-hidden="true"
-                    {...tooltipProps}
-                    ref={tooltipRef}
-                >
+            {state.isOpen && (
+                <Tooltip tooltipProps={tooltipProps} arrowProps={arrowProps} ref={tooltipRef}>
                     {props.tooltip}
-                </div>,
-                document.body,
+                </Tooltip>
             )}
         </>
     );

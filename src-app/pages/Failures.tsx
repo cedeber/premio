@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { VFC, useEffect, useState } from "react";
 import init, {
     async_error as _async_error,
     async_try_catch_rust as _async_try_catch_rust,
@@ -9,7 +9,7 @@ import init, {
 import { Tag, TagIntent } from "../components/Tag";
 import style from "./styles/default.module.scss";
 
-const Failures: FC = () => {
+const Failures: VFC = () => {
     const [error, setError] = useState<typeof _error>();
     const [asyncError, setAsyncError] = useState<typeof _async_error>();
     const [tryCatchRust, setTryCatchRust] = useState<typeof _try_catch_rust>();

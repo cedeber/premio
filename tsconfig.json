@@ -14,7 +14,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strictNullChecks": true,
     "importHelpers": true,
     "removeComments": true,
     "importsNotUsedAsValues": "error",

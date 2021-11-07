@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { VFC, useEffect, useRef, useState } from "react";
 import init, {
     add as _add,
     async_add as _asyncAdd,
@@ -9,7 +9,7 @@ import { Tag, TagIntent } from "../components/Tag";
 import style from "./styles/default.module.scss";
 import MyWorker from "../worker?worker";
 
-const Basic: FC = () => {
+const Basic: VFC = () => {
     // Will do i32 casting: "3.2" => 3, 2.98 => 2
     const [a, setA] = useState<number>("3.2");
     const [b, setB] = useState<number>(2.98);
