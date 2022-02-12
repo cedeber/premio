@@ -25,10 +25,10 @@ const usePlacementTooltip = (
     const [isAnimeOpen, setAnimeOpen] = useState(false);
     const state = useTooltipTriggerState({
         isOpen: options?.isOpen,
+        delay: options?.delay,
     });
     const { triggerProps, tooltipProps: tooltipTriggerProps } = useTooltipTrigger(
         {
-            delay: options?.delay,
             isDisabled: options?.isDisabled,
         },
         state,
