@@ -8,8 +8,7 @@
     "dev:js": "vite",
     "dev:wasm": "cargo watch -w src -- wasm-pack build --target web",
     "build": "wasm-pack build --release --target web && vite build",
-    "preview": "vite preview",
-    "tauri": "tauri"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@react-types/numberfield": "^3.1.0",
