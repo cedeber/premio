@@ -1,6 +1,10 @@
-/target/
-/dist/
+# Wasm packages
+packages/wasm*/
+
 .vscode/
+target/
+dist/
+pkg/
 node_modules/
 .DS_Store
 *.log
