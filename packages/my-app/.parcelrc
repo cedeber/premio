@@ -1,0 +1,17 @@
+{
+	"extends": "@parcel/config-default",
+	"transformers": {
+		"*.css": [
+			"@parcel/transformer-postcss",
+			"@parcel/transformer-css-experimental"
+		]
+	},
+	"optimizers": {
+		"*.css": [
+			"@parcel/optimizer-css"
+		],
+		"*.js": [
+			"@parcel/optimizer-swc"
+		]
+	}
+}

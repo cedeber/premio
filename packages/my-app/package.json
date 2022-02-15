@@ -9,7 +9,11 @@
 	},
 	"devDependencies": {
 		"@parcel/core": "^2.3.1",
+		"@parcel/optimizer-css": "^2.3.1",
+		"@parcel/optimizer-swc": "^2.3.1",
 		"@parcel/packager-raw-url": "2.3.1",
+		"@parcel/transformer-css-experimental": "^2.3.1",
+		"@parcel/transformer-postcss": "^2.3.1",
 		"@parcel/transformer-sass": "2.3.1",
 		"@parcel/transformer-webmanifest": "2.3.1",
 		"@react-types/numberfield": "^3.1.0",
