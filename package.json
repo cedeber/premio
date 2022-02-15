@@ -11,7 +11,8 @@
 		"wasm:sum": "wasm-pack build --target web --out-dir ../../packages/wasm_sum --out-name sum ./crates/wasm",
 		"dev": "rimraf dist/ && concurrently 'npm run dev -w widgets' 'npm run dev -w my-app'",
 		"pre-build": "concurrently 'npm run wasm:async' 'npm run wasm:sum' 'npm run build -w widgets'",
-		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app"
+		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app",
+		"vercel-build": "amazon-linux-extras install rust1 && npm run build"
 	},
 	"devDependencies": {
 		"concurrently": "^7.0.0",
