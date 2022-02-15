@@ -16,6 +16,9 @@
     "importHelpers": true,
     "removeComments": true,
     "importsNotUsedAsValues": "error",
+		"rootDir": "src",
+		"outDir": "dist",
+		"incremental": true,
 		"composite": true
   },
   "include": ["./src"],

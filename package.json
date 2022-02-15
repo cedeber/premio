@@ -9,11 +9,13 @@
 	"scripts": {
 		"wasm:async": "wasm-pack build --target web --out-dir ../../packages/wasm_async --out-name async ./crates/async",
 		"wasm:sum": "wasm-pack build --target web --out-dir ../../packages/wasm_sum --out-name sum ./crates/wasm",
-		"wasm": "npm run wasm:async && npm run wasm:sum",
-		"dev": "npm run wasm && npm run dev -w my-app",
-		"build": "npm run wasm && npm run build -w my-app"
+		"dev": "concurrently 'npm run dev -w widgets' 'npm run dev -w my-app'",
+		"pre-build": "concurrently 'npm run wasm:async' 'npm run wasm:sum' 'npm run build -w widgets'",
+		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app"
 	},
 	"devDependencies": {
+		"concurrently": "^7.0.0",
+		"rimraf": "^3.0.2",
 		"wasm-pack": "^0.10.2"
 	}
 }

@@ -8,11 +8,11 @@ import { Tooltip } from "./Tooltip";
 import { useDatGui } from "../hooks/useDatGui";
 
 type Rect = Pick<DOMRect, "left" | "top" | "width" | "height">;
-x;
+
 const Menu: VFC = () => {
 	const hoverBackgroundRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
-	const activeRef = useRef<HTMLAnchorElement>(null);
+	const activeRef = useRef<HTMLDivElement | null>(null); // `| null` to make in mutable
 
 	const [backgroundStyle, setBackgroundStyle] = useState<Rect>();
 
@@ -23,6 +23,7 @@ const Menu: VFC = () => {
 		{
 			to: "/",
 			name: "🌿 Basic",
+
 			ref: useRef<HTMLDivElement>(null),
 			match: !!useMatch("/"),
 			tooltip:

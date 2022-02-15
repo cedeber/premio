@@ -1,5 +1,6 @@
 packages/wasm*/
 .parcel-cache/
+.idea/
 .vscode/
 target/
 dist/
@@ -7,3 +8,4 @@ pkg/
 node_modules/
 .DS_Store
 *.log
+*.tsbuildinfo

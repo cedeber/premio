@@ -22,7 +22,7 @@
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
 	"references": [
     {
-      "path": "../widgets", "prepend": true
+      "path": "../widgets"
     }
   ]
 }
