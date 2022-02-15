@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [package.metadata.wasm-pack.profile.release]
-# Because multi-threading fails to compile
 # wasm-opt = false
 
 [lib]

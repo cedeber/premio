@@ -4,7 +4,7 @@
 	left: 0;
 	top: 0;
 	padding: 4px;
-	border-radius: 6px;
+	// border-radius: 6px;
 	display: flex;
 	flex-direction: row;
 	column-gap: 5px;
@@ -17,7 +17,7 @@
 	user-select: none;
 }
 
-.menu-focus {
+.menu_focus {
 	// box-shadow: 0 0 0 1px #104890, 0 0 0 3px #2767bb;
 	box-shadow: 0 0 0 1px #242526, 0 0 0 3px #2767bb;
 }

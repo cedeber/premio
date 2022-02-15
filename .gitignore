@@ -1,6 +1,5 @@
-# Wasm packages
 packages/wasm*/
-
+.parcel-cache/
 .vscode/
 target/
 dist/

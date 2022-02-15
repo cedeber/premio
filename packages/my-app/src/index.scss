@@ -1,0 +1,22 @@
+@import "reset";
+@import "fn";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Responsive Layout boundaries
+$view-min: 320;
+$view-max: 1440;
+
+body {
+	font-family: -apple-system, system-ui;
+	background: #242526;
+	color: #e8e8e8;
+}
+
+#app {
+	padding: 40px;
+	max-width: 780px;
+	margin: 50px auto 0;
+}

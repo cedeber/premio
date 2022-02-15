@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, VFC } from "react";
 import { NavLink, useLocation, useMatch } from "react-router-dom";
-import style from "./styles/Menu.module.scss";
+import * as style from "./styles/Menu.module.scss";
 import { FocusRing, mergeProps, useFocusWithin, useHover } from "react-aria";
 import { classNames } from "@cedeber/frontafino";
 import { useTooltip } from "../hooks/useTooltip";
@@ -8,7 +8,7 @@ import { Tooltip } from "./Tooltip";
 import { useDatGui } from "../hooks/useDatGui";
 
 type Rect = Pick<DOMRect, "left" | "top" | "width" | "height">;
-
+x;
 const Menu: VFC = () => {
 	const hoverBackgroundRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -34,6 +34,13 @@ const Menu: VFC = () => {
 			ref: useRef<HTMLDivElement>(null),
 			match: !!useMatch("/failures"),
 			tooltip: "Promise rejection, panic and crashes",
+		},
+		{
+			to: "/threads",
+			name: "🚏 Threads",
+			ref: useRef<HTMLDivElement>(null),
+			match: !!useMatch("/threads"),
+			tooltip: "WebAssembly and Multi-threaded parallelization",
 		},
 	];
 
@@ -91,6 +98,7 @@ const Menu: VFC = () => {
 
 	const { focusWithinProps: containerFocusWithinProps } = useFocusWithin({
 		onBlurWithin() {
+			console.log("test");
 			if (activeRef.current) anime(activeRef.current);
 		},
 	});
@@ -119,14 +127,14 @@ const Menu: VFC = () => {
 	}, [location]);
 
 	return (
-		<FocusRing focusRingClass={style.menuFocus} within>
+		<FocusRing focusRingClass={style.menu_focus} within>
 			<nav
-				className={style.menu}
+				className={classNames(style.menu, "rounded-md")}
 				ref={containerRef}
 				{...mergeProps(containerHoverProps, containerFocusWithinProps)}
 			>
 				<div
-					className={style.background}
+					className={classNames(style.background)}
 					ref={hoverBackgroundRef}
 					style={{
 						width: backgroundStyle?.width,
@@ -136,10 +144,10 @@ const Menu: VFC = () => {
 				/>
 				{menus.map((menu) => (
 					<div
-						{...mergeProps(hoverProps, focusWithinProps)}
-						className={style.linkContainer}
 						ref={menu.ref}
+						className={style.link_container}
 						key={menu.to}
+						{...mergeProps(hoverProps, focusWithinProps)}
 					>
 						<MenuNav to={menu.to} tooltip={menu.tooltip} name={menu.name} />
 					</div>

@@ -4,10 +4,9 @@ import init, {
 	async_add as _asyncAdd,
 	async_request as _asyncRequest,
 } from "wasm_async";
-import { NumberField } from "../components/NumberField";
-import { Tag, TagIntent } from "../components/Tag";
-import style from "./styles/default.module.scss";
-import MyWorker from "../worker?worker";
+import { NumberField } from "widgets";
+import { Tag, TagIntent } from "widgets";
+import * as style from "./styles/default.module.scss";
 
 const Basic: VFC = () => {
 	// Will do i32 casting: "3.2" => 3, 2.98 => 2
@@ -25,7 +24,9 @@ const Basic: VFC = () => {
 	const [asyncRequest, setAsyncRequest] = useState<typeof _asyncRequest>();
 	const [ip, setIp] = useState<string>();
 
-	const worker = useRef(new MyWorker());
+	const worker = useRef(
+		new Worker(new URL("../workers/worker.ts", import.meta.url), { type: "module" }),
+	);
 	const [workrLoading, setWorkrLoading] = useState(false);
 	const [workr, setWorkr] = useState<number>();
 
@@ -70,7 +71,7 @@ const Basic: VFC = () => {
 
 	return (
 		<>
-			<h1>Basic Wasm</h1>
+			<h1 className="bg-slate-100">Basic Wasm</h1>
 			<p>
 				<Tag intent={TagIntent.Warning}>JavaScript</Tag> →{" "}
 				<Tag intent={TagIntent.Error}>Rust</Tag> →{" "}

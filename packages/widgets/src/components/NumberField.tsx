@@ -1,4 +1,5 @@
-import { FC, useRef } from "react";
+import type { FC } from "react";
+import { useRef } from "react";
 import { useButton, useLocale, useNumberField } from "react-aria";
 import type { NumberFieldProps } from "@react-types/numberfield";
 import { useNumberFieldState } from "react-stately";

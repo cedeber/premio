@@ -1,5 +1,5 @@
 import init, { async_add } from "wasm_async";
-import * as extern from "./extern";
+import * as extern from "../extern";
 
 // Declare ctx as Worker and not as Window
 const ctx = self as unknown as Worker;

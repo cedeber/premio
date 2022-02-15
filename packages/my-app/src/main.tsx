@@ -1,13 +1,12 @@
 import type { VFC } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Menu } from "./components/Menu";
+import { simd, threads } from "wasm-feature-detect";
+import { Menu } from "widgets";
 import * as extern from "./extern";
 import { Basic } from "./pages/Basic";
 import { Failures } from "./pages/Failures";
-import { threads, simd } from "wasm-feature-detect";
-import "./reset.scss";
-import MyThreadsWorker from "./worker_threads?worker";
+import "./index.scss";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
@@ -15,7 +14,7 @@ window.__extern__ = extern;
 
 const App: VFC = () => {
 	return (
-		<BrowserRouter basename={import.meta.env.BASE_URL}>
+		<BrowserRouter basename={process.env.BASE_URL}>
 			<Menu />
 			<Routes>
 				<Route path="/failures" element={<Failures />} />
@@ -26,22 +25,27 @@ const App: VFC = () => {
 };
 
 // Service Worker
-if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("./service_worker.js").then(
-		function (registration) {
-			// Registration was successful
-			console.log("ServiceWorker registration successful with scope: ", registration.scope);
+// if ("serviceWorker" in navigator) {
+// 	navigator.serviceWorker
+// 		.register(new URL("./service_worker.ts", import.meta.url), { type: "module" })
+// 		.then(
+// 			function (registration) {
+// 				// Registration was successful
+// 				console.log(
+// 					"ServiceWorker registration successful with scope: ",
+// 					registration.scope,
+// 				);
 
-			fetch("/.ping/whatever")
-				.then((response) => response.text())
-				.then((data) => console.log("sw", data));
-		},
-		function (err) {
-			// registration failed :(
-			console.warn("ServiceWorker registration failed: ", err);
-		},
-	);
-}
+// 				fetch("/.ping/whatever")
+// 					.then((response) => response.text())
+// 					.then((data) => console.log("sw", data));
+// 			},
+// 			function (err) {
+// 				// registration failed :(
+// 				console.warn("ServiceWorker registration failed: ", err);
+// 			},
+// 		);
+// }
 
 ReactDOM.render(<App />, document.getElementById("app"));
 
@@ -55,7 +59,7 @@ async function main() {
 	console.log("Threads", hasThreads, navigator.hardwareConcurrency ?? 4);
 	console.log("SIMD", hasSimd);
 
-	new MyThreadsWorker();
+	new Worker(new URL("./workers/worker_threads.ts", import.meta.url), { type: "module" });
 }
 
 main();

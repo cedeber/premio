@@ -9,13 +9,6 @@ crate-type = ["cdylib", "rlib"]
 [features]
 default = ["console_error_panic_hook", "wee_alloc", "console_log"]
 
-[profile.release]
-# It will make the .wasm smaller, but it will also make it faster at runtime!
-lto = true
-# Tell `rustc` to optimize for small code size.
-opt-level = "s"
-# Also see https://rustwasm.github.io/book/reference/code-size.html#use-the-wasm-opt-tool
-
 [dependencies]
 wasm-bindgen = { version = "0.2.79", features = ["serde-serialize"] }
 wasm-bindgen-futures = "0.4.29"

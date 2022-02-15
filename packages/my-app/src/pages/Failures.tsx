@@ -6,8 +6,8 @@ import init, {
 	panic as _panic,
 	try_catch_rust as _try_catch_rust,
 } from "wasm_async";
-import { Tag, TagIntent } from "../components/Tag";
-import style from "./styles/default.module.scss";
+import { Tag, TagIntent } from "widgets";
+import * as style from "./styles/default.module.scss";
 
 const Failures: VFC = () => {
 	const [error, setError] = useState<typeof _error>();

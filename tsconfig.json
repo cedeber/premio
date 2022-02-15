@@ -1,0 +1,9 @@
+{
+  "references": [
+    { "path": "./packages/my-app" },
+    { "path": "./packages/widgets" }
+  ],
+  "files": [],
+  "include": [],
+  "exclude": ["**/node_modules"]
+}

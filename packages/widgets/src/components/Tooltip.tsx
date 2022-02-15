@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 import { OverlayContainer } from "react-aria";
-import style from "./styles/Tooltip.module.scss";
+import * as style from "./styles/Tooltip.module.scss";
 
 interface TooltipProps {
 	tooltipProps: HTMLAttributes<Element>;

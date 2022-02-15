@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 interface Extern {
 	wasm_cb?: (str: string) => void;
 	async_wasm_cb?: (str: string) => Promise<number>;
