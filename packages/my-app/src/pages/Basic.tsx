@@ -1,11 +1,12 @@
-import { VFC, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, VFC } from "react";
+import { useMessageFormatter } from "react-aria";
 import init, {
 	add as _add,
 	async_add as _asyncAdd,
 	async_request as _asyncRequest,
 } from "wasm_async";
-import { NumberField } from "widgets";
-import { Tag, TagIntent } from "widgets";
+import { NumberField, Tag, TagIntent } from "widgets";
+import messages from "../intl";
 import * as style from "./styles/default.module.scss";
 
 const Basic: VFC = () => {
@@ -69,9 +70,13 @@ const Basic: VFC = () => {
 		worker.current.postMessage({ a, b });
 	}, [a, b]);
 
+	console.log(messages);
+	const formatMessage = useMessageFormatter(messages);
+
 	return (
 		<>
 			<h1 className="bg-slate-100">Basic Wasm</h1>
+			<p>{formatMessage("greeting", { name: "World" })}</p>
 			<p>
 				<Tag intent={TagIntent.Warning}>JavaScript</Tag> →{" "}
 				<Tag intent={TagIntent.Error}>Rust</Tag> →{" "}

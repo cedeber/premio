@@ -1,26 +1,36 @@
-import type { VFC } from "react";
+import { locale } from "@cedeber/frontafino";
+import { useEffect, useMemo, VFC } from "react";
+import { I18nProvider } from "react-aria";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { simd, threads } from "wasm-feature-detect";
 import { Menu } from "widgets";
 import * as extern from "./extern";
+import "./index.scss";
 import { Basic } from "./pages/Basic";
 import { Failures } from "./pages/Failures";
-import "./index.scss";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
 window.__extern__ = extern;
 
 const App: VFC = () => {
+	const lang = useMemo(() => locale(["en", "fr"]), []);
+
+	useEffect(() => {
+		document.documentElement.setAttribute("lang", lang);
+	}, [lang]);
+
 	return (
-		<BrowserRouter basename={process.env.BASE_URL}>
-			<Menu />
-			<Routes>
-				<Route path="/failures" element={<Failures />} />
-				<Route path="/" element={<Basic />} />
-			</Routes>
-		</BrowserRouter>
+		<I18nProvider locale={lang}>
+			<BrowserRouter basename={process.env.BASE_URL}>
+				<Menu />
+				<Routes>
+					<Route path="/failures" element={<Failures />} />
+					<Route path="/" element={<Basic />} />
+				</Routes>
+			</BrowserRouter>
+		</I18nProvider>
 	);
 };
 
