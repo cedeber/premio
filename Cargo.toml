@@ -7,4 +7,5 @@ members = ["crates/*"]
 lto = true
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
-# Also see https://rustwasm.github.io/book/reference/code-size.html#use-the-wasm-opt-tool
+# This causes debuginfo to be stripped from release binaries.
+strip = "debuginfo"
