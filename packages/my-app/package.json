@@ -5,7 +5,7 @@
 	"source": "src/index.html",
 	"scripts": {
 		"dev": "parcel src/index.html --lazy --dist-dir ../../dist",
-		"build": "rm -rf ../../dist && parcel build src/index.html --dist-dir ../../dist"
+		"build": "rm -rf ../../dist && parcel build src/index.html --public-url ./ --dist-dir ../../dist"
 	},
 	"devDependencies": {
 		"@parcel/core": "^2.3.1",
