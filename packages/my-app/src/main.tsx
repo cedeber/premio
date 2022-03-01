@@ -1,5 +1,5 @@
 import { locale } from "@cedeber/frontafino";
-import { useEffect, useMemo, VFC } from "react";
+import { useEffect, useMemo, useState, VFC } from "react";
 import { I18nProvider } from "react-aria";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -21,9 +21,21 @@ const App: VFC = () => {
 		document.documentElement.setAttribute("lang", lang);
 	}, [lang]);
 
+	const [hello, setHello] = useState<string>();
+
+	useEffect(() => {
+		fetch("http://localhost:4000/hello")
+			.then((response) => response.text())
+			.then((data) => {
+				console.log("hello", data);
+				setHello(data);
+			});
+	}, []);
+
 	return (
 		<I18nProvider locale={lang}>
 			<BrowserRouter basename={process.env.BASE_URL}>
+				-- {hello} --
 				<Menu />
 				<Routes>
 					<Route path="/failures" element={<Failures />} />
