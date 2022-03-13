@@ -4,6 +4,10 @@
 		"*.css": [
 			"@parcel/transformer-postcss",
 			"@parcel/transformer-css-experimental"
+		],
+		"*.svg": [
+			"...",
+			"@parcel/transformer-svg-react"
 		]
 	},
 	"optimizers": {
