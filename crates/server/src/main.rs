@@ -87,15 +87,20 @@ async fn main() {
 	});
 
 	let backend = tokio::spawn(async {
+		let allowed_methods = vec![Method::GET];
+		// TODO .nest() for /api + CORS
 		let app = Router::new().route("/hello", get(hello)).layer(
 			// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
 			// for more details
-			CorsLayer::new()
-				// Production
-				.allow_origin(Origin::exact("http://localhost:3000".parse().unwrap()))
+			if cfg!(debug_assertions) {
 				// Development
-				.allow_origin(Origin::exact("http://localhost:1234".parse().unwrap()))
-				.allow_methods(vec![Method::GET]),
+				CorsLayer::new().allow_methods(allowed_methods)
+			} else {
+				// Production
+				CorsLayer::new()
+					.allow_origin(Origin::exact("http://localhost:3000".parse().unwrap()))
+					.allow_methods(allowed_methods)
+			},
 		);
 		serve(app, 4000).await
 	});
