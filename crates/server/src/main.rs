@@ -88,7 +88,7 @@ async fn main() {
 
 	let backend = tokio::spawn(async {
 		let allowed_methods = vec![Method::GET];
-		// TODO .nest() for /api + CORS
+		// TODO: .nest() for /api + CORS
 		let app = Router::new().route("/hello", get(hello)).layer(
 			// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
 			// for more details
