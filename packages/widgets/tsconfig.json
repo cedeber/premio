@@ -25,7 +25,17 @@
 		"outDir": "dist",
 		"incremental": true,
 		"composite": true
-  },
-  "include": ["./src"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"**/*.spec.ts",
+		"**/*.test.ts"
+	],
+	"references": [
+		{
+			"path": "../frontafino"
+		}
+	]
 }
