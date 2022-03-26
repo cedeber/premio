@@ -17,7 +17,7 @@ const Tag: FC<TagProps> = (props) => {
 	return (
 		<span
 			className={classNames({
-				[style.default]: props.intent === TagIntent.Default || props.intent == undefined,
+				[style.base]: props.intent === TagIntent.Default || props.intent == undefined,
 				[style.comment]: props.intent === TagIntent.Comment,
 				[style.warning]: props.intent === TagIntent.Warning,
 				[style.error]: props.intent === TagIntent.Error,

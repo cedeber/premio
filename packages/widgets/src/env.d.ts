@@ -4,20 +4,20 @@
  */
 
 // CSS modules
-type CSSModuleClasses = { readonly [key: string]: string };
+// type CSSModuleClasses = { readonly [key: string]: string };
 
 declare module "*.module.css" {
-	const classes: CSSModuleClasses;
+	const classes: Record<string, string>;
 	export default classes;
 	export = classes;
 }
 declare module "*.module.scss" {
-	const classes: CSSModuleClasses;
+	const classes: Record<string, string>;
 	export default classes;
 	export = classes;
 }
 declare module "*.module.sass" {
-	const classes: CSSModuleClasses;
+	const classes: Record<string, string>;
 	export default classes;
 	export = classes;
 }
@@ -26,15 +26,15 @@ declare module "*.module.sass" {
 declare module "*.css" {
 	const css: string;
 	export default css;
-	export = classes;
+	export = css;
 }
 declare module "*.scss" {
 	const css: string;
 	export default css;
-	export = classes;
+	export = css;
 }
 declare module "*.sass" {
 	const css: string;
 	export default css;
-	export = classes;
+	export = css;
 }
