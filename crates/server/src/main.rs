@@ -92,15 +92,9 @@ async fn main() {
 		let app = Router::new().route("/hello", get(hello)).layer(
 			// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
 			// for more details
-			if cfg!(debug_assertions) {
-				// Development
-				CorsLayer::new().allow_methods(allowed_methods)
-			} else {
-				// Production
-				CorsLayer::new()
-					.allow_origin(Origin::exact("http://localhost:3000".parse().unwrap()))
-					.allow_methods(allowed_methods)
-			},
+			CorsLayer::new()
+				.allow_origin(Origin::exact("http://localhost:3000".parse().unwrap()))
+				.allow_methods(allowed_methods),
 		);
 		serve(app, 4000).await
 	});
