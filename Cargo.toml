@@ -2,10 +2,10 @@
 members = ["crates/*"]
 
 [profile.release]
-# Link time optimization using using whole-program analysis.
-# It will make the .wasm smaller, but it will also make it faster at runtime!
+# Link-Time Optimization using whole-program analysis.
+# It will make the app smaller, but it will also make it faster at runtime!
 lto = true
-# Tell `rustc` to optimize for small code size.
+# Tell `rustc` to optimize for small code size. Interesting for Wasm.
 opt-level = "s"
 # This causes debuginfo to be stripped from release binaries.
 strip = "debuginfo"
