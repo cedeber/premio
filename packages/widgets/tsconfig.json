@@ -24,7 +24,9 @@
 		"rootDir": "src",
 		"outDir": "dist",
 		"incremental": true,
-		"composite": true
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true
 	},
 	"include": [
 		"src"

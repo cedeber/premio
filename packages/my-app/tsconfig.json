@@ -21,7 +21,11 @@
 		"jsx": "react-jsx",
 		"importHelpers": true,
 		"removeComments": true,
-		"importsNotUsedAsValues": "error"
+		"importsNotUsedAsValues": "error",
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"incremental": true
 	},
 	"include": [
 		"./src"

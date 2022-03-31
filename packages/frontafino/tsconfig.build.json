@@ -23,8 +23,8 @@
 		"sourceMap": true,
 		"declaration": true,
 		"declarationMap": true,
-		"outDir": "dist",
 		"incremental": true,
+		"outDir": "dist"
 	},
 	"include": [
 		"src"
@@ -32,5 +32,5 @@
 	"exclude": [
 		"**/*.spec.ts",
 		"**/*.test.ts"
-	],
+	]
 }

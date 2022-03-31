@@ -1,7 +1,7 @@
 import { locale } from "@cedeber/frontafino";
-import { useEffect, useMemo, useState, VFC } from "react";
+import { StrictMode, useEffect, useMemo, useState, VFC } from "react";
 import { I18nProvider } from "react-aria";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { simd, threads } from "wasm-feature-detect";
 import { Menu } from "widgets";
@@ -27,22 +27,23 @@ const App: VFC = () => {
 		fetch("http://localhost:4000/hello")
 			.then((response) => response.text())
 			.then((data) => {
-				console.log("hello", data);
 				setHello(data);
 			});
 	}, []);
 
 	return (
-		<I18nProvider locale={lang}>
-			<BrowserRouter basename={process.env.BASE_URL}>
-				-- {hello} --
-				<Menu />
-				<Routes>
-					<Route path="/failures" element={<Failures />} />
-					<Route path="/" element={<Basic />} />
-				</Routes>
-			</BrowserRouter>
-		</I18nProvider>
+		<StrictMode>
+			<I18nProvider locale={lang}>
+				<BrowserRouter basename={process.env.BASE_URL}>
+					-- {hello} --
+					<Menu />
+					<Routes>
+						<Route path="/failures" element={<Failures />} />
+						<Route path="/" element={<Basic />} />
+					</Routes>
+				</BrowserRouter>
+			</I18nProvider>
+		</StrictMode>
 	);
 };
 
@@ -69,7 +70,8 @@ const App: VFC = () => {
 // 		);
 // }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+const root = createRoot(document.getElementById("app")!);
+root.render(<App />);
 
 async function main() {
 	// no SharedArrayBuffer -> no Threads
