@@ -1,19 +1,12 @@
 {
 	"extends": "@parcel/config-default",
 	"transformers": {
-		"*.css": [
-			"@parcel/transformer-postcss",
-			"@parcel/transformer-css-experimental"
-		],
 		"*.svg": [
 			"...",
 			"@parcel/transformer-svg-react"
 		]
 	},
 	"optimizers": {
-		"*.css": [
-			"@parcel/optimizer-css"
-		],
 		"*.js": [
 			"@parcel/optimizer-swc"
 		]
