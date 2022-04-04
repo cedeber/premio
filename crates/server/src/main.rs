@@ -1,33 +1,21 @@
-use std::{io, str::FromStr};
-use std::{net::SocketAddr, time::Instant};
-
 use axum::{
-	body::HttpBody,
-	extract::{Form, Json, Path},
-	handler::Handler,
 	http::{
-		header::{self, HeaderName, HeaderValue},
-		Method, Response, StatusCode, Uri,
+		header::{HeaderName, HeaderValue},
+		Method, StatusCode,
 	},
-	response::{Headers, Html, IntoResponse, Redirect},
-	routing::get_service,
-	routing::{get, post},
+	response::{Headers, IntoResponse},
+	routing::{get, get_service},
 	Router, Server,
 };
-use http_body::Full;
-use tokio::{
-	fs::File,
-	io::{self as tio, AsyncReadExt},
-};
+use std::{env, net::SocketAddr};
 use tower::ServiceBuilder;
 use tower_http::{
 	cors::{CorsLayer, Origin},
-	services::fs::{ServeDir, ServeFileSystemResponseBody},
-	set_header::SetResponseHeaderLayer,
+	services::{ServeDir, ServeFile},
 	trace::TraceLayer,
 	ServiceBuilderExt,
 };
-use tracing::{debug, info};
+use tracing::info;
 
 #[tokio::main]
 async fn main() {
@@ -35,8 +23,7 @@ async fn main() {
 	tracing_subscriber::fmt::init();
 
 	let frontend = tokio::spawn(async {
-		// Weirdly it works from last call to first. So you need to apply the headers first.
-		let service = ServiceBuilder::new()
+		let headers_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
 			// Need to be written in lowercase :-/
 			.override_response_header(
@@ -46,35 +33,55 @@ async fn main() {
 			.override_response_header(
 				HeaderName::from_static("cross-origin-opener-policy"),
 				HeaderValue::from_static("same-origin"),
-			)
-			.and_then(
-				|response: Response<ServeFileSystemResponseBody>| async move {
-					let response = if response.status() == StatusCode::NOT_FOUND {
-						// We must send back index.html without redirecting it. This is a Single Page Application.
-						let mut f = File::open("./dist/index.html").await?;
-						let mut buffer = Vec::new();
+			);
 
-						// TODO: We could probably stream the file instead of loading it completely in memory?
-						f.read_to_end(&mut buffer).await?;
-						let body = Full::from(buffer).map_err(|err| match err {}).boxed();
-
-						Response::builder()
-							.status(StatusCode::OK)
-							.body(body)
-							.unwrap()
-					} else {
-						response.map(|body| body.boxed())
-					};
-
-					Ok::<_, io::Error>(response)
-				},
-			)
+		let dist_service = headers_service
+			.clone()
+			// .and_then(
+			// 	|response: axum::http::Response<
+			// 		tower_http::services::fs::ServeFileSystemResponseBody,
+			// 	>| async move {
+			// 		let response = if response.status() == StatusCode::NOT_FOUND {
+			// 			// We must send back index.html without redirecting it. This is a Single Page Application.
+			// 			let mut f = tokio::fs::File::open("./dist/index.html").await?;
+			// 			let mut buffer = Vec::new();
+			//
+			// 			// TODO: We could probably stream the file instead of loading it completely in memory?
+			// 			f.read_to_end(&mut buffer).await?;
+			// 			let body = http_body::Full::from(buffer)
+			// 				.map_err(|err| match err {})
+			// 				.boxed();
+			//
+			// 			axum::http::Response::builder()
+			// 				.status(StatusCode::OK)
+			// 				.body(body)
+			// 				.unwrap()
+			// 		} else {
+			// 			response.map(|body| body.boxed())
+			// 		};
+			//
+			// 		Ok::<_, std::io::Error>(response)
+			// 	},
+			// )
 			.service(ServeDir::new("./dist"));
+
+		let spa_service = headers_service
+			.clone()
+			.service(ServeFile::new("./dist/index.html"));
 
 		let app = Router::new()
 			.nest(
 				"/",
-				get_service(service).handle_error(|error: std::io::Error| async move {
+				get_service(dist_service).handle_error(|error: std::io::Error| async move {
+					(
+						StatusCode::INTERNAL_SERVER_ERROR,
+						format!("Unhandled internal error: {}", error),
+					)
+				}),
+			)
+			// If the requested file is not found in the ./dist folder, fallback to index.html (=> S router)
+			.fallback(
+				get_service(spa_service).handle_error(|error: std::io::Error| async move {
 					(
 						StatusCode::INTERNAL_SERVER_ERROR,
 						format!("Unhandled internal error: {}", error),
@@ -83,7 +90,10 @@ async fn main() {
 			)
 			.layer(TraceLayer::new_for_http());
 
-		serve(app, 3000).await
+		// The local webserver will be managed by Parcel in DEV_MODE
+		if env::var("DEV_MODE").is_err() {
+			serve(app, 3000).await
+		}
 	});
 
 	let backend = tokio::spawn(async {
@@ -99,7 +109,11 @@ async fn main() {
 		serve(app, 4000).await
 	});
 
-	tokio::join!(frontend, backend);
+	if env::var("DEV_MODE").is_ok() {
+		tokio::join!(backend);
+	} else {
+		tokio::join!(frontend, backend);
+	}
 }
 
 /// Run the app with hyper.
