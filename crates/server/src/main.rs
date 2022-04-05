@@ -3,7 +3,7 @@ use axum::{
 		header::{HeaderName, HeaderValue},
 		Method, StatusCode,
 	},
-	response::{Headers, IntoResponse},
+	response::IntoResponse,
 	routing::{get, get_service},
 	Router, Server,
 };
@@ -130,7 +130,7 @@ async fn serve(app: Router, port: u16) {
 async fn hello() -> impl IntoResponse {
 	(
 		StatusCode::OK,
-		Headers(vec![("X-Foo", "foo")]),
+		[("X-Foo", "foo")],
 		String::from("Hello, World!"),
 	)
 }
