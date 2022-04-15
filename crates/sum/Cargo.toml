@@ -8,4 +8,4 @@ publish = false
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-rayon = "1.5.1"
+rayon = "1.5.2"
