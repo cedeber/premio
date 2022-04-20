@@ -1,3 +1,0 @@
-const useTooltip = () => {};
-
-export { useTooltip };
