@@ -13,14 +13,14 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
 		"jsx": "react-jsx",
 		"importHelpers": true,
 		"removeComments": true,
 		"importsNotUsedAsValues": "error",
 		"declaration": true,
 		"declarationMap": true,
-		"incremental": true
+		"composite": true,
+		"rootDir": "src"
 	},
 	"include": ["./src"],
 	"exclude": ["**/*.spec.ts", "**/*.test.ts"]

@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { useMessageFormatter } from "react-aria";
 import messages from "../intl";
-import * as style from "./styles/default.module.scss";
 
 const Basic: FC = () => {
 	const formatMessage = useMessageFormatter(messages);

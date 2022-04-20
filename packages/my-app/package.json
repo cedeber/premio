@@ -34,19 +34,19 @@
 		"sass": "^1.49.7",
 		"tailwindcss": "^3.0.22",
 		"typed-scss-modules": "^6.2.0",
-		"typescript": "^4.5.5",
-		"typescript-plugin-css-modules": "^3.4.0"
+		"typescript": "^4.5.5"
 	},
 	"dependencies": {
-		"@cedeber/frontafino": "file:../frontafino",
+		"@cedeber/frontafino": "^1.0.0-beta.7",
 		"comlink": "^4.3.1",
+		"easy-wasm": "file:../easy-wasm",
 		"fuse.js": "^6.5.3",
 		"ramda": "^0.28.0",
 		"react": "^18.0.0",
+		"react-aria": "^3.14.1",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "^6.2.1",
 		"wasm-feature-detect": "^1.2.11",
-		"widgets": "file:../widgets",
 		"zustand": "^3.7.0"
 	}
 }

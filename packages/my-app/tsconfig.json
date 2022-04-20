@@ -26,10 +26,7 @@
 	"exclude": ["**/*.spec.ts", "**/*.test.ts"],
 	"references": [
 		{
-			"path": "../widgets"
-		},
-		{
-			"path": "../frontafino"
+			"path": "../easy-wasm"
 		}
 	]
 }
