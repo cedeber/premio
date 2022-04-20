@@ -1,5 +1,5 @@
-import init, { async_add } from "wasm_async";
-import * as extern from "../extern";
+import init, { fib } from "wasm_async";
+import * as extern from "./extern";
 
 // Declare ctx as Worker and not as Window
 const ctx = self as unknown as Worker;
@@ -10,12 +10,12 @@ ctx.__extern__ = extern;
 
 /* --- Worker --- */
 ctx.addEventListener("message", async (event) => {
-	const { a, b } = event.data;
+	const { a } = event.data;
 
-	// Workaround because the path is relative to the js file (in assets) and not to the root.
+	// Unfortunately we need to instanciate the WASM module every time.
+	// TODO: Can we do it differently?
 	await init();
 
-	// Async
-	const result = await async_add(a, b);
+	const result = fib(a);
 	ctx.postMessage(result);
 });

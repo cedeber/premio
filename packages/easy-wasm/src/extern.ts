@@ -1,11 +1,11 @@
-const wasm_cb: Extern["wasm_cb"] = (str) => {
-	console.log("(main thread)", str);
+const add_cb: Extern["add_cb"] = (result) => {
+	console.log("The result is", result);
 };
 
-const async_wasm_cb: Extern["async_wasm_cb"] = async (str) =>
+const async_add_cb: Extern["async_add_cb"] = async () =>
 	new Promise((resolve) => {
+		console.log("Fake a long calculation: result will be 4 in 2s");
 		setTimeout(() => {
-			console.log("(main thread + async)", str);
 			resolve(4); // will add 4 to the next async_add() call
 		}, 2000);
 	});
@@ -18,4 +18,4 @@ const async_try_catch: Extern["async_try_catch"] = async () => {
 	throw new Error("This is an async JS Error");
 };
 
-export { wasm_cb, async_wasm_cb, try_catch, async_try_catch };
+export { add_cb, async_add_cb, try_catch, async_try_catch };

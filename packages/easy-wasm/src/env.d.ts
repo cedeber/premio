@@ -1,6 +1,6 @@
 interface Extern {
-	wasm_cb?: (str: string) => void;
-	async_wasm_cb?: (str: string) => Promise<number>;
+	add_cb?: (result: number) => void;
+	async_add_cb?: (str: string) => Promise<number>;
 	try_catch?: () => void;
 	async_try_catch?: () => Promise<void>;
 }

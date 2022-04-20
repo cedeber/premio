@@ -14,14 +14,6 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook", "wee_alloc"]
 
 [dependencies]
-# Local crates
-sum = { path = "../sum" }
-
-# Wasm bindgen
-wasm-bindgen = "0.2.80"
-wasm-bindgen-futures = "0.4.30"
-wasm-bindgen-rayon = "1.0.3"
-
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
 # all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
@@ -32,6 +24,14 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 # compared to the default allocator's ~10K. It is slower than the default
 # allocator, however.
 wee_alloc = { version = "0.4.5", optional = true }
+
+# Wasm bindgen
+wasm-bindgen = "0.2.80"
+wasm-bindgen-futures = "0.4.30"
+wasm-bindgen-rayon = "1.0.3"
+
+# Local crates
+sum = { path = "../sum" }
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.30"

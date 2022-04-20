@@ -1,4 +1,4 @@
-import { networkOnly, cacheFirst, networkFirst } from "./sw-strategies";
+import { networkOnly, cacheFirst, networkFirst } from "./workers/sw-strategies";
 
 /**
  * @type ServiceWorker

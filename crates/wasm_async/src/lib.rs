@@ -1,4 +1,5 @@
 use log::{info, Level};
+use sum::fibonacci;
 use wasm_bindgen::prelude::*;
 
 #[cfg(feature = "wee_alloc")]
@@ -19,17 +20,16 @@ pub fn main_wasm() -> Result<(), JsValue> {
 // From JavaScript
 #[wasm_bindgen]
 extern "C" {
-	#[wasm_bindgen(js_namespace = console)]
-	fn log(s: &str);
-
 	// Need to define catch + Result here for tests.
 	// We better consider that every JS function may fail anyways.
-	#[wasm_bindgen(js_namespace = __extern__, catch)]
-	fn wasm_cb(s: &str) -> Result<(), JsValue>;
+	// #[wasm_bindgen(js_namespace = __extern__, catch)]
+	// fn wasm_cb(s: &str) -> Result<(), JsValue>;
+	#[wasm_bindgen(js_namespace = __extern__)]
+	fn add_cb(result: u32);
 
 	// The `async` can be combined with the `catch` attribute to manage errors from the JS promise
 	#[wasm_bindgen(js_namespace = __extern__, catch)]
-	async fn async_wasm_cb(s: &str) -> Result<JsValue, JsValue>;
+	async fn async_add_cb() -> Result<JsValue, JsValue>;
 
 	#[wasm_bindgen(js_namespace = __extern__, catch)]
 	fn try_catch() -> Result<(), JsValue>;
@@ -39,21 +39,20 @@ extern "C" {
 }
 
 #[wasm_bindgen]
-pub fn add(a: i32, b: i32) -> i32 {
-	info!("add() called");
-	wasm_cb("wasm_cb() called");
-	a + b
+pub fn fib(a: u32) -> u32 {
+	info!("sync fib() called");
+	let result = fibonacci(a);
+	add_cb(result);
+	result
 }
 
 #[wasm_bindgen]
-pub async fn async_add(a: i32, b: i32) -> Result<i32, JsValue> {
-	info!("async_add() called");
+pub async fn async_fib(a: u32) -> Result<u32, JsValue> {
+	info!("async_fib() called");
+	let a = fibonacci(a);
 	// Wait from JS
-	let c = async_wasm_cb("async_wasm_cb() called")
-		.await?
-		.as_f64()
-		.unwrap() as i32;
-	Ok(a + b + c)
+	let b = async_add_cb().await?.as_f64().unwrap() as u32;
+	Ok(a + b)
 }
 
 #[wasm_bindgen]
@@ -109,6 +108,6 @@ mod tests {
 
 	#[wasm_bindgen_test]
 	fn it_works() {
-		assert_eq!(5, add(2, 3));
+		assert_eq!(5, fib(2));
 	}
 }

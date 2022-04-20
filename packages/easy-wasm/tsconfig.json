@@ -3,6 +3,7 @@
 		"target": "ESNext",
 		"lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
 		"allowJs": true,
+		"checkJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": false,
 		"allowSyntheticDefaultImports": true,
@@ -17,19 +18,10 @@
 		"importHelpers": true,
 		"removeComments": true,
 		"importsNotUsedAsValues": "error",
-		"composite": true,
 		"declaration": true,
 		"declarationMap": true,
 		"incremental": true
 	},
 	"include": ["./src"],
-	"exclude": ["**/*.spec.ts", "**/*.test.ts"],
-	"references": [
-		{
-			"path": "../widgets"
-		},
-		{
-			"path": "../frontafino"
-		}
-	]
+	"exclude": ["**/*.spec.ts", "**/*.test.ts"]
 }

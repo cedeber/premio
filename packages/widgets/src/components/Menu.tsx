@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, VFC } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { NavLink, useLocation, useMatch } from "react-router-dom";
 import * as style from "./styles/Menu.module.scss";
 import { FocusRing, mergeProps, useFocusWithin, useHover } from "react-aria";
@@ -9,7 +9,7 @@ import { useDatGui } from "../hooks/useDatGui";
 
 type Rect = Pick<DOMRect, "left" | "top" | "width" | "height">;
 
-const Menu: VFC = () => {
+const Menu: FC = () => {
 	const hoverBackgroundRef = useRef<HTMLDivElement>(null);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const activeRef = useRef<HTMLDivElement | null>(null); // `| null` to make in mutable
@@ -164,7 +164,7 @@ interface MenuNavProps {
 	tooltip: JSX.Element | string;
 }
 
-const MenuNav: VFC<MenuNavProps> = (props) => {
+const MenuNav: FC<MenuNavProps> = (props) => {
 	const showTooltip = useDatGui("Tooltip", false);
 	const offset = useDatGui("Tooltip", 4, 0, 15, 1);
 

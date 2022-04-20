@@ -13,6 +13,7 @@
 		"@cedeber/frontafino": "file:../frontafino",
 		"react": "^18.0.0",
 		"react-aria": "^3.12.0",
+		"react-router-dom": "^6.3.0",
 		"react-stately": "^3.11.0"
 	}
 }

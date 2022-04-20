@@ -1,9 +1,10 @@
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 import { classNames } from "@cedeber/frontafino";
 import * as style from "./styles/Tag.module.scss";
 
 export interface TagProps {
 	intent?: TagIntent;
+	children: ReactNode;
 }
 
 enum TagIntent {
