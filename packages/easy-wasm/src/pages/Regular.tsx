@@ -13,11 +13,13 @@ const Regular: FC = () => {
 	const worker = useRef<Worker>();
 
 	useEffect(() => {
-		(async function () {
+		void (async function () {
 			await init();
 		})();
 
-		const _worker = new Worker(new URL("../worker.ts", import.meta.url), { type: "module" });
+		const _worker = new Worker(new URL("../worker.ts", import.meta.url), {
+			type: "module",
+		});
 		_worker.onmessage = (event) => {
 			const t4 = performance.now();
 			setPerf3(t4 - (t3.current ?? t4));
@@ -28,9 +30,9 @@ const Regular: FC = () => {
 
 	return (
 		<div className="mb-10">
-			<h2 className="text-2xl mb-2">Regular Function Call</h2>
+			<h2 className="mb-2 text-2xl">Regular Function Call</h2>
 			<p className="mb-1">This calculation is done from WASM.</p>
-			<p className="mb-2 bg-blue-100 px-3 py-2 border-l-4 border-blue-500 text-blue-800">
+			<p className="mb-2 border-l-4 border-blue-500 bg-blue-100 px-3 py-2 text-blue-800">
 				You can check the console to see the log of the WASM call.
 			</p>
 			<Button
@@ -60,7 +62,7 @@ const Regular: FC = () => {
 				Performance 〉JavaScript → {perf1?.toFixed(0)}ms ⎮ WebAssembly → {perf2?.toFixed(0)}
 				ms
 			</p>
-			<h3 className="text-xl mb-2 mt-2">In a Worker</h3>
+			<h3 className="mb-2 mt-2 text-xl">In a Worker</h3>
 			<Button
 				onClick={() => {
 					setAddResultWorker(undefined);

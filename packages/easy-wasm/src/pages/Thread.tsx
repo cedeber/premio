@@ -39,39 +39,39 @@ const Thread: FC = () => {
 			worker.current = _worker;
 		}
 
-		sw();
+		void sw();
 	}, []);
 
 	return (
 		<div className="mb-10">
-			<h2 className="text-2xl mb-2">Threads</h2>
+			<h2 className="mb-2 text-2xl">Threads</h2>
 			<p>
 				SharedArrayBuffer:{" "}
 				{!!window.SharedArrayBuffer ? (
-					<CheckIcon className="h-5 w-5 inline-block align-text-top text-emerald-700" />
+					<CheckIcon className="inline-block h-5 w-5 align-text-top text-emerald-700" />
 				) : (
-					<XIcon className="h-5 w-5 inline-block align-text-top text-red-600" />
+					<XIcon className="inline-block h-5 w-5 align-text-top text-red-600" />
 				)}
 			</p>
 			<p>
 				Threads:{" "}
 				{hasThreads ? (
-					<CheckIcon className="h-5 w-5 inline-block align-text-top text-emerald-700" />
+					<CheckIcon className="inline-block h-5 w-5 align-text-top text-emerald-700" />
 				) : (
-					<XIcon className="h-5 w-5 inline-block align-text-top text-red-600" />
+					<XIcon className="inline-block h-5 w-5 align-text-top text-red-600" />
 				)}
 				{navigator.hardwareConcurrency ?? 4}
 			</p>
 			<p>
 				SIMD:{" "}
 				{hasSimd ? (
-					<CheckIcon className="h-5 w-5 inline-block align-text-top text-emerald-700" />
+					<CheckIcon className="inline-block h-5 w-5 align-text-top text-emerald-700" />
 				) : (
-					<XIcon className="h-5 w-5 inline-block align-text-top text-red-600" />
+					<XIcon className="inline-block h-5 w-5 align-text-top text-red-600" />
 				)}
 			</p>
 			{error && (
-				<p className="mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+				<p className="mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 					{error}
 				</p>
 			)}

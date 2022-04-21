@@ -7,19 +7,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = (props) => (
 		{...props}
 		className={cx(
 			props.className,
-			"py-3",
-			"pl-5",
-			"pr-4",
-			"bg-blue-500",
-			"text-white",
-			"text-sm",
-			"font-semibold",
-			"rounded-md",
-			"shadow-lg",
-			"shadow-blue-500/50",
-			"focus:outline-none",
-			"hover:bg-blue-600",
-			"flex",
+			"flex rounded-md bg-blue-500 py-3 pl-5 pr-4 text-sm font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-blue-600 focus:outline-none",
 		)}
 	>
 		<Anim />

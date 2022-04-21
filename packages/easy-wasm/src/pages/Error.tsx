@@ -10,17 +10,17 @@ const ErrorPage: FC = () => {
 	const [errorRejectMsg, setErrorRejectMsg] = useState<string>();
 
 	useEffect(() => {
-		(async function () {
+		void (async function () {
 			await init();
 		})();
 	}, []);
 
 	return (
 		<div className="mb-10">
-			<h2 className="text-2xl mb-2">Regular Function Call</h2>
+			<h2 className="mb-2 text-2xl">Regular Function Call</h2>
 			<p className="mb-1">This calculation is done from WASM.</p>
-			<h3 className="text-xl mb-2 mt-2">Rust Panic</h3>
-			<p className="mb-2 bg-blue-100 px-3 py-2 border-l-4 border-blue-500 text-blue-800">
+			<h3 className="mb-2 mt-2 text-xl">Rust Panic</h3>
+			<p className="mb-2 border-l-4 border-blue-500 bg-blue-100 px-3 py-2 text-blue-800">
 				You can check the console to see the log of the WASM call because of
 				'console_error_panic_hook'
 			</p>
@@ -36,10 +36,10 @@ const ErrorPage: FC = () => {
 			>
 				Rust/WASM panic → JS:Error
 			</Button>
-			<p className="mt-2 mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+			<p className="mt-2 mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 				{errorPanicMsg ?? "..."}
 			</p>
-			<h3 className="text-xl mb-2 mt-2">Synchronous</h3>
+			<h3 className="mb-2 mt-2 text-xl">Synchronous</h3>
 			<p className="mb-2">Catch error with JS: 'try/catch'.</p>
 			<Button
 				onClick={() => {
@@ -53,7 +53,7 @@ const ErrorPage: FC = () => {
 			>
 				Call WASM → Rust:Err(String)
 			</Button>
-			<p className="mt-2 mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+			<p className="mt-2 mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 				{errorMsg ?? "..."}
 			</p>
 			<Button
@@ -68,29 +68,31 @@ const ErrorPage: FC = () => {
 			>
 				Call WASM → JS:ThrowErr(Error)
 			</Button>
-			<p className="mt-2 mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+			<p className="mt-2 mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 				{errorJSMsg ?? "..."}
 			</p>
-			<h3 className="text-xl mb-2 mt-2">Asynchronous</h3>
+			<h3 className="mb-2 mt-2 text-xl">Asynchronous</h3>
 			<p className="mb-2">
 				Catch error with '.catch()' because async in JS is a Promise.
 				<br />
 				Or you can use try/catch in an async JS function too of course.
 			</p>
 			<Button
-				onClick={async () => {
-					try {
-						await async_error();
-					} catch (e) {
-						const err = JSON.parse(e as string);
-						setErrorAsyncMsg(err.origin);
-					}
-				}}
+				onClick={
+					void (async () => {
+						try {
+							await async_error();
+						} catch (e) {
+							const err = JSON.parse(e as string);
+							setErrorAsyncMsg(err.origin);
+						}
+					})
+				}
 				className="mr-3"
 			>
 				Call Async WASM → Rust:Err(Struct)
 			</Button>
-			<p className="mt-2 mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+			<p className="mt-2 mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 				{errorAsyncMsg ?? "..."}
 			</p>
 			<Button
@@ -101,7 +103,7 @@ const ErrorPage: FC = () => {
 			>
 				Call WASM → JS:Promise.reject(Error)
 			</Button>
-			<p className="mt-2 mb-2 bg-red-100 px-3 py-2 border-l-4 border-red-500 text-red-800">
+			<p className="mt-2 mb-2 border-l-4 border-red-500 bg-red-100 px-3 py-2 text-red-800">
 				{errorRejectMsg ?? "..."}
 			</p>
 		</div>

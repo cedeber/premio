@@ -1,26 +1,8 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"target": "ESNext",
-		"lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"esModuleInterop": false,
-		"allowSyntheticDefaultImports": true,
-		"strict": true,
-		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
-		"jsx": "react-jsx",
-		"importHelpers": true,
-		"removeComments": true,
-		"importsNotUsedAsValues": "error",
 		"composite": true,
-		"declaration": true,
-		"declarationMap": true,
-		"incremental": true
+		"rootDir": "src"
 	},
 	"include": ["./src"],
 	"exclude": ["**/*.spec.ts", "**/*.test.ts"],

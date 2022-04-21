@@ -9,7 +9,7 @@ const CustomLink: FC<LinkProps> = (props) => {
 	return (
 		<Link
 			to={props.to}
-			className={clsx("rounded-full", "px-3", "py-1", {
+			className={clsx("rounded-full px-3 py-1", {
 				"hover:bg-violet-200": !match,
 				"bg-violet-600": match,
 				"text-white": match,

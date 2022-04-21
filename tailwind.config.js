@@ -1,5 +1,5 @@
 module.exports = {
-	content: ["./src/**/*.{js,ts,jsx,tsx,html}", "../easy-wasm/src/**/*.{js,ts,jsx,tsx,html}"],
+	content: [`${__dirname}/packages/**/src/**/*.{js,ts,jsx,tsx,html}`],
 	theme: {
 		fontFamily: {
 			sans: [

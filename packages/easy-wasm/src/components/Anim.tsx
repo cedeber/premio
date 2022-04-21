@@ -30,7 +30,7 @@ const Anim: FC = (props) => {
 
 	return (
 		<svg
-			className="-ml-1 mr-3 h-5 w-5 text-white"
+			className="ml-1 mr-3 h-5 w-5 text-white"
 			style={{ transform: `rotate(${rotate}deg)` }}
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
