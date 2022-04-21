@@ -62,9 +62,9 @@ const App: FC = () => {
 			<GlobalContext.Provider value={{ swRegistration, lang }}>
 				<I18nProvider locale={lang}>
 					<BrowserRouter basename={process.env.BASE_URL}>
-						-- {hello} --
-						<h1 className="text-3xl mb-3 font-semibold">Easy WebAssembly</h1>
-						<nav className="inline-flex gap-1 bg-violet-50 rounded-full p-1 mb-4 border-2 border-violet-200">
+						{hello}
+						<h1 className="mb-3 text-3xl font-semibold">Easy WebAssembly</h1>
+						<nav className="mb-4 inline-flex gap-1 rounded-full border-2 border-violet-200 bg-violet-50 p-1">
 							<CustomLink to={"/"}>Regular</CustomLink>
 							<CustomLink to={"/async"}>Async</CustomLink>
 							<CustomLink to={"/error"}>Error</CustomLink>
