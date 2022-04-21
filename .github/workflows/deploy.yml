@@ -27,6 +27,7 @@ jobs:
           toolchain: nightly-2022-01-20
           # profile: minimal
           components: rust-src
+          target: wasm32-unknown-unknown
       - name: Cache Rust
         uses: actions/cache@v3
         with:
