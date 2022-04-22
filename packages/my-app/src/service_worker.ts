@@ -1,14 +1,11 @@
-import { networkOnly, cacheFirst, networkFirst } from "./workers/sw-strategies";
+import { cacheFirst, networkFirst, networkOnly } from "./workers/sw-strategies";
 
-/**
- * @type ServiceWorker
- */
-const ctx = self;
+const ctx = self as unknown as ServiceWorkerGlobalScope;
 
 /* --- Configuration --- */
 
 const appCacheName = "cache-v1";
-const preCacheFiles = [];
+const preCacheFiles: RequestInfo[] = [];
 
 /* --- Manage requests --- */
 
@@ -35,16 +32,16 @@ ctx.addEventListener("fetch", (fetchEvent) => {
 
 /* --- Pre-cache some files --- */
 
-ctx.addEventListener("install", (extandableEvent) => {
-	extandableEvent.waitUntil(
+ctx.addEventListener("install", (extendableEvent) => {
+	extendableEvent.waitUntil(
 		caches.open(appCacheName).then((cache) => cache.addAll(preCacheFiles)),
 	);
 });
 
 /* --- Clear all unused caches --- */
 
-ctx.addEventListener("activate", (extandableEvent) => {
-	extandableEvent.waitUntil(
+ctx.addEventListener("activate", (extendableEvent) => {
+	extendableEvent.waitUntil(
 		caches
 			.keys()
 			.then((cacheNames) =>

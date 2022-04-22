@@ -14,6 +14,7 @@ const try_catch: Extern["try_catch"] = () => {
 	throw new Error("This is a JS Error");
 };
 
+// eslint-disable-next-line @typescript-eslint/require-await
 const async_try_catch: Extern["async_try_catch"] = async () => {
 	throw new Error("This is an async JS Error");
 };

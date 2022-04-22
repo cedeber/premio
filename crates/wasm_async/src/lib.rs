@@ -103,8 +103,9 @@ pub async fn async_try_catch_rust() -> Result<(), JsValue> {
 
 #[cfg(test)]
 mod tests {
-	use super::*;
 	use wasm_bindgen_test::*;
+
+	use super::*;
 
 	#[wasm_bindgen_test]
 	fn it_works() {

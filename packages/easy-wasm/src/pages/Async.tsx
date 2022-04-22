@@ -4,7 +4,7 @@ import { Button } from "../components/Button";
 
 const Async: FC = () => {
 	const [addResult, setAddResult] = useState<number>();
-	const [response, setResponse] = useState();
+	const [response, setResponse] = useState<{ origin: string }>();
 
 	useEffect(() => {
 		void (async function () {
@@ -36,7 +36,7 @@ const Async: FC = () => {
 				onClick={() => {
 					setResponse(undefined);
 					void async_request().then((response) => {
-						setResponse(JSON.parse(response));
+						setResponse(JSON.parse(response) as { origin: string });
 					});
 				}}
 				className="mr-3"

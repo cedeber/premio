@@ -3,8 +3,8 @@ import type { FC } from "react";
 import { Link, LinkProps, useMatch, useResolvedPath } from "react-router-dom";
 
 const CustomLink: FC<LinkProps> = (props) => {
-	let resolved = useResolvedPath(props.to);
-	let match = useMatch({ path: resolved.pathname, end: true });
+	const resolved = useResolvedPath(props.to);
+	const match = useMatch({ path: resolved.pathname, end: true });
 
 	return (
 		<Link

@@ -9,10 +9,11 @@ const ctx = self as unknown as Worker;
 ctx.__extern__ = extern;
 
 /* --- Worker --- */
-ctx.addEventListener("message", async (event) => {
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+ctx.addEventListener("message", async (event: MessageEvent<{ a: number }>) => {
 	const { a } = event.data;
 
-	// Unfortunately we need to instanciate the WASM module every time.
+	// Unfortunately we need to instantiate the WASM module every time.
 	// TODO: Can we do it differently?
 	await init();
 

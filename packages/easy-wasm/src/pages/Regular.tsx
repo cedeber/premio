@@ -20,7 +20,7 @@ const Regular: FC = () => {
 		const _worker = new Worker(new URL("../worker.ts", import.meta.url), {
 			type: "module",
 		});
-		_worker.onmessage = (event) => {
+		_worker.onmessage = (event: MessageEvent<number>) => {
 			const t4 = performance.now();
 			setPerf3(t4 - (t3.current ?? t4));
 			setAddResultWorker(event.data);

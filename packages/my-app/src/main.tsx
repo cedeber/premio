@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContext } from "./context";
 import "./index.scss";
-import { CustomLink, RegularPage, AsyncPage, ErrorPage, ThreadPage, extern } from "easy-wasm";
+import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage, ThreadPage } from "easy-wasm";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm

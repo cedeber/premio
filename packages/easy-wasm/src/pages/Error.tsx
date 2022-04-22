@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import init, { error, try_catch_rust, panic, async_error, async_try_catch_rust } from "wasm_async";
+import init, { async_error, async_try_catch_rust, error, panic, try_catch_rust } from "wasm_async";
 import { Button } from "../components/Button";
 
 const ErrorPage: FC = () => {
@@ -22,7 +22,7 @@ const ErrorPage: FC = () => {
 			<h3 className="mb-2 mt-2 text-xl">Rust Panic</h3>
 			<p className="mb-2 border-l-4 border-blue-500 bg-blue-100 px-3 py-2 text-blue-800">
 				You can check the console to see the log of the WASM call because of
-				'console_error_panic_hook'
+				&apos;console_error_panic_hook&apos;
 			</p>
 			<Button
 				onClick={() => {
@@ -40,7 +40,7 @@ const ErrorPage: FC = () => {
 				{errorPanicMsg ?? "..."}
 			</p>
 			<h3 className="mb-2 mt-2 text-xl">Synchronous</h3>
-			<p className="mb-2">Catch error with JS: 'try/catch'.</p>
+			<p className="mb-2">Catch error with JS: &apos;try/catch&apos;.</p>
 			<Button
 				onClick={() => {
 					try {
@@ -73,21 +73,22 @@ const ErrorPage: FC = () => {
 			</p>
 			<h3 className="mb-2 mt-2 text-xl">Asynchronous</h3>
 			<p className="mb-2">
-				Catch error with '.catch()' because async in JS is a Promise.
+				Catch error with &apos;.catch()&apos; because async in JS is a Promise.
 				<br />
 				Or you can use try/catch in an async JS function too of course.
 			</p>
 			<Button
-				onClick={
-					void (async () => {
-						try {
-							await async_error();
-						} catch (e) {
-							const err = JSON.parse(e as string);
-							setErrorAsyncMsg(err.origin);
-						}
-					})
-				}
+				// eslint-disable-next-line @typescript-eslint/no-misused-promises
+				onClick={async () => {
+					try {
+						await async_error();
+					} catch (e) {
+						const err: { origin: string } = JSON.parse(e as string) as {
+							origin: string;
+						};
+						setErrorAsyncMsg(err.origin);
+					}
+				}}
 				className="mr-3"
 			>
 				Call Async WASM → Rust:Err(Struct)

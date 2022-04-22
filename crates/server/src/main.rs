@@ -35,36 +35,7 @@ async fn main() {
 				HeaderValue::from_static("same-origin"),
 			);
 
-		let dist_service = headers_service
-			.clone()
-			// .and_then(
-			// 	|response: axum::http::Response<
-			// 		tower_http::services::fs::ServeFileSystemResponseBody,
-			// 	>| async move {
-			// 		let response = if response.status() == StatusCode::NOT_FOUND {
-			// 			// We must send back index.html without redirecting it. This is a Single Page Application.
-			// 			let mut f = tokio::fs::File::open("./dist/index.html").await?;
-			// 			let mut buffer = Vec::new();
-			//
-			// 			// TODO: We could probably stream the file instead of loading it completely in memory?
-			// 			f.read_to_end(&mut buffer).await?;
-			// 			let body = http_body::Full::from(buffer)
-			// 				.map_err(|err| match err {})
-			// 				.boxed();
-			//
-			// 			axum::http::Response::builder()
-			// 				.status(StatusCode::OK)
-			// 				.body(body)
-			// 				.unwrap()
-			// 		} else {
-			// 			response.map(|body| body.boxed())
-			// 		};
-			//
-			// 		Ok::<_, std::io::Error>(response)
-			// 	},
-			// )
-			.service(ServeDir::new("./dist"));
-
+		let dist_service = headers_service.clone().service(ServeDir::new("./dist"));
 		let spa_service = headers_service
 			.clone()
 			.service(ServeFile::new("./dist/index.html"));

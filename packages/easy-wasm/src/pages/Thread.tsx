@@ -24,7 +24,9 @@ const Thread: FC = () => {
 			const _worker = new Worker(new URL("../worker_threads.ts", import.meta.url), {
 				type: "module",
 			});
-			_worker.onmessage = (event) => {
+			_worker.onmessage = (
+				event: MessageEvent<{ result: number; multi: boolean; error: string }>,
+			) => {
 				if (event.data?.error) {
 					setError(event.data.error);
 				} else {
@@ -47,7 +49,7 @@ const Thread: FC = () => {
 			<h2 className="mb-2 text-2xl">Threads</h2>
 			<p>
 				SharedArrayBuffer:{" "}
-				{!!window.SharedArrayBuffer ? (
+				{window.SharedArrayBuffer ? (
 					<CheckIcon className="inline-block h-5 w-5 align-text-top text-emerald-700" />
 				) : (
 					<XIcon className="inline-block h-5 w-5 align-text-top text-red-600" />
