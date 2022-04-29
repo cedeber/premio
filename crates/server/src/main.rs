@@ -10,7 +10,7 @@ use axum::{
 use std::{env, net::SocketAddr};
 use tower::ServiceBuilder;
 use tower_http::{
-	cors::{CorsLayer, Origin},
+	cors::CorsLayer,
 	services::{ServeDir, ServeFile},
 	trace::TraceLayer,
 	ServiceBuilderExt,
@@ -23,7 +23,7 @@ async fn main() {
 	tracing_subscriber::fmt::init();
 
 	let frontend = tokio::spawn(async {
-		let headers_service = ServiceBuilder::new()
+		let spa_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
 			// Need to be written in lowercase :-/
 			.override_response_header(
@@ -33,25 +33,12 @@ async fn main() {
 			.override_response_header(
 				HeaderName::from_static("cross-origin-opener-policy"),
 				HeaderValue::from_static("same-origin"),
-			);
-
-		let dist_service = headers_service.clone().service(ServeDir::new("./dist"));
-		let spa_service = headers_service
-			.clone()
-			.service(ServeFile::new("./dist/index.html"));
+			)
+			.service(ServeDir::new("./dist").fallback(ServeFile::new("./dist/index.html")));
 
 		let app = Router::new()
 			.nest(
 				"/",
-				get_service(dist_service).handle_error(|error: std::io::Error| async move {
-					(
-						StatusCode::INTERNAL_SERVER_ERROR,
-						format!("Unhandled internal error: {}", error),
-					)
-				}),
-			)
-			// If the requested file is not found in the ./dist folder, fallback to index.html (=> S router)
-			.fallback(
 				get_service(spa_service).handle_error(|error: std::io::Error| async move {
 					(
 						StatusCode::INTERNAL_SERVER_ERROR,
@@ -74,7 +61,7 @@ async fn main() {
 			// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
 			// for more details
 			CorsLayer::new()
-				.allow_origin(Origin::exact("http://localhost:3000".parse().unwrap()))
+				.allow_origin("http://localhost:3000".parse::<HeaderValue>().unwrap())
 				.allow_methods(allowed_methods),
 		);
 		serve(app, 4000).await

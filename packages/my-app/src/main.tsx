@@ -1,6 +1,5 @@
 import { locale } from "@cedeber/frontafino";
 import { FC, StrictMode, useEffect, useMemo, useState } from "react";
-import { I18nProvider } from "react-aria";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContext } from "./context";
@@ -15,32 +14,30 @@ const App: FC = () => {
 	const lang = useMemo<string>(() => locale(["en", "fr"]), []);
 	const [swRegistration, setSwRegistration] = useState<GlobalContext["swRegistration"]>(null);
 
-	useEffect(() => {
-		// Service Worker
-		if ("serviceWorker" in navigator) {
-			navigator.serviceWorker
-				.register(new URL("./service_worker.ts", import.meta.url), { type: "module" })
-				.then(
-					function (registration) {
-						// Registration was successful
-						console.log(
-							"ServiceWorker registration successful with scope: ",
-							registration.scope,
-						);
-
-						setSwRegistration(registration);
-
-						void fetch("/.ping/whatever")
-							.then((response) => response.text())
-							.then((data) => console.log("sw", data));
-					},
-					function (err) {
-						// registration failed :(
-						console.warn("ServiceWorker registration failed: ", err);
-					},
-				);
-		}
-	}, []);
+	// useEffect(() => {
+	// Service Worker
+	// if ("serviceWorker" in navigator) {
+	// 	navigator.serviceWorker
+	// 		.register(new URL("./service_worker.ts", import.meta.url), { type: "module" })
+	// 		.then(
+	// 			function (registration) {
+	// 				// Registration was successful
+	// 				console.log(
+	// 					"ServiceWorker registration successful with scope: ",
+	// 					registration.scope,
+	// 				);
+	// 				setSwRegistration(registration);
+	// 				void fetch("/.ping/whatever")
+	// 					.then((response) => response.text())
+	// 					.then((data) => console.log("sw", data));
+	// 			},
+	// 			function (err) {
+	// 				// registration failed :(
+	// 				console.warn("ServiceWorker registration failed: ", err);
+	// 			},
+	// 		);
+	// }
+	// }, []);
 
 	useEffect(() => {
 		document.documentElement.setAttribute("lang", lang);
@@ -50,34 +47,35 @@ const App: FC = () => {
 	const [hello, setHello] = useState<string>();
 
 	useEffect(() => {
-		void fetch("http://localhost:4000/hello")
+		fetch("http://localhost:4000/hello")
 			.then((response) => response.text())
 			.then((data) => {
 				setHello(data);
+			})
+			.catch(() => {
+				/* nothing to do */
 			});
 	}, []);
 
 	return (
 		<StrictMode>
 			<GlobalContext.Provider value={{ swRegistration, lang }}>
-				<I18nProvider locale={lang}>
-					<BrowserRouter basename={process.env.BASE_URL}>
-						{hello}
-						<h1 className="mb-3 text-3xl font-semibold">Easy WebAssembly</h1>
-						<nav className="mb-4 inline-flex gap-1 rounded-full border-2 border-violet-200 bg-violet-50 p-1">
-							<CustomLink to={"/"}>Regular</CustomLink>
-							<CustomLink to={"/async"}>Async</CustomLink>
-							<CustomLink to={"/error"}>Error</CustomLink>
-							<CustomLink to={"/thread"}>Thread</CustomLink>
-						</nav>
-						<Routes>
-							<Route path="/" element={<RegularPage />} />
-							<Route path="/async" element={<AsyncPage />} />
-							<Route path="/error" element={<ErrorPage />} />
-							<Route path="/thread" element={<ThreadPage />} />
-						</Routes>
-					</BrowserRouter>
-				</I18nProvider>
+				<BrowserRouter basename={process.env.BASE_URL}>
+					{hello}
+					<h1 className="mb-3 text-3xl font-semibold">Easy WebAssembly</h1>
+					<nav className="mb-4 inline-flex gap-1 rounded-full border-2 border-violet-200 bg-violet-50 p-1">
+						<CustomLink to={"/"}>Regular</CustomLink>
+						<CustomLink to={"/async"}>Async</CustomLink>
+						<CustomLink to={"/error"}>Error</CustomLink>
+						<CustomLink to={"/thread"}>Thread</CustomLink>
+					</nav>
+					<Routes>
+						<Route path="/" element={<RegularPage />} />
+						<Route path="/async" element={<AsyncPage />} />
+						<Route path="/error" element={<ErrorPage />} />
+						<Route path="/thread" element={<ThreadPage />} />
+					</Routes>
+				</BrowserRouter>
 			</GlobalContext.Provider>
 		</StrictMode>
 	);
