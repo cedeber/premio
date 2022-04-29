@@ -8,7 +8,7 @@
 	},
 	"optimizers": {
 		"*.js": [
-			"@parcel/optimizer-swc"
+			// "@parcel/optimizer-swc"
 		]
 	}
 }
