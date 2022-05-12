@@ -40,28 +40,6 @@ if (parcelRequire == null) {
 
   $parcel$global["parcelRequire2398"] = parcelRequire;
 }
-parcelRequire.register("bGWGM", function(module, exports) {
-
-$parcel$export(module.exports, "register", () => $8831245f07480bee$export$6503ec6e8aabbaf, (v) => $8831245f07480bee$export$6503ec6e8aabbaf = v);
-$parcel$export(module.exports, "resolve", () => $8831245f07480bee$export$f7ad0328861e2f03, (v) => $8831245f07480bee$export$f7ad0328861e2f03 = v);
-var $8831245f07480bee$export$6503ec6e8aabbaf;
-var $8831245f07480bee$export$f7ad0328861e2f03;
-"use strict";
-var $8831245f07480bee$var$mapping = {};
-function $8831245f07480bee$var$register(pairs) {
-    var keys = Object.keys(pairs);
-    for(var i = 0; i < keys.length; i++)$8831245f07480bee$var$mapping[keys[i]] = pairs[keys[i]];
-}
-function $8831245f07480bee$var$resolve(id) {
-    var resolved = $8831245f07480bee$var$mapping[id];
-    if (resolved == null) throw new Error('Could not resolve bundle with id ' + id);
-    return resolved;
-}
-$8831245f07480bee$export$6503ec6e8aabbaf = $8831245f07480bee$var$register;
-$8831245f07480bee$export$f7ad0328861e2f03 = $8831245f07480bee$var$resolve;
-
-});
-
 parcelRequire.register("8ILa9", function(module, exports) {
 
 $parcel$export(module.exports, "sum", () => $6597045933028731$export$8a63f25cc62965f1);
@@ -178,10 +156,10 @@ function $6597045933028731$var$makeMutClosure(arg0, arg1, dtor, f) {
     return real;
 }
 function $6597045933028731$var$__wbg_adapter_22(arg0, arg1, arg2) {
-    $6597045933028731$var$wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h5bd577e5df40d5f3(arg0, arg1, $6597045933028731$var$addHeapObject(arg2));
+    $6597045933028731$var$wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h9fea77ea40353e82(arg0, arg1, $6597045933028731$var$addHeapObject(arg2));
 }
 function $6597045933028731$var$__wbg_adapter_25(arg0, arg1, arg2) {
-    $6597045933028731$var$wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h4f5549b0b9a44a46(arg0, arg1, $6597045933028731$var$addHeapObject(arg2));
+    $6597045933028731$var$wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hf1c89120d284c2f6(arg0, arg1, $6597045933028731$var$addHeapObject(arg2));
 }
 function $6597045933028731$export$8d1dda558c39915a() {
     $6597045933028731$var$wasm.main_wasm();
@@ -202,7 +180,7 @@ function $6597045933028731$var$handleError(f, args) {
     }
 }
 function $6597045933028731$var$__wbg_adapter_57(arg0, arg1, arg2, arg3) {
-    $6597045933028731$var$wasm.wasm_bindgen__convert__closures__invoke2_mut__he2e4a996211ab00a(arg0, arg1, $6597045933028731$var$addHeapObject(arg2), $6597045933028731$var$addHeapObject(arg3));
+    $6597045933028731$var$wasm.wasm_bindgen__convert__closures__invoke2_mut__hc4d145df39769df5(arg0, arg1, $6597045933028731$var$addHeapObject(arg2), $6597045933028731$var$addHeapObject(arg3));
 }
 function $6597045933028731$export$850bf34b7f8eeae7(num_threads) {
     const ret = $6597045933028731$var$wasm.initThreadPool(num_threads);
@@ -264,7 +242,7 @@ async function $6597045933028731$var$load(module, imports) {
 }
 
 async function $6597045933028731$var$init(input, maybe_memory) {
-    if (typeof input === 'undefined') input = new URL((parcelRequire("4xDZ2")));
+    if (typeof input === 'undefined') input = new URL((parcelRequire("01yN4")));
     const imports = {};
     imports.wbg = {};
     imports.wbg.__wbindgen_number_new = function(arg0) {
@@ -538,7 +516,7 @@ async function $de8880ecb86e007f$export$6a13f9f53ddacde8(module, memory, builder
         //
         // The only way to work around that is to have side effect code
         // in an entry point such as Worker file itself.
-        const worker = new Worker((parcelRequire("bSJis")));
+        const worker = new Worker((parcelRequire("6eHCO")));
         worker.postMessage(workerInit);
         await $de8880ecb86e007f$var$waitForMsgType(worker, 'wasm_bindgen_worker_ready');
         return worker;
@@ -547,14 +525,14 @@ async function $de8880ecb86e007f$export$6a13f9f53ddacde8(module, memory, builder
 }
 
 });
-parcelRequire.register("bSJis", function(module, exports) {
+parcelRequire.register("6eHCO", function(module, exports) {
 
 var $7YDMF = parcelRequire("7YDMF");
 
 var $8IoA4 = parcelRequire("8IoA4");
 
-let $8a67dfd753da0aaf$var$url = $8IoA4.getBundleURL('jIo5N') + (parcelRequire("bGWGM")).resolve("8ExQG");
-module.exports = $7YDMF($8a67dfd753da0aaf$var$url, $8IoA4.getOrigin($8a67dfd753da0aaf$var$url), false);
+let $48a5e3e81d56eb68$var$url = $8IoA4.getBundleURL('hj8eV') + (parcelRequire("bGWGM")).resolve("8ExQG");
+module.exports = $7YDMF($48a5e3e81d56eb68$var$url, $8IoA4.getOrigin($48a5e3e81d56eb68$var$url), false);
 
 });
 parcelRequire.register("7YDMF", function(module, exports) {
@@ -618,50 +596,39 @@ $01a32f7bf710fe19$export$5a759dc7a1cfb72a = $01a32f7bf710fe19$var$getOrigin;
 
 });
 
+parcelRequire.register("bGWGM", function(module, exports) {
 
-
-parcelRequire.register("4xDZ2", function(module, exports) {
-
-
-module.exports = (parcelRequire("8IoA4")).getBundleURL('jIo5N') + (parcelRequire("bGWGM")).resolve("7Bnpb");
+$parcel$export(module.exports, "register", () => $8831245f07480bee$export$6503ec6e8aabbaf, (v) => $8831245f07480bee$export$6503ec6e8aabbaf = v);
+$parcel$export(module.exports, "resolve", () => $8831245f07480bee$export$f7ad0328861e2f03, (v) => $8831245f07480bee$export$f7ad0328861e2f03 = v);
+var $8831245f07480bee$export$6503ec6e8aabbaf;
+var $8831245f07480bee$export$f7ad0328861e2f03;
+"use strict";
+var $8831245f07480bee$var$mapping = {};
+function $8831245f07480bee$var$register(pairs) {
+    var keys = Object.keys(pairs);
+    for(var i = 0; i < keys.length; i++)$8831245f07480bee$var$mapping[keys[i]] = pairs[keys[i]];
+}
+function $8831245f07480bee$var$resolve(id) {
+    var resolved = $8831245f07480bee$var$mapping[id];
+    if (resolved == null) throw new Error('Could not resolve bundle with id ' + id);
+    return resolved;
+}
+$8831245f07480bee$export$6503ec6e8aabbaf = $8831245f07480bee$var$register;
+$8831245f07480bee$export$f7ad0328861e2f03 = $8831245f07480bee$var$resolve;
 
 });
 
 
-var $6044fa2c8671ccc3$exports = {};
 
-(parcelRequire("bGWGM")).register(JSON.parse("{\"jIo5N\":\"worker_threads.6b664549.js\",\"8ExQG\":\"workerHelpers.a3e9cb86.js\",\"hj8eV\":\"sum.11415fad.js\",\"7Bnpb\":\"sum_bg.a1dc0eb5.wasm\"}"));
+parcelRequire.register("01yN4", function(module, exports) {
 
-var $350d0dc09831d606$exports = {};
 
-var $8ILa9 = parcelRequire("8ILa9");
-// Declare ctx as Worker and not as Window
-const $350d0dc09831d606$var$ctx = self;
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-$350d0dc09831d606$var$ctx.addEventListener("message", async (event)=>{
-    const multi = event.data;
-    try {
-        await $8ILa9.default();
-        await $8ILa9.initThreadPool(navigator.hardwareConcurrency ?? 4);
-        if (multi) {
-            const result = await $8ILa9.par_sum();
-            $350d0dc09831d606$var$ctx.postMessage({
-                result: result,
-                multi: multi
-            });
-        } else {
-            const result = $8ILa9.sum();
-            $350d0dc09831d606$var$ctx.postMessage({
-                result: result,
-                multi: multi
-            });
-        }
-    } catch (e) {
-        $350d0dc09831d606$var$ctx.postMessage({
-            error: e.message
-        });
-    }
+module.exports = (parcelRequire("8IoA4")).getBundleURL('hj8eV') + (parcelRequire("bGWGM")).resolve("7Bnpb");
+
 });
 
+
+
+parcelRequire("8ILa9");
 })();
-//# sourceMappingURL=worker_threads.6b664549.js.map
+//# sourceMappingURL=sum.2208c8e2.js.map
