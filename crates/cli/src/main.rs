@@ -9,7 +9,7 @@ fn report(f: &dyn Fn() -> u32) -> Result<()> {
 	let res = f();
 	let end = Instant::now();
 	let delta = end.duration_since(start).as_millis();
-	let output = format!("{} {}", res, style(format!("{delta}ms")).bold().blue());
+	let output = format!("{} {}", res, style(format!("{}ms", delta)).bold().blue());
 
 	term.write_line(&output)?;
 
