@@ -67,6 +67,7 @@ async fn main() {
 		serve(app, 4000).await
 	});
 
+	// Concurrently mode but we spawn each server on its own thread
 	if env::var("DEV_MODE").is_ok() {
 		tokio::join!(backend);
 	} else {
