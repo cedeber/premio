@@ -7863,7 +7863,7 @@ $bcb017604639e9d7$export$cf845f2c119da08a = function(a) {
 
 var $4392ef9b1e06e773$exports = {};
 
-(parcelRequire("27Lyk")).register(JSON.parse("{\"hvDJv\":\"index.4748abaa.js\",\"1p6g5\":\"async_bg.be75bbb2.wasm\",\"lXWX7\":\"worker.b4b31a15.js\",\"jIo5N\":\"worker_threads.9fe93a61.js\",\"7ff0z\":\"index.393dc0cc.css\"}"));
+(parcelRequire("27Lyk")).register(JSON.parse("{\"hvDJv\":\"index.f3ca2c14.js\",\"1p6g5\":\"async_bg.be75bbb2.wasm\",\"lXWX7\":\"worker.0c265aab.js\",\"jIo5N\":\"worker_threads.2f6e13a5.js\",\"7ff0z\":\"index.393dc0cc.css\"}"));
 
 var $7b02d682eb115277$exports = {};
 'use strict';
@@ -12446,7 +12446,8 @@ $parcel$export($64b958d33db4ac59$exports, "async_try_catch", () => $64b958d33db4
 const $64b958d33db4ac59$export$c6c368edf21c19e4 = (result)=>{
     console.log("The result is", result);
 };
-const $64b958d33db4ac59$export$16c14477346a9b27 = async ()=>new Promise((resolve)=>{
+// If you return a Promise you don't need to make the function async
+const $64b958d33db4ac59$export$16c14477346a9b27 = ()=>new Promise((resolve)=>{
         console.log("Fake a long calculation: result will be 4 in 2s");
         setTimeout(()=>{
             resolve(4); // will add 4 to the next async_add() call
@@ -14161,4 +14162,4 @@ const $edfc5d0afef84c27$var$root = $7e96a608cb33bf79$export$882461b6382ed46c(doc
 $edfc5d0afef84c27$var$root.render(/*#__PURE__*/ $7b02d682eb115277$exports.jsx($edfc5d0afef84c27$var$App, {}));
 
 
-//# sourceMappingURL=index.4748abaa.js.map
+//# sourceMappingURL=index.f3ca2c14.js.map

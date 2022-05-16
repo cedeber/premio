@@ -106,7 +106,7 @@ $01a32f7bf710fe19$export$5a759dc7a1cfb72a = $01a32f7bf710fe19$var$getOrigin;
 
 var $8487cd92be1d084c$exports = {};
 
-(parcelRequire("bGWGM")).register(JSON.parse("{\"lXWX7\":\"worker.b4b31a15.js\",\"3csu7\":\"async_bg.be75bbb2.wasm\"}"));
+(parcelRequire("bGWGM")).register(JSON.parse("{\"lXWX7\":\"worker.0c265aab.js\",\"3csu7\":\"async_bg.be75bbb2.wasm\"}"));
 
 var $66116edf06513a85$exports = {};
 let $8713f321c72ab025$var$wasm;
@@ -681,7 +681,8 @@ $parcel$export($d211b2f33f937910$exports, "async_try_catch", () => $d211b2f33f93
 const $d211b2f33f937910$export$c6c368edf21c19e4 = (result)=>{
     console.log("The result is", result);
 };
-const $d211b2f33f937910$export$16c14477346a9b27 = async ()=>new Promise((resolve)=>{
+// If you return a Promise you don't need to make the function async
+const $d211b2f33f937910$export$16c14477346a9b27 = ()=>new Promise((resolve)=>{
         console.log("Fake a long calculation: result will be 4 in 2s");
         setTimeout(()=>{
             resolve(4); // will add 4 to the next async_add() call
@@ -712,4 +713,4 @@ $66116edf06513a85$var$ctx.addEventListener("message", async (event)=>{
 });
 
 })();
-//# sourceMappingURL=worker.b4b31a15.js.map
+//# sourceMappingURL=worker.0c265aab.js.map

@@ -630,7 +630,7 @@ module.exports = (parcelRequire("8IoA4")).getBundleURL('jIo5N') + (parcelRequire
 
 var $6044fa2c8671ccc3$exports = {};
 
-(parcelRequire("bGWGM")).register(JSON.parse("{\"jIo5N\":\"worker_threads.9fe93a61.js\",\"8ExQG\":\"workerHelpers.a3e9cb86.js\",\"hj8eV\":\"sum.2208c8e2.js\",\"7Bnpb\":\"sum_bg.06eba228.wasm\"}"));
+(parcelRequire("bGWGM")).register(JSON.parse("{\"jIo5N\":\"worker_threads.2f6e13a5.js\",\"8ExQG\":\"workerHelpers.a3e9cb86.js\",\"hj8eV\":\"sum.2208c8e2.js\",\"7Bnpb\":\"sum_bg.f2e34af4.wasm\"}"));
 
 var $350d0dc09831d606$exports = {};
 
@@ -664,4 +664,4 @@ $350d0dc09831d606$var$ctx.addEventListener("message", async (event)=>{
 });
 
 })();
-//# sourceMappingURL=worker_threads.9fe93a61.js.map
+//# sourceMappingURL=worker_threads.2f6e13a5.js.map
