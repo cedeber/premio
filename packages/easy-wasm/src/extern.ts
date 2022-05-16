@@ -2,7 +2,8 @@ const add_cb: Extern["add_cb"] = (result) => {
 	console.log("The result is", result);
 };
 
-const async_add_cb: Extern["async_add_cb"] = async () =>
+// If you return a Promise you don't need to make the function async
+const async_add_cb: Extern["async_add_cb"] = () =>
 	new Promise((resolve) => {
 		console.log("Fake a long calculation: result will be 4 in 2s");
 		setTimeout(() => {

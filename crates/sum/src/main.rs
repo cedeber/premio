@@ -1,5 +1,6 @@
 use std::time::Instant;
 
+// Calculate the time a function takes
 fn report(f: &dyn Fn() -> u32) {
 	let start = Instant::now();
 	let res = f();
