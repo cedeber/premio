@@ -7,12 +7,14 @@ pub fn fibonacci(n: u32) -> u32 {
 	}
 }
 
+// Single threaded
 pub fn sum() -> u32 {
 	let input: [u32; 40] = (1..=40).collect::<Vec<_>>().try_into().unwrap();
 	let response: u32 = input.iter().map(|&i| fibonacci(i)).sum();
 	response
 }
 
+// Parallelized
 pub fn par_sum() -> u32 {
 	let input: [u32; 40] = (1..=40).collect::<Vec<_>>().try_into().unwrap();
 	let response: u32 = input.par_iter().map(|&i| fibonacci(i)).sum();
