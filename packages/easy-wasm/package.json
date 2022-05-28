@@ -2,15 +2,19 @@
 	"name": "easy-wasm",
 	"private": true,
 	"version": "1.0.0",
-	"module": "src/index.ts",
-	"types": "src/index.ts",
-	"source": "src/index.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	},
 	"devDependencies": {
 		"@types/react": "^18.0.5"
 	},
 	"dependencies": {
+		"@cedeber/frontafino": "^1.0.0-beta.8",
 		"@heroicons/react": "^1.0.6",
-		"clsx": "^1.1.1",
 		"react": "^18.0.0",
 		"wasm_async": "file:../wasm_async",
 		"wasm_sum": "file:../wasm_sum"

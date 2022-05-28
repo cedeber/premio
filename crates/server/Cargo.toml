@@ -7,8 +7,8 @@ publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-axum = { version = "0.5.5", features = ["http2", "ws"] }
-hyper = { version = "0.14.18", features = ["full"] }
+axum = { version = "0.5.6", features = ["http2", "ws"] }
+hyper = { version = "0.14.19", features = ["full"] }
 tokio = { version = "1.18.2", features = ["full"] }
 tower = "0.4.12"
 tower-http = { version = "0.3.3", features = [

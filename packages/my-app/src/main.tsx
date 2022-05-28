@@ -1,10 +1,10 @@
 import { locale } from "@cedeber/frontafino";
+import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage, ThreadPage } from "easy-wasm";
 import { FC, StrictMode, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { GlobalContext } from "./context";
+import { GlobalContext } from "./context.js";
 import "./index.scss";
-import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage, ThreadPage } from "easy-wasm";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm

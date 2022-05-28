@@ -13,7 +13,7 @@
 		"jsx": "react-jsx",
 		"lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"],
 		"module": "ESNext",
-		"moduleResolution": "node",
+		"moduleResolution": "Node16",
 		"noEmit": true,
 		"removeComments": true,
 		"resolveJsonModule": true,

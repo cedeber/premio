@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import init, { async_error, async_try_catch_rust, error, panic, try_catch_rust } from "wasm_async";
-import { Button } from "../components/Button";
+import { Button } from "../components/Button.js";
 
 const ErrorPage: FC = () => {
 	const [errorPanicMsg, setErrorPanicMsg] = useState<string>();
