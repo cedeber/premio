@@ -60,7 +60,8 @@ const App: FC = () => {
 	return (
 		<StrictMode>
 			<GlobalContext.Provider value={{ swRegistration, lang }}>
-				<BrowserRouter basename={process.env.BASE_URL}>
+				{/* process.env.BASE_URL */}
+				<BrowserRouter basename={import.meta.env.BASE_URL}>
 					{hello}
 					<h1 className="mb-3 text-3xl font-semibold">Easy WebAssembly</h1>
 					<nav className="mb-4 inline-flex gap-1 rounded-full border-2 border-violet-200 bg-violet-50 p-1">

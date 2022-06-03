@@ -11,7 +11,9 @@
 		"wasm:sum": "wasm-pack build --target web --out-dir ../../packages/wasm_sum --out-name sum ./crates/wasm_sum",
 		"dev": "rimraf dist/ && concurrently 'DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates --exec \"run -p server\"' 'npm run css -w my-app' 'npm run dev -w my-app'",
 		"pre-build": "concurrently 'npm run wasm:async' 'npm run wasm:sum'",
-		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app"
+		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app",
+    "vite": "vite",
+    "vite:build": "vite build"
 	},
 	"devDependencies": {
 		"@parcel/optimizer-swc": "^2.4.1",
@@ -19,10 +21,19 @@
 		"@parcel/transformer-sass": "^2.4.1",
 		"@parcel/transformer-svg-react": "^2.4.1",
 		"@parcel/transformer-webmanifest": "^2.4.1",
+		"@storybook/addon-a11y": "^6.5.6",
+		"@storybook/addon-essentials": "^6.5.6",
+		"@storybook/addon-interactions": "^6.5.6",
+		"@storybook/addon-links": "^6.5.6",
+		"@storybook/builder-vite": "^0.1.36",
+		"@storybook/jest": "^0.0.10",
+		"@storybook/react": "^6.5.6",
+		"@storybook/testing-library": "^0.0.11",
 		"@tailwindcss/typography": "^0.5.2",
 		"@types/node": "^17.0.25",
 		"@typescript-eslint/eslint-plugin": "^5.20.0",
 		"@typescript-eslint/parser": "^5.20.0",
+		"@vitejs/plugin-react": "^1.3.2",
 		"concurrently": "^7.0.0",
 		"eslint": "^8.13.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -38,6 +49,9 @@
 		"sass": "^1.50.1",
 		"tailwindcss": "^3.0.24",
 		"typed-scss-modules": "^6.2.0",
-		"typescript": "^4.6.3"
+		"typescript": "^4.6.3",
+		"vite": "^2.9.9",
+		"vite-plugin-svgr": "^2.1.0",
+		"vitest": "^0.13.1"
 	}
 }
