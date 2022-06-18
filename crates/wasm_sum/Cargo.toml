@@ -26,12 +26,12 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 
 # Wasm bindgen
-wasm-bindgen = "0.2.80"
-wasm-bindgen-futures = "0.4.30"
+wasm-bindgen = "0.2.81"
+wasm-bindgen-futures = "0.4.31"
 wasm-bindgen-rayon = "1.0.3"
 
 # Local crates
 sum = { path = "../sum" }
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.30"
+wasm-bindgen-test = "0.3.31"
