@@ -7,8 +7,20 @@ publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+async-graphql = "4.0.2"
+async-graphql-axum = "4.0.2"
 axum = { version = "0.5.7", features = ["http2", "ws"] }
 hyper = { version = "0.14.19", features = ["full"] }
+rayon = "1.5.3"
+regex = "1.5.6"
+reqwest = "0.11.11"
+roxmltree = "0.14.1"
+serde = { version = "1.0.137", features = ["derive"] }
+sqlx = { version = "0.6.0", features = [
+	"runtime-tokio-rustls",
+	"sqlite",
+	"macros",
+] }
 tokio = { version = "1.19.2", features = ["full"] }
 tower = "0.4.13"
 tower-http = { version = "0.3.4", features = [

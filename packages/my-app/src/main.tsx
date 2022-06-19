@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContext } from "./context.js";
 import "./index.scss";
+import { Games } from "bgg";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
@@ -75,6 +76,7 @@ const App: FC = () => {
 						<Route path="/async" element={<AsyncPage />} />
 						<Route path="/error" element={<ErrorPage />} />
 						<Route path="/thread" element={<ThreadPage />} />
+						<Route path="/games/:username" element={<Games />} />
 					</Routes>
 				</BrowserRouter>
 			</GlobalContext.Provider>
