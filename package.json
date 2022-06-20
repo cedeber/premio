@@ -14,10 +14,19 @@
 		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app",
 		"vite": "vite",
 		"vite:build": "vite build",
-    "codegen": "graphql-codegen --config ts.codegen.yml",
-    "schema": "graphql-codegen --config schema.codegen.yml"
+		"codegen": "graphql-codegen --config ts.codegen.yml",
+		"schema": "graphql-codegen --config schema.codegen.yml",
+    "tauri": "tauri"
 	},
 	"devDependencies": {
+		"@graphql-codegen/cli": "^2.6.2",
+		"@graphql-codegen/fragment-matcher": "^3.2.1",
+		"@graphql-codegen/introspection": "^2.1.1",
+		"@graphql-codegen/near-operation-file-preset": "^2.2.14",
+		"@graphql-codegen/schema-ast": "^2.4.1",
+		"@graphql-codegen/typescript": "^2.5.1",
+		"@graphql-codegen/typescript-operations": "^2.4.2",
+		"@graphql-codegen/typescript-react-apollo": "^3.2.16",
 		"@parcel/optimizer-swc": "^2.4.1",
 		"@parcel/packager-raw-url": "^2.4.1",
 		"@parcel/transformer-sass": "^2.4.1",
@@ -32,6 +41,7 @@
 		"@storybook/react": "^6.5.6",
 		"@storybook/testing-library": "^0.0.13",
 		"@tailwindcss/typography": "^0.5.2",
+		"@tauri-apps/cli": "^1.0.0",
 		"@types/node": "^18.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.20.0",
 		"@typescript-eslint/parser": "^5.20.0",
@@ -54,14 +64,6 @@
 		"typescript": "^4.6.3",
 		"vite": "^2.9.9",
 		"vite-plugin-svgr": "^2.1.0",
-		"vitest": "^0.15.1",
-		"@graphql-codegen/cli": "^2.6.2",
-		"@graphql-codegen/fragment-matcher": "^3.2.1",
-		"@graphql-codegen/introspection": "^2.1.1",
-		"@graphql-codegen/near-operation-file-preset": "^2.2.14",
-		"@graphql-codegen/schema-ast": "^2.4.1",
-		"@graphql-codegen/typescript": "^2.5.1",
-		"@graphql-codegen/typescript-operations": "^2.4.2",
-		"@graphql-codegen/typescript-react-apollo": "^3.2.16"
+		"vitest": "^0.15.1"
 	}
 }

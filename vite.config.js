@@ -3,14 +3,23 @@ import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
+	clearScreen: false,
+	server: {
+		port: 3000,
+		strictPort: true,
+	},
+	envPrefix: ["VITE_", "TAURI_"],
 	root: "./packages/my-app/src",
 	build: {
-		sourcemap: false,
-		minify: "esbuild",
+		// sourcemap: false,
+		// minify: "esbuild",
 		outDir: "../../../dist",
 		emptyOutDir: true,
 		cssCodeSplit: false,
-		target: "esnext",
+		// target: "esnext",
+		target: ["es2021", "chrome97", "safari13"],
+		minify: !process.env.TAURI_DEBUG && "esbuild",
+		sourcemap: !!process.env.TAURI_DEBUG,
 	},
 	esbuild: {
 		legalComments: "none",

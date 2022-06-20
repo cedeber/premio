@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContext } from "./context.js";
 import "./index.scss";
 import { Games } from "bgg";
+import { invoke } from "@tauri-apps/api";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
@@ -87,3 +88,7 @@ const App: FC = () => {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(document.getElementById("app")!);
 root.render(<App />);
+
+invoke<string>("greet", { name: "World" })
+	// `invoke` returns a Promise
+	.then((response) => console.log(response));
