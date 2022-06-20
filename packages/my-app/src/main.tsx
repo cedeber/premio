@@ -1,5 +1,5 @@
 import { locale } from "@cedeber/frontafino";
-import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage, ThreadPage } from "easy-wasm";
+import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage } from "easy-wasm";
 import { FC, StrictMode, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -75,7 +75,7 @@ const App: FC = () => {
 						<Route path="/" element={<RegularPage />} />
 						<Route path="/async" element={<AsyncPage />} />
 						<Route path="/error" element={<ErrorPage />} />
-						<Route path="/thread" element={<ThreadPage />} />
+						{/*<Route path="/thread" element={<ThreadPage />} />*/}
 						<Route path="/games/:username" element={<Games />} />
 					</Routes>
 				</BrowserRouter>
