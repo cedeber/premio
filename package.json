@@ -16,7 +16,8 @@
 		"vite:build": "vite build",
 		"codegen": "graphql-codegen --config ts.codegen.yml",
 		"schema": "graphql-codegen --config schema.codegen.yml",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "github-pages":  "BASE_URL=premio vite build --base /premio/"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "^2.6.2",
