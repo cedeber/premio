@@ -82,3 +82,11 @@ Everything you need to bundle, lint, test and format code of you web application
 -   [Frontafino](https://www.npmjs.com/package/@cedeber/frontafino) - JavaScript Utilities and React Hooks.
 -   [Ramda](https://ramdajs.com) - A practical functional library. Also used in Frontafino.
 -   [Fuse.js](https://fusejs.io) - Powerful and lightweight fuzzy-search library
+
+
+## For later
+
+- Next.JS
+- React Query
+- Zustand
+- React Hook Form

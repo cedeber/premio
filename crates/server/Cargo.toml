@@ -8,14 +8,14 @@ publish = false
 
 [dependencies]
 async-graphql = "4.0.2"
-async-graphql-axum = "4.0.2"
-axum = { version = "0.5.7", features = ["http2", "ws"] }
+async-graphql-axum = "4.0.4"
+axum = { version = "0.5.11", features = ["http2", "ws"] }
 hyper = { version = "0.14.19", features = ["full"] }
 rayon = "1.5.3"
-regex = "1.5.6"
+regex = "1.6.0"
 reqwest = "0.11.11"
 roxmltree = "0.14.1"
-serde = { version = "1.0.137", features = ["derive"] }
+serde = { version = "1.0.138", features = ["derive"] }
 sqlx = { version = "0.6.0", features = [
 	"runtime-tokio-rustls",
 	"sqlite",
@@ -30,4 +30,4 @@ tower-http = { version = "0.3.4", features = [
 	"trace",
 ] }
 tracing = "0.1.35"
-tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }
+tracing-subscriber = { version = "0.3.14", features = ["env-filter"] }
