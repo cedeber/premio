@@ -9,7 +9,7 @@
 		"@types/react": "^18.0.5"
 	},
 	"dependencies": {
-		"@heroicons/react": "^1.0.6",
+		"@heroicons/react": "^2.0.1",
 		"clsx": "^1.1.1",
 		"react": "^18.0.0",
 		"wasm_async": "file:../wasm_async",
