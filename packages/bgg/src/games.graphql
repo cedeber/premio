@@ -1,0 +1,12 @@
+query Games($username: String) {
+	games(username: $username) {
+		id
+		name
+	}
+}
+
+query Users {
+	users {
+		username
+	}
+}

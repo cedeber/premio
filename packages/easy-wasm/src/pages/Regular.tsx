@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react";
 import init, { fib } from "wasm_async";
-import { Button } from "../components/Button";
-import { fibonacci } from "../utils";
+import { Button } from "../components/Button.js";
+import { fibonacci } from "../utils.js";
 
 const Regular: FC = () => {
 	const [addResult, setAddResult] = useState<number>();

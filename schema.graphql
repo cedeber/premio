@@ -1,0 +1,22 @@
+schema {
+  query: Query
+}
+
+type BoardGame {
+  id: Int!
+  maxPlayers: Int
+  minPlayers: Int
+  name: String!
+  playtime: Int
+  year: Int
+}
+
+type Query {
+  games(username: String): [BoardGame!]!
+  users: [User!]!
+}
+
+type User {
+  id: Int
+  username: String!
+}

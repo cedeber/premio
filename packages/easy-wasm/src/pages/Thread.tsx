@@ -1,7 +1,7 @@
+import { CheckIcon, XIcon } from "@heroicons/react/outline";
 import { FC, useEffect, useRef, useState } from "react";
 import { simd, threads } from "wasm-feature-detect";
-import { Button } from "../components/Button";
-import { CheckIcon, XIcon } from "@heroicons/react/outline";
+import { Button } from "../components/Button.js";
 
 const Thread: FC = () => {
 	const [hasThreads, setThreads] = useState(false);

@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import init, { async_fib, async_request } from "wasm_async";
-import { Button } from "../components/Button";
+import { Button } from "../components/Button.js";
 
 const Async: FC = () => {
 	const [addResult, setAddResult] = useState<number>();

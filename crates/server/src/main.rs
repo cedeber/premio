@@ -1,14 +1,23 @@
+use async_graphql::{
+	http::{playground_source, GraphQLPlaygroundConfig},
+	Context, EmptyMutation, EmptySubscription, Object, Schema,
+};
+use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
 use axum::{
 	http::{
 		header::{HeaderName, HeaderValue},
 		Method, StatusCode,
 	},
+	response,
 	response::IntoResponse,
 	routing::{get, get_service},
-	Router, Server,
+	Extension, Router, Server,
 };
+use server::{db, fetch_collection, BoardGame, User};
+use sqlx::{query_as, Pool, Sqlite, SqlitePool};
 use std::{env, net::SocketAddr};
 use tower::ServiceBuilder;
+use tower_http::cors::Any;
 use tower_http::{
 	cors::CorsLayer,
 	services::{ServeDir, ServeFile},
@@ -54,19 +63,31 @@ async fn main() {
 		}
 	});
 
+	let pool = SqlitePool::connect("sqlite:db.sqlite").await.unwrap();
+	let schema = Schema::build(Query::default(), EmptyMutation, EmptySubscription)
+		.data(pool)
+		.finish();
 	let backend = tokio::spawn(async {
-		let allowed_methods = vec![Method::GET];
+		let allowed_methods = vec![Method::GET, Method::POST];
+		// let origins = ["http://localhost:3000".parse::<HeaderValue>().unwrap()];
+
 		// TODO: .nest() for /api + CORS
-		let app = Router::new().route("/hello", get(hello)).layer(
-			// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
-			// for more details
-			CorsLayer::new()
-				.allow_origin("http://localhost:3000".parse::<HeaderValue>().unwrap())
-				.allow_methods(allowed_methods),
-		);
+		let app = Router::new()
+			.route("/hello", get(hello))
+			.route("/graphql", get(graphql_playground).post(graphql_handler))
+			.layer(Extension(schema))
+			.layer(
+				// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
+				// for more details
+				CorsLayer::new()
+					.allow_origin(Any)
+					.allow_methods(allowed_methods)
+					.allow_headers(Any),
+			);
 		serve(app, 4000).await
 	});
 
+	// Concurrently mode but we spawn each server on its own thread
 	if env::var("DEV_MODE").is_ok() {
 		tokio::join!(backend);
 	} else {
@@ -91,4 +112,81 @@ async fn hello() -> impl IntoResponse {
 		[("X-Foo", "foo")],
 		String::from("Hello, World!"),
 	)
+}
+
+#[derive(Default)]
+struct Query;
+
+#[Object]
+impl Query {
+	async fn games(
+		&self,
+		ctx: &Context<'_>,
+		username: Option<String>,
+	) -> Result<Vec<BoardGame>, String> {
+		let pool = match ctx.data::<Pool<Sqlite>>() {
+			Ok(pool) => pool,
+			_ => return Err(String::from("Cannot access the Database.")),
+		};
+
+		match username {
+			None => match query_as::<_, BoardGame>(
+				// language=SQLite
+				r#"
+					SELECT gameid as id, title as name, published as year, playing_time as playtime, min_players, max_players
+					FROM boardgames ORDER BY title
+				"#)
+				.fetch_all(pool)
+				.await {
+				Ok(games) => Ok(games),
+				_ => Err(String::from("Error querying the games"))
+			},
+			Some(username) => {
+				// Fetch and save the games into the db.
+				let games = fetch_collection(&username).await;
+				if let Ok(games) = games {
+					db(&username, &games, &pool).await;
+				}
+
+				match query_as::<_, BoardGame>(
+					// language=SQLite
+					r#"
+					SELECT gameid as id, title as name, published as year, playing_time as playtime, min_players, max_players
+					FROM boardgames
+					INNER JOIN boardgames_users on boardgames_users.game_id = boardgames.gameid
+					INNER JOIN users on users.id = boardgames_users.user_id
+					WHERE username = $1
+					ORDER BY title
+				"#)
+					.bind(username)
+					.fetch_all(pool)
+					.await {
+					Ok(games) => Ok(games),
+					_ => Err(String::from("Error getting the games list"))
+				}
+			}
+		}
+	}
+
+	async fn users(&self, ctx: &Context<'_>) -> Result<Vec<User>, Box<sqlx::Error>> {
+		let pool = ctx.data::<Pool<Sqlite>>().unwrap();
+		let users = query_as::<_, User>(
+			// language=SQLite
+			r#"SELECT id, username FROM users ORDER BY username"#,
+		)
+		.fetch_all(pool)
+		.await?;
+
+		Ok(users)
+	}
+}
+
+type QuerySchema = Schema<Query, EmptyMutation, EmptySubscription>;
+
+async fn graphql_handler(schema: Extension<QuerySchema>, req: GraphQLRequest) -> GraphQLResponse {
+	schema.execute(req.into_inner()).await.into()
+}
+
+async fn graphql_playground() -> impl IntoResponse {
+	response::Html(playground_source(GraphQLPlaygroundConfig::new("/graphql")))
 }

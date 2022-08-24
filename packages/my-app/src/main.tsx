@@ -1,10 +1,12 @@
 import { locale } from "@cedeber/frontafino";
+import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage } from "easy-wasm";
 import { FC, StrictMode, useEffect, useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { GlobalContext } from "./context";
+import { GlobalContext } from "./context.js";
 import "./index.scss";
-import { AsyncPage, CustomLink, ErrorPage, extern, RegularPage, ThreadPage } from "easy-wasm";
+import { Games } from "bgg";
+import { invoke } from "@tauri-apps/api";
 
 /* --- Extern --- */
 // These functions will be called from Rust/Wasm
@@ -60,7 +62,8 @@ const App: FC = () => {
 	return (
 		<StrictMode>
 			<GlobalContext.Provider value={{ swRegistration, lang }}>
-				<BrowserRouter basename={process.env.BASE_URL}>
+				{/* process.env.BASE_URL */}
+				<BrowserRouter basename={import.meta.env.BASE_URL}>
 					{hello}
 					<h1 className="mb-3 text-3xl font-semibold">Easy WebAssembly</h1>
 					<nav className="mb-4 inline-flex gap-1 rounded-full border-2 border-violet-200 bg-violet-50 p-1">
@@ -73,7 +76,8 @@ const App: FC = () => {
 						<Route path="/" element={<RegularPage />} />
 						<Route path="/async" element={<AsyncPage />} />
 						<Route path="/error" element={<ErrorPage />} />
-						<Route path="/thread" element={<ThreadPage />} />
+						{/*<Route path="/thread" element={<ThreadPage />} />*/}
+						<Route path="/games/:username" element={<Games />} />
 					</Routes>
 				</BrowserRouter>
 			</GlobalContext.Provider>
@@ -84,3 +88,7 @@ const App: FC = () => {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(document.getElementById("app")!);
 root.render(<App />);
+
+invoke<string>("greet", { name: "World" })
+	// `invoke` returns a Promise
+	.then((response) => console.log(response));

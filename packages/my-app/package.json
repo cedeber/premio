@@ -2,6 +2,7 @@
 	"name": "my-app",
 	"private": true,
 	"version": "1.0.0",
+	"type": "module",
 	"source": "src/index.html",
 	"scripts": {
 		"css": "typed-scss-modules src/**/*.module.scss --watch",
@@ -17,11 +18,14 @@
 	},
 	"dependencies": {
 		"@cedeber/frontafino": "^1.0.0-beta.7",
+		"@tauri-apps/api": "^1.0.1",
+		"bgg": "file:../bgg",
 		"comlink": "^4.3.1",
 		"easy-wasm": "file:../easy-wasm",
 		"fuse.js": "^6.5.3",
 		"ramda": "^0.28.0",
 		"react": "^18.0.0",
+		"react-aria": "^3.16.0",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "^6.2.1",
 		"wasm-feature-detect": "^1.2.11",

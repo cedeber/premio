@@ -4,11 +4,13 @@
 		"composite": true,
 		"rootDir": "src"
 	},
-	"include": ["./src/**"],
+	"include": ["./src", "./src/intl/*.json"],
 	"exclude": ["**/*.spec.ts", "**/*.test.ts"],
 	"references": [
 		{
-			"path": "../easy-wasm"
-		}
+			"path": "../easy-wasm",
+		},{
+      "path": "../bgg",
+    }
 	]
 }

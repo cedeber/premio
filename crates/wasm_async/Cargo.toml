@@ -26,13 +26,13 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
 
 # Wasm bindgen
-wasm-bindgen = { version = "0.2.80", features = ["serde-serialize"] }
-wasm-bindgen-futures = "0.4.30"
+wasm-bindgen = { version = "0.2.81", features = ["serde-serialize"] }
+wasm-bindgen-futures = "0.4.31"
 
 # JS and DOM APIs
-js-sys = "0.3.57"
-web-sys = "0.3.57"
-gloo = "0.7.0"
+js-sys = "0.3.58"
+web-sys = "0.3.58"
+gloo = "0.8.0"
 
 # Log
 log = "0.4.17"
@@ -42,10 +42,10 @@ console_log = { version = "0.2.0", features = ["color"], optional = true }
 sum = { path = "../sum" }
 
 # Other
-reqwest = { version = "0.11.10", features = ["json"] }
-serde = { version = "1.0.137", features = ["derive"] }
-serde_derive = "1.0.137"
-serde_json = "1.0.81"
+reqwest = { version = "0.11.11", features = ["json"] }
+serde = { version = "1.0.138", features = ["derive"] }
+serde_derive = "1.0.138"
+serde_json = "1.0.82"
 
 [dev-dependencies]
-wasm-bindgen-test = "0.3.30"
+wasm-bindgen-test = "0.3.31"
