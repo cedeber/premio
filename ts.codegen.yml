@@ -3,13 +3,13 @@ schema: ./schema.graphql
 documents:
   - ./packages/**/*.graphql
 generates:
-  ./graphql.d.ts:
+  ./graphql.ts:
     - typescript
   ./:
     preset: near-operation-file
     presetConfig:
       extension: .gql.ts
-      baseTypesPath: ./graphql.ts
+      baseTypesPath: ./graphql.js.ts
     plugins:
       - typescript-operations
       - typescript-react-apollo
