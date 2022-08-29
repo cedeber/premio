@@ -1,5 +1,6 @@
 import { createSignal, onCleanup } from "solid-js";
 import { render } from "solid-js/web";
+import { Router, Routes, Route, Link } from "@solidjs/router";
 
 const root = document.getElementById("app") as HTMLDivElement;
 
@@ -9,7 +10,26 @@ const App = () => {
 
 	onCleanup(() => clearInterval(timer));
 
-	return <div>{count}</div>;
+	return (
+		<div class={"hello"}>
+			{count}
+			<nav>
+				<Link href="/about">About</Link>
+				<Link href="/">Home</Link>
+			</nav>
+			<Routes>
+				<Route path="/" element={<div>home</div>} />
+				<Route path="/about" element={<div>about</div>} />
+			</Routes>
+		</div>
+	);
 };
 
-render(App, root);
+render(
+	() => (
+		<Router>
+			<App />
+		</Router>
+	),
+	root,
+);
