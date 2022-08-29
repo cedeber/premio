@@ -9,11 +9,9 @@
 	"scripts": {
 		"wasm:async": "wasm-pack build --target web --out-dir ../../packages/wasm_async --out-name async ./crates/wasm_async",
 		"wasm:sum": "wasm-pack build --target web --out-dir ../../packages/wasm_sum --out-name sum ./crates/wasm_sum",
-		"dev": "rimraf dist/ && concurrently 'DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates --exec \"run -p server\"' 'npm run css -w my-app' 'npm run dev -w my-app'",
+		"dev": "rimraf dist/ && concurrently 'DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates --exec \"run -p server\"' 'npm run css -w my-app' 'vite'",
 		"pre-build": "concurrently 'npm run wasm:async' 'npm run wasm:sum'",
-		"build": "rimraf dist/ && npm run pre-build && npm run build -w my-app",
-		"vite": "vite",
-		"vite:build": "vite build",
+		"build": "rimraf dist/ && npm run pre-build && vite build",
 		"codegen": "graphql-codegen --config ts.codegen.yml",
 		"schema": "graphql-codegen --config schema.codegen.yml",
 		"github-pages": "BASE_URL=premio vite build --base /premio/"
@@ -27,11 +25,6 @@
 		"@graphql-codegen/typescript": "^2.5.1",
 		"@graphql-codegen/typescript-operations": "^2.4.2",
 		"@graphql-codegen/typescript-react-apollo": "^3.2.16",
-		"@parcel/optimizer-swc": "^2.4.1",
-		"@parcel/packager-raw-url": "^2.4.1",
-		"@parcel/transformer-sass": "^2.4.1",
-		"@parcel/transformer-svg-react": "^2.4.1",
-		"@parcel/transformer-webmanifest": "^2.4.1",
 		"@storybook/addon-a11y": "^6.5.6",
 		"@storybook/addon-essentials": "^6.5.6",
 		"@storybook/addon-interactions": "^6.5.6",
@@ -52,6 +45,7 @@
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-react": "^7.29.4",
 		"eslint-plugin-react-hooks": "^4.4.0",
+		"just-install": "^1.0.8",
 		"parcel": "^2.4.1",
 		"postcss": "^8.4.12",
 		"prettier": "^2.6.2",
@@ -62,7 +56,7 @@
 		"typed-scss-modules": "^6.2.0",
 		"typescript": "^4.6.3",
 		"vite": "^3.0.9",
-		"vite-plugin-svgr": "^2.1.0",
+		"vite-plugin-solid": "^2.3.0",
 		"vitest": "^0.22.1"
 	}
 }

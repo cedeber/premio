@@ -5,29 +5,21 @@
 	"type": "module",
 	"source": "src/index.html",
 	"scripts": {
-		"css": "typed-scss-modules src/**/*.module.scss --watch",
-		"dev": "parcel src/index.html --lazy --dist-dir ../../dist --port 3000",
-		"build": "rm -rf ../../dist && parcel build src/index.html --public-url ./ --dist-dir ../../dist",
-		"github-pages": "BASE_URL=premio parcel build src/index.html --public-url /premio/ --dist-dir ../../dist"
+		"css": "typed-scss-modules src/**/*.module.scss --watch"
 	},
 	"devDependencies": {
-		"@types/ramda": "^0.28.1",
-		"@types/react": "^18.0.5",
-		"@types/react-dom": "^18.0.1",
-		"@types/react-router-dom": "^5.3.3"
+		"@types/ramda": "^0.28.1"
 	},
 	"dependencies": {
 		"@cedeber/frontafino": "^1.0.0-beta.7",
+		"@solidjs/router": "^0.4.2",
 		"@tauri-apps/api": "^1.0.1",
 		"bgg": "file:../bgg",
 		"comlink": "^4.3.1",
 		"easy-wasm": "file:../easy-wasm",
 		"fuse.js": "^6.5.3",
 		"ramda": "^0.28.0",
-		"react": "^18.0.0",
-		"react-aria": "^3.16.0",
-		"react-dom": "^18.0.0",
-		"react-router-dom": "^6.2.1",
+		"solid-js": "^1.5.1",
 		"wasm-feature-detect": "^1.2.11",
 		"zustand": "^4.1.1"
 	}
