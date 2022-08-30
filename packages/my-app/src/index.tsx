@@ -1,6 +1,7 @@
 import { createSignal, onCleanup } from "solid-js";
 import { render } from "solid-js/web";
 import { Router, Routes, Route, Link } from "@solidjs/router";
+import { Games } from "bgg";
 
 const root = document.getElementById("app") as HTMLDivElement;
 
@@ -16,10 +17,12 @@ const App = () => {
 			<nav>
 				<Link href="/about">About</Link>
 				<Link href="/">Home</Link>
+				<Link href="/games/cedeber">Games</Link>
 			</nav>
 			<Routes>
 				<Route path="/" element={<div>home</div>} />
 				<Route path="/about" element={<div>about</div>} />
+				<Route path="/games/:username" component={Games} />
 			</Routes>
 		</div>
 	);

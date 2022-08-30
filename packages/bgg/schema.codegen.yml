@@ -1,0 +1,26 @@
+overwrite: true
+schema: http://localhost:4000/graphql
+documents:
+  - ./src/**/*.graphql
+generates:
+  ./schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      includeDirectives: true
+  ./src/graphql.ts:
+    plugins:
+    - typescript
+    config:
+        useTypeImports: true
+  ./:
+    preset: near-operation-file
+    presetConfig:
+      extension: .gql.ts
+      baseTypesPath: ./src/graphql.js
+    plugins:
+      - typescript-operations
+      - typescript-graphql-request
+      - fragment-matcher
+    config:
+      useTypeImports: true

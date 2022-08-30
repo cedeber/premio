@@ -13,7 +13,6 @@
 	"dependencies": {
 		"@cedeber/frontafino": "^1.0.0-beta.7",
 		"@solidjs/router": "^0.4.2",
-		"@tauri-apps/api": "^1.0.1",
 		"bgg": "file:../bgg",
 		"comlink": "^4.3.1",
 		"easy-wasm": "file:../easy-wasm",

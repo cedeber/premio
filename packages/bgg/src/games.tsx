@@ -1,54 +1,26 @@
-import { useGamesQuery } from "./games.gql.js";
-import type { FC } from "react";
-import { useParams } from "react-router";
-import { ApolloClient, ApolloProvider, from, HttpLink, InMemoryCache } from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+import { GraphQLClient } from "graphql-request";
+import { GamesQuery, getSdk } from "./games.gql.js";
+import { createSignal } from "solid-js";
+import { useParams } from "@solidjs/router";
 
-const httpLink = new HttpLink({
-	uri: "http://localhost:4000/graphql",
-});
+const client = new GraphQLClient("http://localhost:4000/graphql", { headers: {} });
+const sdk = getSdk(client);
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-	if (graphQLErrors)
-		graphQLErrors.forEach(({ message, locations, path }) =>
-			console.log(
-				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-			),
-		);
-
-	if (networkError) console.log(`[Network error]: ${networkError}`);
-});
-
-const client = new ApolloClient({
-	link: from([errorLink, httpLink]),
-	cache: new InMemoryCache(),
-});
-
-const Inside: FC = () => {
+const Games = () => {
 	const { username } = useParams<{ username: string }>();
-	const { loading, error, data } = useGamesQuery({ variables: { username } });
+	const [data, setData] = createSignal<GamesQuery>();
+
+	sdk.Games({ username }).then(setData);
 
 	return (
 		<main>
-			<h1 className="text-3xl font-bold underline">Games for {username}</h1>
+			<h1 class="text-3xl font-bold underline">Games for {username}</h1>
 			<div>
-				{loading && "Loading..."}
-				{error && <p>Error: {error.message}</p>}
-				<>
-					{data?.games?.map((game) => (
-						<p key={game.id}>{game.name}</p>
-					))}
-				</>
+				{data()?.games?.map((game) => (
+					<p>{game.name}</p>
+				))}
 			</div>
 		</main>
-	);
-};
-
-const Games: FC = () => {
-	return (
-		<ApolloProvider client={client}>
-			<Inside />
-		</ApolloProvider>
 	);
 };
 
