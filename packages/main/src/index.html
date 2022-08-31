@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-	<!--meta
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+		<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+		<!--meta
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; script-src 'self'"
         /-->
-	<title>Hello, Premio!</title>
-	<meta name="description" content="Web startup with WebAssembly." />
-	<meta name="application-name" content="Premio" />
-	<meta name="mobile-web-app-capable" content="yes" />
-	<meta name="theme-color" content="#242526" />
-	<link rel="icon" sizes="192x192" href="./assets/icons/touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="Premio" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png" />
-	<!-- Must be in black and white. Black parts will be colored -->
-	<link rel="mask-icon" href="./assets/icons/website-icon.svg" color="#7328D2" />
-	<link rel="manifest" href="./app.webmanifest" />
-	<!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
-	<script type="module" src="./index.tsx"></script>
-</head>
+		<title>Hello, Premio!</title>
+		<meta content="Web startup with WebAssembly." name="description" />
+		<meta content="Premio" name="application-name" />
+		<meta content="yes" name="mobile-web-app-capable" />
+		<meta content="#242526" name="theme-color" />
+		<link href="./assets/icons/touch-icon.png" rel="icon" sizes="192x192" />
+		<meta content="Premio" name="apple-mobile-web-app-title" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<link href="./assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+		<!-- Must be in black and white. Black parts will be colored -->
+		<link color="#7328D2" href="./assets/icons/website-icon.svg" rel="mask-icon" />
+		<link href="./app.webmanifest" rel="manifest" />
+		<!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
+		<script src="./index.tsx" type="module"></script>
+	</head>
 
-<body class="p-8">
-	<div class="mx-auto max-w-3xl" id="app"></div>
-</body>
-
+	<body class="p-8">
+		<div class="mx-auto max-w-3xl" id="app"></div>
+	</body>
 </html>

@@ -1,6 +1,6 @@
 import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
 import { render } from "solid-js/web";
-import { Router, Routes, Route, Link } from "@solidjs/router";
+import { Link, Route, Router, Routes } from "@solidjs/router";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));

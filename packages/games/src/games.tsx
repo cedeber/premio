@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import { GamesQuery, getSdk } from "./games.gql.js";
+import { getSdk } from "./games.gql.js";
 import { Accessor, createSignal } from "solid-js";
 import { useParams } from "@solidjs/router";
 import style from "./games.module.scss";
