@@ -1,9 +1,9 @@
-import { createSignal, onCleanup } from "solid-js";
+import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { Router, Routes, Route, Link } from "@solidjs/router";
-import { Games } from "bgg";
 
 const root = document.getElementById("app") as HTMLDivElement;
+const Games = lazy(() => import("bgg"));
 
 const App = () => {
 	const [count, setCount] = createSignal(0);
@@ -22,7 +22,14 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<div>home</div>} />
 				<Route path="/about" element={<div>about</div>} />
-				<Route path="/games/:username" component={Games} />
+				<Route
+					path="/games/:username"
+					element={
+						<Suspense fallback={<p>Loading...</p>}>
+							<Games />
+						</Suspense>
+					}
+				/>
 			</Routes>
 		</div>
 	);

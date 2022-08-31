@@ -4,7 +4,7 @@ import { Accessor, createSignal } from "solid-js";
 import { useParams } from "@solidjs/router";
 
 const client = new GraphQLClient("http://localhost:4000/graphql", { headers: {} });
-const sdk = getSdk(client);
+const { Games } = getSdk(client);
 
 const loadGraphql = <T extends object>(
 	query: Promise<T>,
@@ -25,10 +25,10 @@ const loadGraphql = <T extends object>(
 	return { loading, data, error };
 };
 
-const Games = () => {
+const GamesPage = () => {
 	const { username } = useParams<{ username: string }>();
 
-	const { loading, data, error } = loadGraphql(sdk.Games({ username }));
+	const { loading, data, error } = loadGraphql(Games({ username }));
 
 	return (
 		<main>
@@ -44,4 +44,4 @@ const Games = () => {
 	);
 };
 
-export { Games };
+export { GamesPage };

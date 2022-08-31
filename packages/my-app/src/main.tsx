@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalContext } from "./context.js";
 import "./index.scss";
-import { Games } from "bgg";
+import { GamesPage } from "bgg";
 import { invoke } from "@tauri-apps/api";
 
 /* --- Extern --- */
@@ -77,7 +77,7 @@ const App: FC = () => {
 						<Route path="/async" element={<AsyncPage />} />
 						<Route path="/error" element={<ErrorPage />} />
 						{/*<Route path="/thread" element={<ThreadPage />} />*/}
-						<Route path="/games/:username" element={<Games />} />
+						<Route path="/games/:username" element={<GamesPage />} />
 					</Routes>
 				</BrowserRouter>
 			</GlobalContext.Provider>
