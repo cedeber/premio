@@ -9,13 +9,8 @@
 			"default": "./src/index.ts"
 		}
 	},
-	"devDependencies": {
-		"@types/react": "^18.0.5"
-	},
 	"dependencies": {
 		"@cedeber/frontafino": "^1.0.0-beta.8",
-		"@heroicons/react": "^2.0.4",
-		"react": "^18.0.0",
 		"wasm_async": "file:../wasm_async",
 		"wasm_sum": "file:../wasm_sum"
 	}

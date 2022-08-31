@@ -11,12 +11,11 @@ export default defineConfig({
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},
 	},
-	root: "./packages/my-app/src",
+	root: "./packages/main/src",
 	build: {
 		outDir: "../../../dist",
 		emptyOutDir: true,
 		cssCodeSplit: false,
-		// target: "esnext",
 		target: ["es2021", "chrome97", "safari13"],
 	},
 	esbuild: {

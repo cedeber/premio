@@ -8,9 +8,10 @@
 	"exclude": ["**/*.spec.ts", "**/*.test.ts"],
 	"references": [
 		{
-			"path": "../easy-wasm",
-		},{
-      "path": "../bgg",
-    }
+			"path": "../easy-wasm"
+		},
+		{
+			"path": "../games"
+		}
 	]
 }

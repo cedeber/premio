@@ -2,6 +2,7 @@ import { GraphQLClient } from "graphql-request";
 import { GamesQuery, getSdk } from "./games.gql.js";
 import { Accessor, createSignal } from "solid-js";
 import { useParams } from "@solidjs/router";
+import style from "./games.module.scss";
 
 const client = new GraphQLClient("http://localhost:4000/graphql", { headers: {} });
 const { Games } = getSdk(client);
@@ -32,12 +33,12 @@ const GamesPage = () => {
 
 	return (
 		<main>
-			<h1 class="text-3xl font-bold underline">Games for {username}</h1>
+			<h1>Games for {username}</h1>
 			{loading() && <div>Loading...</div>}
 			{error() && <div>{error}</div>}
 			<div>
 				{data()?.games?.map((game) => (
-					<p>{game.name}</p>
+					<div class={style.game}>{game.name}</div>
 				))}
 			</div>
 		</main>

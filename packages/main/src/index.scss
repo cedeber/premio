@@ -1,10 +1,6 @@
 @import "reset";
 @import "fn";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 // Responsive Layout boundaries
 $view-min: 320;
 $view-max: 1440;

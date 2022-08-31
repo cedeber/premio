@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 interface Extern {
 	add_cb?: (result: number) => void;
 	async_add_cb?: (str: string) => Promise<number>;

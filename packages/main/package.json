@@ -1,5 +1,5 @@
 {
-	"name": "my-app",
+	"name": "main",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
@@ -13,7 +13,7 @@
 	"dependencies": {
 		"@cedeber/frontafino": "^1.0.0-beta.7",
 		"@solidjs/router": "^0.4.2",
-		"bgg": "file:../bgg",
+		"@premio/games": "file:../games",
 		"comlink": "^4.3.1",
 		"easy-wasm": "file:../easy-wasm",
 		"fuse.js": "^6.5.3",

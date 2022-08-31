@@ -3,7 +3,7 @@ import { render } from "solid-js/web";
 import { Router, Routes, Route, Link } from "@solidjs/router";
 
 const root = document.getElementById("app") as HTMLDivElement;
-const Games = lazy(() => import("bgg"));
+const Games = lazy(() => import("@premio/games"));
 
 const App = () => {
 	const [count, setCount] = createSignal(0);
