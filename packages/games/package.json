@@ -10,8 +10,5 @@
 			"types": "./src/index.ts",
 			"default": "./src/index.ts"
 		}
-	},
-	"scripts": {
-		"schema": "graphql-codegen --config schema.codegen.yml"
 	}
 }

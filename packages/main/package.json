@@ -4,9 +4,6 @@
 	"version": "1.0.0",
 	"type": "module",
 	"source": "src/index.html",
-	"scripts": {
-		"css": "typed-scss-modules src/**/*.module.scss --watch"
-	},
 	"dependencies": {
 		"@premio/games": "file:../games",
 		"easy-wasm": "file:../easy-wasm",

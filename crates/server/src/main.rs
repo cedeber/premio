@@ -1,3 +1,5 @@
+use std::{env, net::SocketAddr};
+
 use async_graphql::{
 	http::{playground_source, GraphQLPlaygroundConfig},
 	Context, EmptyMutation, EmptySubscription, Object, Schema,
@@ -13,9 +15,7 @@ use axum::{
 	routing::{get, get_service},
 	Extension, Router, Server,
 };
-use server::{db, fetch_collection, BoardGame, User};
 use sqlx::{query_as, Pool, Sqlite, SqlitePool};
-use std::{env, net::SocketAddr};
 use tower::ServiceBuilder;
 use tower_http::cors::Any;
 use tower_http::{
@@ -25,6 +25,8 @@ use tower_http::{
 	ServiceBuilderExt,
 };
 use tracing::info;
+
+use server::{db, fetch_collection, BoardGame, User};
 
 #[tokio::main]
 async fn main() {
