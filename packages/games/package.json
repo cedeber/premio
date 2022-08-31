@@ -13,10 +13,5 @@
 	},
 	"scripts": {
 		"schema": "graphql-codegen --config schema.codegen.yml"
-	},
-	"dependencies": {
-		"graphql": "^16.5.0",
-		"graphql-request": "^5.0.0",
-		"solid-js": "^1.5.2"
 	}
 }

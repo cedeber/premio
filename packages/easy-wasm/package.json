@@ -10,7 +10,6 @@
 		}
 	},
 	"dependencies": {
-		"@cedeber/frontafino": "^1.0.0-beta.8",
 		"wasm_async": "file:../wasm_async",
 		"wasm_sum": "file:../wasm_sum"
 	}
