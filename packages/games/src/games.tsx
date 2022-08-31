@@ -38,7 +38,7 @@ const GamesPage = () => {
 			{error() && <div>{error}</div>}
 			<div>
 				{data()?.games?.map((game) => (
-					<div class={style.game}>{game.name}</div>
+					<div class={style.gameLine}>{game.name}</div>
 				))}
 			</div>
 		</main>

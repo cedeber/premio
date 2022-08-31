@@ -18,6 +18,7 @@ export default defineConfig({
 		cssCodeSplit: false,
 		target: ["es2021", "chrome97", "safari13"],
 	},
+	css: { modules: { localsConvention: "camelCase" } },
 	esbuild: {
 		legalComments: "none",
 		// target: "esnext",
