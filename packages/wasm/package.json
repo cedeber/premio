@@ -11,6 +11,6 @@
 	},
 	"dependencies": {
 		"wasm_async": "file:../wasm_async",
-		"wasm_sum": "file:../wasm_sum"
+		"wasm_threads": "file:../wasm_threads"
 	}
 }

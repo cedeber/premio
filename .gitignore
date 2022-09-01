@@ -1,5 +1,4 @@
-packages/wasm*/
-.parcel-cache/
+packages/wasm_*/
 .idea/
 .vscode/
 target/
