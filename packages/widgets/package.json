@@ -1,0 +1,14 @@
+{
+	"name": "widgets",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"module": "./src/index.ts",
+	"types": "./src/index.ts",
+	"exports": {
+		".": {
+			"types": "./src/index.ts",
+			"default": "./src/index.ts"
+		}
+	}
+}

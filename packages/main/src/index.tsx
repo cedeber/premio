@@ -1,6 +1,7 @@
 import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { Link, Route, Router, Routes } from "@solidjs/router";
+import { Button } from "widgets";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
@@ -20,7 +21,14 @@ const App = () => {
 				<Link href="/games/cedeber">Games</Link>
 			</nav>
 			<Routes>
-				<Route path="/" element={<div>home</div>} />
+				<Route
+					path="/"
+					element={
+						<div>
+							<Button label={"Hello"} onPress={() => alert("Hey")} />
+						</div>
+					}
+				/>
 				<Route path="/about" element={<div>about</div>} />
 				<Route
 					path="/games/:username"

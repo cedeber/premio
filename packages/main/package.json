@@ -6,6 +6,7 @@
 	"source": "src/index.html",
 	"dependencies": {
 		"@premio/games": "file:../games",
+		"@premio/widgets": "file:../widgets",
 		"easy-wasm": "file:../easy-wasm",
 		"wasm-feature-detect": "^1.2.11"
 	}

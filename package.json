@@ -31,10 +31,12 @@
 		"vitest": "^0.22.1"
 	},
 	"dependencies": {
+		"@solid-aria/primitives": "^0.4.0",
 		"@solidjs/router": "^0.4.2",
 		"graphql": "^16.6.0",
 		"graphql-request": "^5.0.0",
 		"ramda": "^0.28.0",
+		"sass-extras": "^1.0.0",
 		"solid-js": "^1.5.3"
 	}
 }
