@@ -43,6 +43,7 @@ const App = () => {
 								intent={ButtonIntent.Tinted}
 								onPress={() => {}}
 							/>
+							<Button label={"Gray"} intent={ButtonIntent.Gray} onPress={() => {}} />
 							<Button
 								label={"Outlined"}
 								intent={ButtonIntent.Outlined}
@@ -56,7 +57,6 @@ const App = () => {
 								onPress={() => {}}
 							/>
 							|
-							<Button label={"Gray"} intent={ButtonIntent.Gray} onPress={() => {}} />
 							<Button
 								label={"Danger"}
 								intent={ButtonIntent.Danger}

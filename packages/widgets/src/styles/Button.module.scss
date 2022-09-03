@@ -38,32 +38,31 @@
 }
 
 .filled {
-	@include intent(colors.$emerald-600, colors.$stone-100);
+	@include intent(colors.$sky-600, colors.$stone-100);
 }
 
 .tinted {
-	@include intent(colors.$emerald-200, colors.$emerald-700);
+	@include intent(colors.$sky-200, colors.$sky-700);
 }
 
 .gray {
-	@include intent(colors.$stone-200, colors.$stone-600);
+	@include intent(colors.$stone-200, colors.$sky-600);
 }
 
 .plain {
-	@include intent(color.adjust(colors.$emerald-50, $lightness: +99%), colors.$emerald-600);
+	@include intent(color.adjust(colors.$sky-50, $lightness: +99%), colors.$sky-600);
 }
 
 .outlined {
-	@include intent(color.adjust(colors.$emerald-50, $lightness: +99%), colors.$emerald-600);
-	box-shadow: inset 0 0 0 1px colors.$emerald-600;
-
-	&.focus {
-		box-shadow: inset 0 0 0 1px colors.$emerald-600, 0 0 0 2px white, 0 0 0 4px colors.$sky-600;
-	}
+	@include intent(color.adjust(colors.$sky-50, $lightness: +99%), colors.$sky-600);
+	box-shadow: inset 0 0 0 1px colors.$sky-600;
 }
 
 .danger {
 	@include intent(colors.$rose-600, white);
+	&.focus {
+		box-shadow: 0 0 0 2px white, 0 0 0 4px colors.$rose-600;
+	}
 }
 
 .disabled {
