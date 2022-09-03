@@ -1,0 +1,3 @@
+[alias]
+serve = "run --release --bin server --"
+prisma = "run --release --bin prisma-cli --"

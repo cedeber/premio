@@ -1,6 +1,6 @@
 use async_graphql::SimpleObject;
 use serde::Serialize;
-use sqlx::{query, query_as, FromRow, Pool, Sqlite, SqlitePool};
+// use sqlx::{query, query_as, FromRow, Pool, Sqlite, SqlitePool};
 use std::env;
 
 // Each board game struct

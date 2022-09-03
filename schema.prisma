@@ -1,0 +1,16 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:dev.db"
+}
+
+generator client {
+    // Corresponds to the cargo alias created earlier
+    provider = "cargo prisma"
+    // The location to generate the schema. Is relative to the position of the schema
+    output   = "./crates/server/src/prisma.rs"
+}
+
+model User {
+    id       Int    @id @default(autoincrement())
+    username String @unique
+}
