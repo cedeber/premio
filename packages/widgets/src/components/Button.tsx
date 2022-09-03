@@ -11,7 +11,6 @@ import { ProgressCircle } from "./ProgressCircle";
 interface ButtonProps extends Omit<AriaButtonProps, "children"> {
 	label: string;
 	intent?: ButtonIntent;
-	size?: ButtonSize;
 	ref?: HTMLButtonElement;
 	/** Material Symbols Outlined.
 	 * @see https://marella.me/material-symbols/demo/
@@ -21,11 +20,6 @@ interface ButtonProps extends Omit<AriaButtonProps, "children"> {
 	iconPlacement?: ButtonIconPlacement;
 	/** -1 for indeterminate. Automatically disabled. */
 	progress?: number;
-}
-
-export const enum ButtonSize {
-	Normal = "normal",
-	Small = "small",
 }
 
 export const enum ButtonIntent {
