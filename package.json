@@ -19,6 +19,7 @@
 		"@types/ramda": "^0.28.15",
 		"@typescript-eslint/eslint-plugin": "^5.35.0",
 		"@typescript-eslint/parser": "^5.35.0",
+		"@vitejs/plugin-basic-ssl": "^0.1.2",
 		"eslint": "^8.13.0",
 		"eslint-plugin-jsx-a11y": "^6.5.1",
 		"just-install": "^1.0.8",
@@ -35,6 +36,7 @@
 		"@solidjs/router": "^0.4.2",
 		"graphql": "^16.6.0",
 		"graphql-request": "^5.0.0",
+		"material-symbols": "^0.2.9",
 		"ramda": "^0.28.0",
 		"sass-extras": "^1.0.0",
 		"solid-js": "^1.5.3"

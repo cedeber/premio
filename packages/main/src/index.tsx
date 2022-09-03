@@ -1,7 +1,7 @@
+import { Link, Route, Router, Routes } from "@solidjs/router";
 import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
 import { render } from "solid-js/web";
-import { Link, Route, Router, Routes } from "@solidjs/router";
-import { Button } from "widgets";
+import { Button, ButtonIconPlacement, ButtonIntent } from "widgets";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
@@ -24,8 +24,47 @@ const App = () => {
 				<Route
 					path="/"
 					element={
-						<div>
-							<Button label={"Hello"} onPress={() => alert("Hey")} />
+						<div
+							style={{
+								display: "flex",
+								gap: "10px",
+								margin: "10px",
+								"align-items": "center",
+							}}
+						>
+							<Button
+								label={"Filled"}
+								onPress={() => {
+									console.log("click");
+								}}
+							/>
+							<Button
+								label={"Tinted"}
+								intent={ButtonIntent.Tinted}
+								onPress={() => {}}
+							/>
+							<Button
+								label={"Outlined"}
+								intent={ButtonIntent.Outlined}
+								onPress={() => {}}
+								icon={"arrow_right_alt"}
+								iconPlacement={ButtonIconPlacement.Right}
+							/>
+							<Button
+								label={"Plain"}
+								intent={ButtonIntent.Plain}
+								onPress={() => {}}
+							/>
+							|
+							<Button label={"Gray"} intent={ButtonIntent.Gray} onPress={() => {}} />
+							<Button
+								label={"Danger"}
+								intent={ButtonIntent.Danger}
+								onPress={() => {}}
+								icon="delete"
+							/>
+							|
+							<Button label={"Disabled"} onPress={() => {}} isDisabled />
 						</div>
 					}
 				/>
