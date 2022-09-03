@@ -78,3 +78,15 @@
 	overflow: hidden;
 	font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
 }
+
+.loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	z-index: 2;
+}
+
+.hidden {
+	visibility: hidden;
+}

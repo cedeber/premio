@@ -38,6 +38,7 @@ const App = () => {
 									console.log("click");
 								}}
 							/>
+							<Button label={"Filled"} onPress={() => {}} progress={-1} />
 							<Button
 								label={"Tinted"}
 								intent={ButtonIntent.Tinted}

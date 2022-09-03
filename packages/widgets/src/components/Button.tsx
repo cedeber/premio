@@ -6,6 +6,7 @@ import {
 } from "@solid-aria/primitives";
 import { mergeProps } from "solid-js";
 import style from "../styles/Button.module.scss";
+import { ProgressCircle } from "./ProgressCircle";
 
 interface ButtonProps extends Omit<AriaButtonProps, "children"> {
 	label: string;
@@ -18,9 +19,8 @@ interface ButtonProps extends Omit<AriaButtonProps, "children"> {
 	 */
 	icon?: string;
 	iconPlacement?: ButtonIconPlacement;
-	/** -1 for indeterminate */
+	/** -1 for indeterminate. Automatically disabled. */
 	progress?: number;
-	progressLabel?: string;
 }
 
 export const enum ButtonSize {
@@ -49,7 +49,10 @@ export const enum ButtonIconPlacement {
 }
 
 export const Button = (props: ButtonProps) => {
-	const { buttonProps, isPressed } = createButton(props, () => props.ref);
+	const { buttonProps, isPressed } = createButton(
+		{ ...props, isDisabled: props.isDisabled || props.progress != undefined },
+		() => props.ref,
+	);
 	const { hoverProps, isHovered } = createHover();
 	const { isFocusVisible, focusProps } = createFocusRing();
 
@@ -72,15 +75,30 @@ export const Button = (props: ButtonProps) => {
 			ref={props.ref}
 		>
 			{props.iconPlacement !== ButtonIconPlacement.Right && props.icon && (
-				<span class="material-symbols-outlined" classList={{ [style.icon]: true }}>
+				<span
+					class="material-symbols-outlined"
+					classList={{ [style.icon]: true, [style.hidden]: props.progress != undefined }}
+				>
 					{props.icon}
 				</span>
 			)}
-			{props.label}
+			{props.label && (
+				<span classList={{ [style.hidden]: props.progress != undefined }}>
+					{props.label}
+				</span>
+			)}
 			{props.iconPlacement === ButtonIconPlacement.Right && props.icon && (
-				<span class="material-symbols-outlined" classList={{ [style.icon]: true }}>
+				<span
+					class="material-symbols-outlined"
+					classList={{ [style.icon]: true, [style.hidden]: props.progress != undefined }}
+				>
 					{props.icon}
 				</span>
+			)}
+			{props.progress != undefined && (
+				<div class={style.loading}>
+					<ProgressCircle size={18} progress={props.progress} />
+				</div>
 			)}
 		</button>
 	);
