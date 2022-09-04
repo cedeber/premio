@@ -5,24 +5,24 @@ import {
 	createHover,
 } from "@solid-aria/primitives";
 import { mergeProps } from "solid-js";
-import style from "../styles/Button.module.scss";
+import style from "../styles/ActionButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
 
-interface ButtonProps extends Omit<AriaButtonProps, "children"> {
+interface ActionButtonProps extends Omit<AriaButtonProps, "children"> {
 	label: string;
-	intent?: ButtonIntent;
+	intent?: ActionButtonIntent;
 	ref?: HTMLButtonElement;
 	/** Material Symbols Outlined.
 	 * @see https://marella.me/material-symbols/demo/
 	 * @see https://fonts.google.com/icons?icon.set=Material+Symbols
 	 */
 	icon?: string;
-	iconPlacement?: ButtonIconPlacement;
+	iconPlacement?: ActionButtonIconPlacement;
 	/** -1 for indeterminate. Automatically disabled. */
 	progress?: number;
 }
 
-export const enum ButtonIntent {
+export const enum ActionButtonIntent {
 	/** Primary */
 	Filled = "filled",
 	/** Secondary */
@@ -37,12 +37,12 @@ export const enum ButtonIntent {
 	Danger = "danger",
 }
 
-export const enum ButtonIconPlacement {
+export const enum ActionButtonIconPlacement {
 	Right = "right",
 	Left = "left",
 }
 
-export const Button = (props: ButtonProps) => {
+export const ActionButton = (props: ActionButtonProps) => {
 	const { buttonProps, isPressed } = createButton(
 		{ ...props, isDisabled: props.isDisabled || props.progress != undefined },
 		() => props.ref,
@@ -55,12 +55,13 @@ export const Button = (props: ButtonProps) => {
 			{...mergeProps(buttonProps, hoverProps, focusProps)}
 			class={style.button}
 			classList={{
-				[style.filled]: props.intent == undefined || props.intent === ButtonIntent.Filled,
-				[style.tinted]: props.intent === ButtonIntent.Tinted,
-				[style.gray]: props.intent === ButtonIntent.Gray,
-				[style.plain]: props.intent === ButtonIntent.Plain,
-				[style.outlined]: props.intent === ButtonIntent.Outlined,
-				[style.danger]: props.intent === ButtonIntent.Danger,
+				[style.filled]:
+					props.intent == undefined || props.intent === ActionButtonIntent.Filled,
+				[style.tinted]: props.intent === ActionButtonIntent.Tinted,
+				[style.gray]: props.intent === ActionButtonIntent.Gray,
+				[style.plain]: props.intent === ActionButtonIntent.Plain,
+				[style.outlined]: props.intent === ActionButtonIntent.Outlined,
+				[style.danger]: props.intent === ActionButtonIntent.Danger,
 				[style.hover]: isHovered(),
 				[style.press]: isPressed(),
 				[style.focus]: isFocusVisible(),
@@ -68,7 +69,7 @@ export const Button = (props: ButtonProps) => {
 			}}
 			ref={props.ref}
 		>
-			{props.iconPlacement !== ButtonIconPlacement.Right && props.icon && (
+			{props.iconPlacement !== ActionButtonIconPlacement.Right && props.icon && (
 				<span
 					class="material-symbols-outlined"
 					classList={{ [style.icon]: true, [style.hidden]: props.progress != undefined }}
@@ -81,7 +82,7 @@ export const Button = (props: ButtonProps) => {
 					{props.label}
 				</span>
 			)}
-			{props.iconPlacement === ButtonIconPlacement.Right && props.icon && (
+			{props.iconPlacement === ActionButtonIconPlacement.Right && props.icon && (
 				<span
 					class="material-symbols-outlined"
 					classList={{ [style.icon]: true, [style.hidden]: props.progress != undefined }}

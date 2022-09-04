@@ -1,2 +1,6 @@
-export { Button, ButtonIconPlacement, ButtonIntent, ButtonSize } from "./components/Button";
+export {
+	ActionButton,
+	ActionButtonIconPlacement,
+	ActionButtonIntent,
+} from "./components/ActionButton";
 export { ProgressCircle } from "./components/ProgressCircle";

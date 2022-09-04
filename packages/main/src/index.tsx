@@ -1,7 +1,7 @@
 import { Link, Route, Router, Routes } from "@solidjs/router";
 import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
 import { render } from "solid-js/web";
-import { Button, ButtonIconPlacement, ButtonIntent } from "widgets";
+import { ActionButton, ActionButtonIconPlacement, ActionButtonIntent } from "widgets";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
@@ -32,40 +32,44 @@ const App = () => {
 								"align-items": "center",
 							}}
 						>
-							<Button
+							<ActionButton
 								label={"Filled"}
 								onPress={() => {
 									console.log("click");
 								}}
 							/>
-							<Button label={"Filled"} onPress={() => {}} progress={-1} />
-							<Button
+							<ActionButton label={"Filled"} onPress={() => {}} progress={-1} />
+							<ActionButton
 								label={"Tinted"}
-								intent={ButtonIntent.Tinted}
+								intent={ActionButtonIntent.Tinted}
 								onPress={() => {}}
 							/>
-							<Button label={"Gray"} intent={ButtonIntent.Gray} onPress={() => {}} />
-							<Button
+							<ActionButton
+								label={"Gray"}
+								intent={ActionButtonIntent.Gray}
+								onPress={() => {}}
+							/>
+							<ActionButton
 								label={"Outlined"}
-								intent={ButtonIntent.Outlined}
+								intent={ActionButtonIntent.Outlined}
 								onPress={() => {}}
 								icon={"arrow_right_alt"}
-								iconPlacement={ButtonIconPlacement.Right}
+								iconPlacement={ActionButtonIconPlacement.Right}
 							/>
-							<Button
+							<ActionButton
 								label={"Plain"}
-								intent={ButtonIntent.Plain}
+								intent={ActionButtonIntent.Plain}
 								onPress={() => {}}
 							/>
 							|
-							<Button
+							<ActionButton
 								label={"Danger"}
-								intent={ButtonIntent.Danger}
+								intent={ActionButtonIntent.Danger}
 								onPress={() => {}}
 								icon="delete"
 							/>
 							|
-							<Button label={"Disabled"} onPress={() => {}} isDisabled />
+							<ActionButton label={"Disabled"} onPress={() => {}} isDisabled />
 						</div>
 					}
 				/>
