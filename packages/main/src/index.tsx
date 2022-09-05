@@ -1,26 +1,41 @@
-import { Link, Route, Router, Routes } from "@solidjs/router";
-import { createSignal, lazy, onCleanup, Suspense } from "solid-js";
+import { Link, Route, Router, Routes, useMatch, useNavigate } from "@solidjs/router";
+import { lazy, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { ActionButton, ActionButtonIconPlacement, ActionButtonIntent } from "widgets";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
 
-const App = () => {
-	const [count, setCount] = createSignal(0);
-	const timer = setInterval(() => setCount(count() + 1), 1000);
-
-	onCleanup(() => clearInterval(timer));
+const ButtonLink = (props: { href: string; label: string }) => {
+	const match = useMatch(() => props.href);
+	const navigate = useNavigate();
 
 	return (
+		<ActionButton
+			label={props.label}
+			onPress={() => {
+				navigate(props.href);
+			}}
+			intent={Boolean(match()) ? ActionButtonIntent.Tinted : ActionButtonIntent.Gray}
+		/>
+	);
+};
+
+const App = () => {
+	return (
 		<div class={"hello"}>
-			{count}
-			<nav>
-				<Link href="/about">About</Link>
-				<Link href="/">Home</Link>
-				<Link href="/games/cedeber">Games</Link>
+			<nav
+				style={{
+					display: "flex",
+					gap: "10px",
+					margin: "20px 10px",
+					"justify-content": "center",
+				}}
+			>
+				<ButtonLink href="/" label="Components" />
+				<ButtonLink href="/games/cedeber" label="Games (GraphQL)" />
 			</nav>
-			<Routes>
+			<Routes base={import.meta.env.BASE_URL}>
 				<Route
 					path="/"
 					element={
@@ -73,7 +88,6 @@ const App = () => {
 						</div>
 					}
 				/>
-				<Route path="/about" element={<div>about</div>} />
 				<Route
 					path="/games/:username"
 					element={
@@ -86,6 +100,28 @@ const App = () => {
 		</div>
 	);
 };
+
+if ("serviceWorker" in navigator) {
+	navigator.serviceWorker
+		.register(new URL("./service_worker.ts", import.meta.url), { type: "module" })
+		.then(
+			function (registration) {
+				// Registration was successful
+				console.log(
+					"ServiceWorker registration successful with scope: ",
+					registration.scope,
+				);
+				// setSwRegistration(registration);
+				void fetch("/.ping/whatever")
+					.then((response) => response.text())
+					.then((data) => console.log("sw", data));
+			},
+			function (err) {
+				// registration failed :(
+				console.warn("ServiceWorker registration failed: ", err);
+			},
+		);
+}
 
 render(
 	() => (
