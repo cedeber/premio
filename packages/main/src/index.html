@@ -4,10 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
 		<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-		<!--meta
-		http-equiv="Content-Security-Policy"
-		content="default-src 'self'; script-src 'self'"
-	/-->
+		<!--meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" /-->
 		<title>Hello, Premio!</title>
 		<meta content="Web startup with WebAssembly." name="description" />
 		<meta content="Premio" name="application-name" />
@@ -21,8 +18,9 @@
 		<link color="#7328D2" href="./assets/icons/website-icon.svg" rel="mask-icon" />
 		<link href="./app.webmanifest" rel="manifest" />
 		<!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
-		<script src="./index.tsx" type="module"></script>
+		<!-- Keep the CSS first. If not, this file will be imported last and the reset CSS will overwrite the components styling -->
 		<link href="./index.scss" rel="stylesheet" />
+		<script src="./index.tsx" type="module"></script>
 	</head>
 
 	<body class="p-8">
