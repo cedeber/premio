@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import basicSsl from "@vitejs/plugin-basic-ssl";
+// import basicSsl from "@vitejs/plugin-basic-ssl";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({
@@ -11,7 +11,6 @@ export default defineConfig({
 			"Cross-Origin-Embedder-Policy": " require-corp",
 			"Cross-Origin-Opener-Policy": "same-origin",
 		},
-		https: true,
 	},
 	root: "./packages/main/src",
 	build: {
@@ -30,5 +29,5 @@ export default defineConfig({
 			// target: "esnext",
 		},
 	},
-	plugins: [basicSsl(), solid()],
+	plugins: [solid()],
 });
