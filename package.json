@@ -29,7 +29,7 @@
 		"typescript": "^4.6.3",
 		"vite": "^3.0.9",
 		"vite-plugin-solid": "^2.3.0",
-		"vitest": "^0.22.1"
+		"vitest": "^0.23.0"
 	},
 	"dependencies": {
 		"@solid-aria/primitives": "^0.4.0",
