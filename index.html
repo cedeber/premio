@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+		<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+		<!--meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" /-->
+		<title>Hello, Premio!</title>
+		<meta content="Web startup with WebAssembly." name="description" />
+		<meta content="Premio" name="application-name" />
+		<meta content="yes" name="mobile-web-app-capable" />
+		<meta content="#242526" name="theme-color" />
+		<link href="/premio/assets/touch-icon.218e0e47.png" rel="icon" sizes="192x192" />
+		<meta content="Premio" name="apple-mobile-web-app-title" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<link href="/premio/assets/apple-touch-icon.0c7f20ef.png" rel="apple-touch-icon" sizes="180x180" />
+		<!-- Must be in black and white. Black parts will be colored -->
+		<link color="#7328D2" href="/premio/assets/website-icon.79335c5d.svg" rel="mask-icon" />
+		<link href="data:application/manifest+json;base64,ewoJInNob3J0X25hbWUiOiAiUHJlbWlvIiwKCSJuYW1lIjogIlByZW1pbyIsCgkiZGVzY3JpcHRpb24iOiAiV2ViIHN0YXJ0dXAgd2l0aCBXZWJBc3NlbWJseS4iLAoJInN0YXJ0X3VybCI6ICIuLyIsCgkiZGlzcGxheSI6ICJtaW5pbWFsLXVpIiwKCSJ0aGVtZV9jb2xvciI6ICIjMjQyNTI2IiwKCSJiYWNrZ3JvdW5kX2NvbG9yIjogIiMyNDI1MjYiLAoJImljb25zIjogWwoJCXsKCQkJInNyYyI6ICIuL2Fzc2V0cy9pY29ucy90b3VjaC1pY29uLnBuZyIsCgkJCSJzaXplcyI6ICIxOTJ4MTkyIiwKCQkJInR5cGUiOiAiaW1hZ2UvcG5nIiwKCQkJInB1cnBvc2UiOiAiYW55IgoJCX0sCgkJewoJCQkic3JjIjogIi4vYXNzZXRzL2ljb25zL3RvdWNoLWljb24tbWFza2FibGUucG5nIiwKCQkJInNpemVzIjogIjE5MngxOTIiLAoJCQkidHlwZSI6ICJpbWFnZS9wbmciLAoJCQkicHVycG9zZSI6ICJtYXNrYWJsZSIKCQl9LAoJCXsKCQkJInNyYyI6ICIuL2Fzc2V0cy9pY29ucy90b3VjaC1pY29uLWxhcmdlLnBuZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2UvcG5nIiwKCQkJInB1cnBvc2UiOiAiYW55IgoJCX0sCgkJewoJCQkic3JjIjogIi4vYXNzZXRzL2ljb25zL3RvdWNoLWljb24tbGFyZ2UtbWFza2FibGUucG5nIiwKCQkJInNpemVzIjogIjUxMng1MTIiLAoJCQkidHlwZSI6ICJpbWFnZS9wbmciLAoJCQkicHVycG9zZSI6ICJtYXNrYWJsZSIKCQl9CgldCn0K" rel="manifest" />
+		<!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
+		<!-- Keep the CSS first. If not, this file will be imported last and the reset CSS will overwrite the components styling -->
+		
+		
+		<script type="module" crossorigin src="/premio/assets/index.4944f9e4.js"></script>
+		<link rel="stylesheet" href="/premio/assets/style.dd99514b.css">
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-	<!--meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'"
-        /-->
-	<title>Hello, Premio!</title>
-	<meta name="description" content="Web startup with WebAssembly." />
-	<meta name="application-name" content="Premio" />
-	<meta name="mobile-web-app-capable" content="yes" />
-	<meta name="theme-color" content="#242526" />
-	<link rel="icon" sizes="192x192" href="/premio/assets/touch-icon.218e0e47.png" />
-	<meta name="apple-mobile-web-app-title" content="Premio" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/premio/assets/apple-touch-icon.0c7f20ef.png" />
-	<!-- Must be in black and white. Black parts will be colored -->
-	<link rel="mask-icon" href="/premio/assets/website-icon.79335c5d.svg" color="#7328D2" />
-	<link rel="manifest" href="data:application/manifest+json;base64,ewoJInNob3J0X25hbWUiOiAiUHJlbWlvIiwKCSJuYW1lIjogIlByZW1pbyIsCgkiZGVzY3JpcHRpb24iOiAiV2ViIHN0YXJ0dXAgd2l0aCBXZWJBc3NlbWJseS4iLAoJInN0YXJ0X3VybCI6ICIuLyIsCgkiZGlzcGxheSI6ICJtaW5pbWFsLXVpIiwKCSJ0aGVtZV9jb2xvciI6ICIjMjQyNTI2IiwKCSJiYWNrZ3JvdW5kX2NvbG9yIjogIiMyNDI1MjYiLAoJImljb25zIjogWwoJCXsKCQkJInNyYyI6ICIuL2Fzc2V0cy9pY29ucy90b3VjaC1pY29uLnBuZyIsCgkJCSJzaXplcyI6ICIxOTJ4MTkyIiwKCQkJInR5cGUiOiAiaW1hZ2UvcG5nIiwKCQkJInB1cnBvc2UiOiAiYW55IgoJCX0sCgkJewoJCQkic3JjIjogIi4vYXNzZXRzL2ljb25zL3RvdWNoLWljb24tbWFza2FibGUucG5nIiwKCQkJInNpemVzIjogIjE5MngxOTIiLAoJCQkidHlwZSI6ICJpbWFnZS9wbmciLAoJCQkicHVycG9zZSI6ICJtYXNrYWJsZSIKCQl9LAoJCXsKCQkJInNyYyI6ICIuL2Fzc2V0cy9pY29ucy90b3VjaC1pY29uLWxhcmdlLnBuZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2UvcG5nIiwKCQkJInB1cnBvc2UiOiAiYW55IgoJCX0sCgkJewoJCQkic3JjIjogIi4vYXNzZXRzL2ljb25zL3RvdWNoLWljb24tbGFyZ2UtbWFza2FibGUucG5nIiwKCQkJInNpemVzIjogIjUxMng1MTIiLAoJCQkidHlwZSI6ICJpbWFnZS9wbmciLAoJCQkicHVycG9zZSI6ICJtYXNrYWJsZSIKCQl9CgldCn0K" />
-	<!--link rel="manifest" href="/manifest.json" crossorigin="use-credentials"-->
-	
-  <script type="module" crossorigin src="/premio/assets/index.cf2ae0d5.js"></script>
-  <link rel="stylesheet" href="/premio/assets/style.90033fb0.css">
-</head>
-
-<body class="p-8">
-	<div class="mx-auto max-w-3xl" id="app"></div>
-</body>
-
+	<body class="p-8">
+		<div class="mx-auto max-w-3xl" id="app"></div>
+	</body>
 </html>
