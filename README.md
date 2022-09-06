@@ -1,3 +1,3 @@
 # Premio
 
-Web startup with WebAssembly.
+Web application template.
