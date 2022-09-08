@@ -13,6 +13,9 @@ codegen-graphql:
 	cd packages/games/ && npx graphql-codegen --config schema.codegen.yml
 
 # Production
+clean:
+	rm -rf packages/wasm_* dist
+
 wasm:
 	just crates/wasm_async/release
 	just crates/wasm_threads/release
