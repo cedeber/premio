@@ -1,0 +1,9 @@
+debug:
+	cargo build --lib --target wasm32-unknown-unknown
+	wasm-bindgen --target web --out-dir ../../packages/wasm_threads --out-name threads ../../target/wasm32-unknown-unknown/release/wasm_threads.wasm
+	wasm-opt -O1 ../../packages/wasm_threads/threads_bg.wasm -o ../../packages/wasm_async/threads_bg.wasm
+
+release:
+	cargo build --release --lib --target wasm32-unknown-unknown
+	wasm-bindgen --target web --out-dir ../../packages/wasm_threads --out-name threads ../../target/wasm32-unknown-unknown/release/wasm_threads.wasm
+	wasm-opt -Os ../../packages/wasm_threads/threads_bg.wasm -o ../../packages/wasm_async/threads_bg.wasm

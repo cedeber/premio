@@ -1,6 +1,6 @@
 # Developement
 watch-server:
-	DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates/server --exec "run -p server"
+	DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates/server --exec "run --bin server"
 
 watch-app:
 	npx vite
@@ -14,14 +14,14 @@ codegen-graphql:
 
 # Production
 wasm:
-	wasm-pack build --target web --out-dir ../../packages/wasm_async --out-name async ./crates/wasm_async
-	wasm-pack build --target web --out-dir ../../packages/wasm_threads --out-name sum ./crates/wasm_threads
+	just crates/wasm_async/release
+	just crates/wasm_threads/release
 
 vite:
 	npx vite build
 
 build: wasm vite
-	cargo build --release -p server
+	cargo build --release --bin server
 
 # Run
 start: build
