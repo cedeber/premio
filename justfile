@@ -24,7 +24,7 @@ vite:
 	npx vite build
 
 build: wasm vite
-	cargo build --release --bin server
+	cargo build --release --package server
 
 # Run
 start: build

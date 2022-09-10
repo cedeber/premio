@@ -1,5 +1,4 @@
-mod graphql;
-mod prisma;
+use std::{env, fs, net::SocketAddr};
 
 use async_graphql::http::{playground_source, GraphQLPlaygroundConfig};
 use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
@@ -13,8 +12,7 @@ use axum::{
 	routing::{get, get_service},
 	Extension, Router, Server,
 };
-use graphql::schema::{build_schema, AppSchema};
-use std::{env, net::SocketAddr};
+use clap::Parser;
 use tower::ServiceBuilder;
 use tower_http::cors::Any;
 use tower_http::{
@@ -25,12 +23,37 @@ use tower_http::{
 };
 use tracing::info;
 
+use graphql::schema::{build_schema, AppSchema};
+
+mod graphql;
+mod prisma;
+
+/// Simple program to list all board games from a BoardGameGeek user.
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+	/// path for the frontend dist folder
+	#[clap()]
+	path: String,
+}
+
 #[tokio::main]
 async fn main() {
 	// initialize tracing
 	tracing_subscriber::fmt::init();
 
-	let frontend = tokio::spawn(async {
+	// parse the CLI arguments
+	let args = Args::parse();
+	let frontend_path = fs::canonicalize(args.path).expect("Failed to parse path");
+
+	let port: u16 = env::var("PORT")
+		.unwrap_or_else(|_| String::from("5000"))
+		.trim()
+		.parse()
+		.unwrap();
+
+	let frontend = tokio::spawn(async move {
+		let path_index = frontend_path.join("index.html");
 		let spa_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
 			// Need to be written in lowercase :-/
@@ -42,7 +65,7 @@ async fn main() {
 				HeaderName::from_static("cross-origin-opener-policy"),
 				HeaderValue::from_static("same-origin"),
 			)
-			.service(ServeDir::new("./dist").fallback(ServeFile::new("./dist/index.html")));
+			.service(ServeDir::new(frontend_path).fallback(ServeFile::new(path_index)));
 
 		let app = Router::new()
 			.nest(
@@ -58,12 +81,12 @@ async fn main() {
 
 		// The local webserver will be managed by Parcel in DEV_MODE
 		if env::var("DEV_MODE").is_err() {
-			serve(app, 3000).await
+			serve(app, port).await
 		}
 	});
 
 	let schema = build_schema().await;
-	let backend = tokio::spawn(async {
+	let backend = tokio::spawn(async move {
 		let allowed_methods = vec![Method::GET, Method::POST];
 		// let origins = ["http://localhost:3000".parse::<HeaderValue>().unwrap()];
 
@@ -80,21 +103,22 @@ async fn main() {
 					.allow_methods(allowed_methods)
 					.allow_headers(Any),
 			);
-		serve(app, 4000).await
+		serve(app, port + 1).await
 	});
 
 	// Concurrently mode but we spawn each server on its own thread
 	if env::var("DEV_MODE").is_ok() {
-		tokio::join!(backend);
+		tokio::join!(backend).0.unwrap();
 	} else {
-		tokio::join!(frontend, backend);
+		tokio::join!(frontend, backend).0.unwrap();
 	}
 }
 
 /// Run the app with hyper.
 // `axum::Server` is a re-export of `hyper::Server`
 async fn serve(app: Router, port: u16) {
-	let addr = SocketAddr::from(([127, 0, 0, 1], port));
+	// Need 0.0.0.0 instead of 127.0.0.1 for Docker to expose outside of the container
+	let addr = SocketAddr::from(([0, 0, 0, 0], port));
 	info!("listening on {}", addr);
 	Server::bind(&addr)
 		.serve(app.into_make_service())
