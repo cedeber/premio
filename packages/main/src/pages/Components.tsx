@@ -2,6 +2,7 @@ import {
 	ActionButton,
 	ActionButtonIconPlacement,
 	ActionButtonIntent,
+	HeaderBar,
 	ProgressCircle,
 	Tag,
 	TagIntent,
@@ -69,6 +70,14 @@ const Components = () => {
 				<Tag label={"#ec4899"} intentColor={"#ec4899"} />
 			</div>
 			<h1>Header Bar</h1>
+			<HeaderBar
+				title={"Header Bar"}
+				subtitle={"Use me in Dialogs, Pages, Cards..."}
+				tag={"tag"}
+				icon={"settings"}
+				// class={style.headerBar}
+				style={{ width: "320px" }}
+			/>
 		</div>
 	);
 };

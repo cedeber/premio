@@ -1,0 +1,60 @@
+@use "colors";
+
+.bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 10px;
+	padding: 5px 5px 5px 10px;
+	// background: colors.$light-background;
+	//color: colors.$grey-900-text;
+
+	@media (prefers-color-scheme: _dark) {
+		//background: colors.$dark-background;
+		//color: colors.$grey-100-white;
+	}
+}
+
+.left {
+	display: flex;
+	column-gap: 5px;
+	align-items: center;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: colors.$stone-800;
+	font-size: 20px;
+
+	@media (prefers-color-scheme: _dark) {
+		//color: colors.$grey-300-light-background;
+	}
+}
+
+.title_wrapper {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1px;
+}
+
+.title {
+	font-size: 13px;
+	line-height: 15px;
+	font-weight: 500;
+}
+
+.subtitle {
+	font-size: 11px;
+	line-height: 13px;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+}
