@@ -4,7 +4,7 @@ import {
 	createFocusRing,
 	createHover,
 } from "@solid-aria/primitives";
-import { mergeProps } from "solid-js";
+import { JSX, mergeProps } from "solid-js";
 import style from "../styles/ActionButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
 
@@ -20,6 +20,7 @@ interface ActionButtonProps extends Omit<AriaButtonProps, "children"> {
 	iconPlacement?: ActionButtonIconPlacement;
 	/** -1 for indeterminate. Automatically disabled. */
 	progress?: number;
+	domProps?: JSX.HTMLAttributes<HTMLButtonElement>;
 }
 
 export const enum ActionButtonIntent {
@@ -52,7 +53,7 @@ export const ActionButton = (props: ActionButtonProps) => {
 
 	return (
 		<button
-			{...mergeProps(buttonProps, hoverProps, focusProps)}
+			{...mergeProps(buttonProps, hoverProps, focusProps, props.domProps)}
 			class={style.button}
 			classList={{
 				[style.filled]:
@@ -68,6 +69,7 @@ export const ActionButton = (props: ActionButtonProps) => {
 				[style.disabled]: props.isDisabled,
 			}}
 			ref={props.ref}
+			data-intent={props.intent}
 		>
 			{props.iconPlacement !== ActionButtonIconPlacement.Right && props.icon && (
 				<span

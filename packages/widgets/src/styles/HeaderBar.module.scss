@@ -58,15 +58,15 @@
 .actions {
 	display: flex;
 	align-items: center;
-	column-gap: 5px;
+	column-gap: 3px;
 }
 
 // Header Divider
 .divider {
 	margin: 0 5px;
-	height: 25px;
+	height: 26px;
 	width: 1px;
-	background: color.scale(colors.$stone-100, $lightness: -7%);
+	background: colors.$stone-200;
 
 	@media (prefers-color-scheme: _dark) {
 		//background: color.scale(colors.$dark-background, $lightness: 15%);

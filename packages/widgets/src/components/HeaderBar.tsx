@@ -32,7 +32,7 @@ export const HeaderBar = (props: HeaderBarProps) => {
 							{props.icon}
 						</div>
 					)}
-					<div class={style.title_wrapper}>
+					<div class={style.titleWrapper}>
 						<h3 class={style.title} {...props.domTitleProps}>
 							{props.title}
 						</h3>
@@ -62,7 +62,7 @@ export const HeaderDivider = ({ invisible }: { invisible?: boolean }) => {
 		<div
 			{...separatorProps}
 			class={style.divider}
-			classList={{ [style.divider_invisible]: invisible }}
+			classList={{ [style.dividerInvisible]: invisible }}
 		/>
 	);
 };

@@ -7,12 +7,16 @@ import {
 	ProgressCircle,
 	Tag,
 	TagIntent,
+	TriggerButton,
+	TriggerButtonGroup,
+	TriggerButtonIntent,
 } from "widgets";
 import style from "../styles/common.module.scss";
 
 const Components = () => {
 	return (
 		<div class={style.page}>
+			Lorem ipsum, dolor sit amet.
 			<HeaderBar
 				title={"Progress Circle"}
 				subtitle={"Indeterminate or with percentage"}
@@ -25,7 +29,7 @@ const Components = () => {
 			</div>
 			<HeaderBar
 				title={"Action Button"}
-				subtitle={"Mutate data"}
+				subtitle={"Will Mutate data"}
 				icon={"bolt"}
 				class={style.headerBar}
 			/>
@@ -65,11 +69,47 @@ const Components = () => {
 				<HeaderDivider />
 				<ActionButton label={"Disabled"} onPress={() => {}} isDisabled />
 			</div>
+			<HeaderBar
+				title={"Trigger Button"}
+				subtitle={"Open Menus, Popovers, Dialogs..."}
+				icon={"menu"}
+				class={style.headerBar}
+			/>
+			<div class={style.horizontal}>
+				<TriggerButton icon={"save"} label={"Hello"} />
+				<TriggerButton icon={"save"} label={"Hello"} progress={-1} />
+				<TriggerButton icon={"save"} label={"Hello"} intent={TriggerButtonIntent.Tinted} />
+				<TriggerButton
+					icon={"save"}
+					label={"Hello"}
+					intent={TriggerButtonIntent.Outlined}
+				/>
+				<HeaderDivider />
+				<TriggerButton
+					icon={"delete"}
+					label={"Delete"}
+					intent={TriggerButtonIntent.Danger}
+				/>
+				<HeaderDivider />
+				<TriggerButton icon={"save"} label={"Hello"} isDisabled />
+			</div>
+			<HeaderBar
+				title={"Trigger Button Group"}
+				subtitle={"Group Trigger Buttons"}
+				icon={"view_column"}
+				class={style.headerBar}
+			/>
+			<div class={style.horizontal}>
+				<TriggerButtonGroup>
+					<TriggerButton icon={"format_align_left"} label={"Left"} />
+					<TriggerButton icon={"format_align_center"} label={"Middle"} />
+					<TriggerButton icon={"format_align_right"} label={"Right"} />
+				</TriggerButtonGroup>
+			</div>
 			<HeaderBar title={"Tag"} icon={"sell"} class={style.headerBar} />
 			<div class={style.horizontal}>
 				<Tag label={"Primary"} intentColor={TagIntent.Primary} />
 				<Tag label={"Secondary"} intentColor={TagIntent.Secondary} />
-				<Tag label={"Outlined"} intentColor={TagIntent.Outlined} />
 				<Tag label={"Success"} intentColor={TagIntent.Success} />
 				<Tag label={"Warning"} intentColor={TagIntent.Warning} />
 				<Tag label={"Danger"} intentColor={TagIntent.Danger} />
@@ -89,8 +129,29 @@ const Components = () => {
 				subtitle={"A subtitle"}
 				tag={"a tag"}
 				icon={"settings"}
-				actions={[<div>1</div>, <HeaderDivider />, <div>2</div>, <div>3</div>]}
-				style={{ width: "480px" }}
+				actions={[
+					<TriggerButton icon={"save"} label={"Save"} />,
+					<TriggerButton icon={"input"} label={"Export"} />,
+					<HeaderDivider />,
+					<TriggerButton
+						icon={"delete"}
+						label={"Delete"}
+						intent={TriggerButtonIntent.Danger}
+					/>,
+				]}
+				style={{ width: "320px" }}
+			/>
+			<HeaderBar
+				title={"Callout"}
+				icon={"sticky_note_2"}
+				subtitle={"Info Messages"}
+				class={style.headerBar}
+			/>
+			<HeaderBar
+				title={"Colored Label"}
+				icon={"radio_button_unchecked"}
+				subtitle={"Info Messages"}
+				class={style.headerBar}
 			/>
 		</div>
 	);

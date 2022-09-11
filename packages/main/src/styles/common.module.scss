@@ -9,6 +9,8 @@ $view-max: 1440;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	max-width: 980px;
+	margin: 0 auto;
 }
 
 .horizontal {
@@ -21,5 +23,5 @@ $view-max: 1440;
 .header-bar {
 	background: #e7e5e4;
 	border-radius: 3px;
-	margin-top: 10px
+	margin-top: 30px
 }
