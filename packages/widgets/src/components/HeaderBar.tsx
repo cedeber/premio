@@ -43,7 +43,7 @@ export const HeaderBar = (props: HeaderBarProps) => {
 							label={typeof props.tag === "string" ? props.tag : props.tag.label}
 							intentColor={
 								typeof props.tag === "string"
-									? TagIntent.Secondary
+									? TagIntent.Outlined
 									: props.tag.intent ?? TagIntent.Secondary
 							}
 						/>

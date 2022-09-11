@@ -117,6 +117,8 @@ const Components = () => {
 				<Tag label={"Fuchsia"} intentColor={TagIntent.Fuchsia} />
 				<Tag label={"Indigo"} intentColor={TagIntent.Indigo} />
 				<Tag label={"Lime"} intentColor={TagIntent.Lime} />
+				<HeaderDivider />
+				<Tag label={"Outlined"} intentColor={TagIntent.Outlined} />
 			</div>
 			<HeaderBar
 				title={"Header Bar"}

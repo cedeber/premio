@@ -2,6 +2,7 @@ export const danger: string;
 export const fuchsia: string;
 export const indigo: string;
 export const lime: string;
+export const outlined: string;
 export const primary: string;
 export const secondary: string;
 export const success: string;

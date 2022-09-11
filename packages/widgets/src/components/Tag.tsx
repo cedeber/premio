@@ -12,6 +12,7 @@ export enum TagIntent {
 	Fuchsia = "fuchsia",
 	Indigo = "indigo",
 	Lime = "lime",
+	Outlined = "outlined",
 }
 
 interface TagProps {
@@ -47,6 +48,7 @@ export const Tag = (props: TagProps) => {
 				[style.fuchsia]: props.intentColor === TagIntent.Fuchsia,
 				[style.indigo]: props.intentColor === TagIntent.Indigo,
 				[style.lime]: props.intentColor === TagIntent.Lime,
+				[style.outlined]: props.intentColor === TagIntent.Outlined,
 			}}
 			style={bgColor ? { "background-color": bgColor, color: txtColor } : undefined}
 			ref={props.ref}
