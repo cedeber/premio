@@ -1,0 +1,18 @@
+@import "fn";
+
+// Responsive Layout boundaries
+$view-min: 320;
+$view-max: 1440;
+
+.page {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.horizontal {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}

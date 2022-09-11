@@ -1,10 +1,11 @@
-import { Link, Route, Router, Routes, useMatch, useNavigate } from "@solidjs/router";
+import { Route, Router, Routes, useMatch, useNavigate } from "@solidjs/router";
 import { lazy, Suspense } from "solid-js";
 import { render } from "solid-js/web";
-import { ActionButton, ActionButtonIconPlacement, ActionButtonIntent } from "widgets";
+import { ActionButton, ActionButtonIntent } from "widgets";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
+const Components = lazy(() => import("./pages/Components"));
 
 const ButtonLink = (props: { href: string; label: string }) => {
 	const match = useMatch(() => props.href);
@@ -36,58 +37,7 @@ const App = () => {
 				<ButtonLink href="/games/cedeber" label="Games (GraphQL)" />
 			</nav>
 			<Routes base={import.meta.env.BASE_URL}>
-				<Route
-					path="/"
-					element={
-						<div
-							style={{
-								display: "flex",
-								gap: "10px",
-								margin: "10px",
-								"align-items": "center",
-							}}
-						>
-							<ActionButton
-								label={"Filled"}
-								onPress={() => {
-									console.log("click");
-								}}
-							/>
-							<ActionButton label={"Filled"} onPress={() => {}} progress={-1} />
-							<ActionButton
-								label={"Tinted"}
-								intent={ActionButtonIntent.Tinted}
-								onPress={() => {}}
-							/>
-							<ActionButton
-								label={"Gray"}
-								intent={ActionButtonIntent.Gray}
-								onPress={() => {}}
-							/>
-							<ActionButton
-								label={"Outlined"}
-								intent={ActionButtonIntent.Outlined}
-								onPress={() => {}}
-								icon={"arrow_right_alt"}
-								iconPlacement={ActionButtonIconPlacement.Right}
-							/>
-							<ActionButton
-								label={"Plain"}
-								intent={ActionButtonIntent.Plain}
-								onPress={() => {}}
-							/>
-							|
-							<ActionButton
-								label={"Danger"}
-								intent={ActionButtonIntent.Danger}
-								onPress={() => {}}
-								icon="delete"
-							/>
-							|
-							<ActionButton label={"Disabled"} onPress={() => {}} isDisabled />
-						</div>
-					}
-				/>
+				<Route path="/" component={Components} />
 				<Route
 					path="/games/:username"
 					element={

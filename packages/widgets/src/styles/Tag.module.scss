@@ -1,0 +1,60 @@
+@use "colors";
+
+.tag {
+	padding: 3px 9px;
+	font-weight: 400;
+	white-space: nowrap;
+	font-size: 11px;
+	border-radius: 15px 5px;
+	line-height: 13px;
+	vertical-align: middle;
+	display: inline-flex;
+	align-items: center;
+}
+
+.primary {
+	background: colors.$sky-200;
+	color: colors.$sky-700;
+}
+
+// default
+.secondary {
+	background: colors.$stone-200;
+	color: colors.$stone-700;
+}
+
+.success {
+	background: colors.$emerald-200;
+	color: colors.$emerald-700;
+}
+
+.warning {
+	background: colors.$amber-200;
+	color: colors.$amber-700;
+}
+
+.danger {
+	background: colors.$rose-200;
+	color: colors.$rose-700;
+}
+
+.outlined {
+	background: white;
+	color: colors.$sky-600;
+	box-shadow: inset 0 0 0 1px colors.$sky-600;
+}
+
+.fuchsia {
+	background: colors.$fuchsia-200;
+	color: colors.$fuchsia-700;
+}
+
+.indigo {
+	background: colors.$indigo-200;
+	color: colors.$indigo-700;
+}
+
+.lime {
+	background: colors.$lime-200;
+	color: colors.$lime-700;
+}
