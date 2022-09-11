@@ -6,7 +6,7 @@ watch-app:
 	npx vite
 
 watch-scss:
-	npx typed-scss-modules packages/*/src/**/*.module.scss --watch
+	npx typed-scss-modules "packages/*/src/**/*.module.scss" --watch
 
 # Generated during development. Keep the files in the repository.
 codegen-graphql:
