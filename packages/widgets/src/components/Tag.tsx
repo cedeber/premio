@@ -6,7 +6,6 @@ import { createVisuallyHidden } from "@solid-aria/primitives";
 export enum TagIntent {
 	Primary = "primary",
 	Secondary = "secondary",
-	Outlined = "outlined",
 	Success = "success",
 	Warning = "warning",
 	Danger = "danger",
@@ -45,7 +44,6 @@ export const Tag = (props: TagProps) => {
 				[style.success]: props.intentColor === TagIntent.Success,
 				[style.warning]: props.intentColor === TagIntent.Warning,
 				[style.danger]: props.intentColor === TagIntent.Danger,
-				[style.outlined]: props.intentColor === TagIntent.Outlined,
 				[style.fuchsia]: props.intentColor === TagIntent.Fuchsia,
 				[style.indigo]: props.intentColor === TagIntent.Indigo,
 				[style.lime]: props.intentColor === TagIntent.Lime,
