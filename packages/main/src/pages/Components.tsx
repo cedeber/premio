@@ -12,12 +12,22 @@ import style from "../styles/common.module.scss";
 const Components = () => {
 	return (
 		<div class={style.page}>
-			<h1>Progress Circle</h1>
+			<HeaderBar
+				title={"Progress Circle"}
+				subtitle={"Indeterminate or with percentage"}
+				icon={"autorenew"}
+				class={style.headerBar}
+			/>
 			<div class={style.horizontal}>
 				<ProgressCircle size={24} />
 				<ProgressCircle size={24} progress={62} />
 			</div>
-			<h1>Action Button</h1>
+			<HeaderBar
+				title={"Action Button"}
+				subtitle={"Mutate data"}
+				icon={"bolt"}
+				class={style.headerBar}
+			/>
 			<div class={style.horizontal}>
 				<ActionButton
 					label={"Filled"}
@@ -54,7 +64,7 @@ const Components = () => {
 				|
 				<ActionButton label={"Disabled"} onPress={() => {}} isDisabled />
 			</div>
-			<h1>Tag</h1>
+			<HeaderBar title={"Tag"} icon={"sell"} class={style.headerBar} />
 			<div class={style.horizontal}>
 				<Tag label={"Primary"} intentColor={TagIntent.Primary} />
 				<Tag label={"Secondary"} intentColor={TagIntent.Secondary} />
@@ -69,13 +79,17 @@ const Components = () => {
 				|
 				<Tag label={"#ec4899"} intentColor={"#ec4899"} />
 			</div>
-			<h1>Header Bar</h1>
 			<HeaderBar
 				title={"Header Bar"}
+				icon={"format_h1"}
 				subtitle={"Use me in Dialogs, Pages, Cards..."}
-				tag={"tag"}
+				class={style.headerBar}
+			/>
+			<HeaderBar
+				title={"Header Bar"}
+				subtitle={"A subtitle"}
+				tag={"a tag"}
 				icon={"settings"}
-				// class={style.headerBar}
 				style={{ width: "320px" }}
 			/>
 		</div>
