@@ -1,0 +1,58 @@
+@use "colors";
+@use "sass:color";
+
+.callout {
+	padding: 5px 8px;
+	border-radius: 3px;
+	font-size: 12px;
+}
+
+.title {
+	font-size: 13px;
+	font-weight: 500;
+	display: flex;
+	column-gap: 10px;
+	align-items: center;
+	margin-bottom: 3px;
+}
+
+.info {
+	background: colors.$sky-100;
+
+	.title {
+		color: colors.$sky-600;
+	}
+
+	@media (prefers-color-scheme: _dark) {
+		//background: color.scale(colors.$dark-background, $lightness: 10%);
+		//color: colors.$grey-100-white;
+		//
+		//.title {
+		//	color: colors.$grey-200-background;
+		//}
+	}
+}
+
+.success {
+	background: colors.$emerald-100;
+
+	.title {
+		color: colors.$emerald-700;
+	}
+}
+
+.warning {
+	background: colors.$amber-100;
+
+	.title {
+		color: colors.$amber-700;
+	}
+}
+
+.danger {
+	background: colors.$rose-100;
+
+	.title {
+		color: colors.$rose-700;
+	}
+}

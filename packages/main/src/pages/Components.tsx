@@ -2,6 +2,8 @@ import {
 	ActionButton,
 	ActionButtonIconPlacement,
 	ActionButtonIntent,
+	Callout,
+	CalloutIntent,
 	HeaderBar,
 	HeaderDivider,
 	ProgressCircle,
@@ -16,7 +18,7 @@ import style from "../styles/common.module.scss";
 const Components = () => {
 	return (
 		<div class={style.page}>
-			Lorem ipsum, dolor sit amet.
+			Lorem Elsass ipsum nüdle bredele ornare purus placerat sagittis.
 			<HeaderBar
 				title={"Progress Circle"}
 				subtitle={"Indeterminate or with percentage"}
@@ -149,6 +151,40 @@ const Components = () => {
 				subtitle={"Info Messages"}
 				class={style.headerBar}
 			/>
+			<div class={style.horizontal}>
+				<Callout title={"Info"} style={{ "max-width": "320px" }}>
+					Chulia Roberstau id turpis, habitant knepfle Carola morbi jetz gehts los kuglopf
+					gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac geht's sit
+					und Richard Schirmeck vulputate ftomi!
+				</Callout>
+				<Callout
+					title={"Success"}
+					intent={CalloutIntent.Success}
+					style={{ "max-width": "320px" }}
+				>
+					Chulia Roberstau id turpis, habitant knepfle Carola morbi jetz gehts los kuglopf
+					gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac geht's sit
+					und Richard Schirmeck vulputate ftomi!
+				</Callout>
+				<Callout
+					title={"Warning"}
+					intent={CalloutIntent.Warning}
+					style={{ "max-width": "320px" }}
+				>
+					Chulia Roberstau id turpis, habitant knepfle Carola morbi jetz gehts los kuglopf
+					gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac geht's sit
+					und Richard Schirmeck vulputate ftomi!
+				</Callout>
+				<Callout
+					title={"Danger"}
+					intent={CalloutIntent.Danger}
+					style={{ "max-width": "320px" }}
+				>
+					Chulia Roberstau id turpis, habitant knepfle Carola morbi jetz gehts los kuglopf
+					gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac geht's sit
+					und Richard Schirmeck vulputate ftomi!
+				</Callout>
+			</div>
 			<HeaderBar
 				title={"Colored Label"}
 				icon={"radio_button_unchecked"}
