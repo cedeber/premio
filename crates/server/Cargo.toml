@@ -26,5 +26,5 @@ tower-http = { version = "0.3.4", features = [
 ] }
 tracing = "0.1.35"
 tracing-subscriber = { version = "0.3.14", features = ["env-filter"] }
-prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.0" }
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.1" }
 clap = { version = "3.2.20", features = ["derive"] }
