@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "colors";
 
 .bar {
@@ -30,6 +31,7 @@
 	justify-content: center;
 	color: colors.$stone-800;
 	font-size: 20px;
+	font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 20;
 
 	@media (prefers-color-scheme: _dark) {
 		//color: colors.$grey-300-light-background;
@@ -57,4 +59,20 @@
 	display: flex;
 	align-items: center;
 	column-gap: 5px;
+}
+
+// Header Divider
+.divider {
+	margin: 0 5px;
+	height: 25px;
+	width: 1px;
+	background: color.scale(colors.$stone-100, $lightness: -7%);
+
+	@media (prefers-color-scheme: _dark) {
+		//background: color.scale(colors.$dark-background, $lightness: 15%);
+	}
+}
+
+.divider_invisible {
+	background: transparent !important;
 }

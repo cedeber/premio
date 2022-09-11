@@ -5,4 +5,4 @@ export {
 } from "./components/ActionButton";
 export { ProgressCircle } from "./components/ProgressCircle";
 export { Tag, TagIntent } from "./components/Tag";
-export { HeaderBar } from "./components/HeaderBar";
+export { HeaderBar, HeaderDivider } from "./components/HeaderBar";

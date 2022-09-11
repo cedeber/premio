@@ -3,6 +3,7 @@ import {
 	ActionButtonIconPlacement,
 	ActionButtonIntent,
 	HeaderBar,
+	HeaderDivider,
 	ProgressCircle,
 	Tag,
 	TagIntent,
@@ -54,14 +55,14 @@ const Components = () => {
 					intent={ActionButtonIntent.Plain}
 					onPress={() => {}}
 				/>
-				|
+				<HeaderDivider />
 				<ActionButton
 					label={"Danger"}
 					intent={ActionButtonIntent.Danger}
 					onPress={() => {}}
 					icon="delete"
 				/>
-				|
+				<HeaderDivider />
 				<ActionButton label={"Disabled"} onPress={() => {}} isDisabled />
 			</div>
 			<HeaderBar title={"Tag"} icon={"sell"} class={style.headerBar} />
@@ -72,12 +73,10 @@ const Components = () => {
 				<Tag label={"Success"} intentColor={TagIntent.Success} />
 				<Tag label={"Warning"} intentColor={TagIntent.Warning} />
 				<Tag label={"Danger"} intentColor={TagIntent.Danger} />
-				|
+				<HeaderDivider />
 				<Tag label={"Fuchsia"} intentColor={TagIntent.Fuchsia} />
 				<Tag label={"Indigo"} intentColor={TagIntent.Indigo} />
 				<Tag label={"Lime"} intentColor={TagIntent.Lime} />
-				|
-				<Tag label={"#ec4899"} intentColor={"#ec4899"} />
 			</div>
 			<HeaderBar
 				title={"Header Bar"}
@@ -90,7 +89,8 @@ const Components = () => {
 				subtitle={"A subtitle"}
 				tag={"a tag"}
 				icon={"settings"}
-				style={{ width: "320px" }}
+				actions={[<div>1</div>, <HeaderDivider />, <div>2</div>, <div>3</div>]}
+				style={{ width: "480px" }}
 			/>
 		</div>
 	);

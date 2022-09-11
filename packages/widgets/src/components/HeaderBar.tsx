@@ -1,6 +1,7 @@
 import type { JSX } from "solid-js";
 import style from "../styles/HeaderBar.module.scss";
 import { Tag, TagIntent } from "./Tag";
+import { createSeparator } from "@solid-aria/primitives";
 
 interface HeaderBarProps {
 	title?: string;
@@ -51,5 +52,17 @@ export const HeaderBar = (props: HeaderBarProps) => {
 			)}
 			<div class={style.actions}>{props.actions}</div>
 		</div>
+	);
+};
+
+export const HeaderDivider = ({ invisible }: { invisible?: boolean }) => {
+	let { separatorProps } = createSeparator({ orientation: "horizontal" });
+
+	return (
+		<div
+			{...separatorProps}
+			class={style.divider}
+			classList={{ [style.divider_invisible]: invisible }}
+		/>
 	);
 };
