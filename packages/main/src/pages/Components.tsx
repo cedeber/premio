@@ -2,8 +2,10 @@ import {
 	ActionButton,
 	ActionButtonIconPlacement,
 	ActionButtonIntent,
+	AlertDialog,
 	Callout,
 	CalloutIntent,
+	Dialog,
 	HeaderBar,
 	HeaderDivider,
 	ProgressCircle,
@@ -186,11 +188,30 @@ const Components = () => {
 				</Callout>
 			</div>
 			<HeaderBar
-				title={"Colored Label"}
-				icon={"radio_button_unchecked"}
-				subtitle={"Info Messages"}
+				title={"Dialog"}
+				icon={"quickreply"}
+				subtitle={"Styling only"}
 				class={style.headerBar}
 			/>
+			<div>
+				<Dialog>
+					<div style={{ padding: "10px", "background-color": "#fdf4ff" }}>
+						This is the un-styled scrollable content. It's up to the developer to set
+						the padding and the overflow, as needed.
+					</div>
+				</Dialog>
+			</div>
+			<HeaderBar
+				title={"Alert Dialog"}
+				icon={"exclamation"}
+				subtitle={"Styling only"}
+				class={style.headerBar}
+			/>
+			<div>
+				<AlertDialog>
+					Are you sure you want to delete <strong>README.md</strong>?
+				</AlertDialog>
+			</div>
 		</div>
 	);
 };

@@ -9,6 +9,7 @@ export interface CalloutProps {
 	children: JSX.Element;
 	style?: JSX.CSSProperties;
 	ref?: HTMLDivElement;
+	// TODO, add an inline option
 }
 
 export enum CalloutIntent {
