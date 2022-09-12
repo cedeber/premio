@@ -211,12 +211,34 @@ const Components = () => {
 				class={style.headerBar}
 			/>
 			<div>
-				<Dialog>
-					<div style={{ padding: "10px", "background-color": "#fdf4ff" }}>
-						This is the un-styled scrollable content. It's up to the developer to set
-						the padding and the overflow, as needed.
-					</div>
-				</Dialog>
+				<ActionButton
+					label={"Open Dialog"}
+					onPress={dialog.state.open}
+					domProps={dialog.triggerProps}
+				/>
+				<Show when={dialog.state.isOpen()}>
+					<Dialog
+						closeFn={dialog.state.close}
+						underlayProps={dialog.underlayProps}
+						dialogProps={dialog.dialogProps}
+						style={{ width: "480px" }}
+						title={"Sign in to Premio"}
+						icon={"face"}
+						actions={[
+							<TriggerButton
+								icon={"install_mobile"}
+								label={"Download the application"}
+							/>,
+						]}
+						mainButton={{ label: "Sign in", icon: "login" }}
+						secondaryButton={{ label: "Create an account", icon: "person_add" }}
+					>
+						<div style={{ padding: "10px", "background-color": "#fdf4ff" }}>
+							This is the un-styled scrollable content. It's up to the developer to
+							set the padding and the overflow, as needed.
+						</div>
+					</Dialog>
+				</Show>
 			</div>
 			<HeaderBar
 				title={"Alert Dialog"}

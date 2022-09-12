@@ -3,7 +3,6 @@ export const alertTitle: string;
 export const arrow: string;
 export const buttonGroup: string;
 export const buttons: string;
-export const centered: string;
 export const dialog: string;
 export const dialogTab: string;
 export const footer: string;

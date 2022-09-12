@@ -46,7 +46,6 @@ export const AlertDialog = (props: AlertDialogProps) => {
 				<div
 					ref={mergeRefs((el) => (ref = el), props.ref)}
 					class={style.dialog}
-					classList={{ [style.centered]: false }}
 					style={props.style}
 					{...mergeProps(props.dialogProps, dialogProps, modalProps)}
 				>

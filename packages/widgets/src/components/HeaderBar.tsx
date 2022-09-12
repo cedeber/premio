@@ -8,7 +8,7 @@ interface HeaderBarProps {
 	subtitle?: string;
 	icon?: string | JSX.Element;
 	actions?: JSX.Element[];
-	domTitleProps?: JSX.HTMLAttributes<HTMLDivElement>;
+	titleProps?: JSX.HTMLAttributes<HTMLDivElement>;
 	class?: string;
 	tag?: string | { label: string; intent?: TagIntent };
 	style?: JSX.CSSProperties;
@@ -33,7 +33,7 @@ export const HeaderBar = (props: HeaderBarProps) => {
 						</div>
 					)}
 					<div class={style.titleWrapper}>
-						<h3 class={style.title} {...props.domTitleProps}>
+						<h3 class={style.title} {...props.titleProps}>
 							{props.title}
 						</h3>
 						{props.subtitle && <div class={style.subtitle}>{props.subtitle}</div>}
