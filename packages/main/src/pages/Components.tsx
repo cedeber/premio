@@ -207,7 +207,7 @@ const Components = () => {
 			<HeaderBar
 				title={"Dialog"}
 				icon={"quickreply"}
-				subtitle={"Styling only"}
+				subtitle={"An overlay"}
 				class={style.headerBar}
 			/>
 			<div>
@@ -260,7 +260,8 @@ const Components = () => {
 							setError(undefined);
 						}}
 						mainButton={{
-							label: "Delete",
+							label: "Yes, delete that file",
+							icon: "delete",
 							onPress: () => setError("This file doesn't exist."),
 						}}
 						dialogProps={alert.dialogProps}
