@@ -10,3 +10,4 @@ export { TriggerButton, TriggerButtonGroup, TriggerButtonIntent } from "./compon
 export { Callout, CalloutIntent } from "./components/Callout";
 export { Dialog } from "./components/Dialog";
 export { AlertDialog } from "./components/AlertDialog";
+export { createDialog } from "./utils/createDialog";

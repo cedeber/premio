@@ -4,14 +4,15 @@ import {
 	createFocusRing,
 	createHover,
 } from "@solid-aria/primitives";
-import { JSX, mergeProps } from "solid-js";
+import { JSX, mergeProps, Ref } from "solid-js";
 import style from "../styles/ActionButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
+import { mergeRefs } from "@solid-primitives/refs";
 
-interface ActionButtonProps extends Omit<AriaButtonProps, "children"> {
+export interface ActionButtonProps extends Omit<AriaButtonProps, "children"> {
 	label: string;
 	intent?: ActionButtonIntent;
-	ref?: HTMLButtonElement;
+	ref?: Ref<HTMLButtonElement | undefined>;
 	/** Material Symbols Outlined.
 	 * @see https://marella.me/material-symbols/demo/
 	 * @see https://fonts.google.com/icons?icon.set=Material+Symbols
@@ -44,9 +45,10 @@ export const enum ActionButtonIconPlacement {
 }
 
 export const ActionButton = (props: ActionButtonProps) => {
+	let ref!: HTMLButtonElement;
 	const { buttonProps, isPressed } = createButton(
 		{ ...props, isDisabled: props.isDisabled || props.progress != undefined },
-		() => props.ref,
+		() => ref,
 	);
 	const { hoverProps, isHovered } = createHover();
 	const { isFocusVisible, focusProps } = createFocusRing();
@@ -68,7 +70,7 @@ export const ActionButton = (props: ActionButtonProps) => {
 				[style.focus]: isFocusVisible(),
 				[style.disabled]: props.isDisabled,
 			}}
-			ref={props.ref}
+			ref={mergeRefs((el) => (ref = el), props.ref)}
 			data-intent={props.intent}
 		>
 			{props.iconPlacement !== ActionButtonIconPlacement.Right && props.icon && (

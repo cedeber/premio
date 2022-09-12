@@ -31,20 +31,18 @@
 
 .overlay {
 	position: fixed;
-	z-index: 500; // 100 in react-aria doc
+	z-index: 100;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-	background: rgba(0, 0, 0, 0.15);
+	background: rgba(0, 0, 0, 0.37);
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: center;
-	padding-top: 40px;
 }
 
 .centered {
-	// padding-top overlay is 40px
 	max-height: calc(100vh - 80px);
 	overflow: hidden;
 }

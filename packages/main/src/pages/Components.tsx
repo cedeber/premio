@@ -5,6 +5,7 @@ import {
 	AlertDialog,
 	Callout,
 	CalloutIntent,
+	createDialog,
 	Dialog,
 	HeaderBar,
 	HeaderDivider,
@@ -16,8 +17,17 @@ import {
 	TriggerButtonIntent,
 } from "widgets";
 import style from "../styles/common.module.scss";
+import { createSignal, Show } from "solid-js";
 
 const Components = () => {
+	let alertRef!: HTMLDivElement;
+	const alert = createDialog(alertRef);
+
+	let dialogRef!: HTMLDivElement;
+	const dialog = createDialog(alertRef);
+
+	const [error, setError] = createSignal<string>();
+
 	return (
 		<div class={style.page}>
 			Lorem Elsass ipsum nüdle bredele ornare purus placerat sagittis.
@@ -187,6 +197,13 @@ const Components = () => {
 					und Richard Schirmeck vulputate ftomi!
 				</Callout>
 			</div>
+			<div class={style.horizontal}>
+				<Callout title={"Inline Info."} style={{ "max-width": "320px" }} inline>
+					Chulia Roberstau id turpis, habitant knepfle Carola morbi jetz gehts los kuglopf
+					gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac geht's sit
+					und Richard Schirmeck vulputate ftomi!
+				</Callout>
+			</div>
 			<HeaderBar
 				title={"Dialog"}
 				icon={"quickreply"}
@@ -204,13 +221,34 @@ const Components = () => {
 			<HeaderBar
 				title={"Alert Dialog"}
 				icon={"exclamation"}
-				subtitle={"Styling only"}
+				subtitle={"Show a dangerous Alert"}
 				class={style.headerBar}
 			/>
 			<div>
-				<AlertDialog>
-					Are you sure you want to delete <strong>README.md</strong>?
-				</AlertDialog>
+				<ActionButton
+					label={"Open AlertDialog"}
+					onPress={alert.state.open}
+					domProps={alert.triggerProps}
+				/>
+				<Show when={alert.state.isOpen()}>
+					<AlertDialog
+						title={"Delete file"}
+						closeFn={() => {
+							alert.state.close();
+							setError(undefined);
+						}}
+						mainButton={{
+							label: "Delete",
+							onPress: () => setError("This file doesn't exist."),
+						}}
+						dialogProps={alert.dialogProps}
+						underlayProps={alert.underlayProps}
+						errorCallout={error() ? { title: error() } : undefined}
+						ref={alertRef}
+					>
+						Are you sure you want to delete <strong>README.md</strong>?
+					</AlertDialog>
+				</Show>
 			</div>
 		</div>
 	);

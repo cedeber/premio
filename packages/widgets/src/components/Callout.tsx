@@ -6,10 +6,10 @@ export interface CalloutProps {
 	intent?: CalloutIntent;
 	class?: string;
 	contentClass?: string;
-	children: JSX.Element;
+	children?: JSX.Element;
 	style?: JSX.CSSProperties;
 	ref?: HTMLDivElement;
-	// TODO, add an inline option
+	inline?: boolean;
 }
 
 export enum CalloutIntent {
@@ -25,6 +25,7 @@ export const Callout = (props: CalloutProps) => {
 			ref={props.ref}
 			class={`${style.callout} ${props.class}`}
 			classList={{
+				[style.inline]: props.inline,
 				[style.info]: props.intent == undefined || props.intent === CalloutIntent.Info,
 				[style.success]: props.intent === CalloutIntent.Success,
 				[style.warning]: props.intent === CalloutIntent.Warning,
@@ -33,7 +34,7 @@ export const Callout = (props: CalloutProps) => {
 			style={props.style}
 		>
 			{props.title && <div class={style.title}>{props.title}</div>}
-			<div class={props.contentClass}>{props.children}</div>
+			<div class={`${style.content} ${props.contentClass}`}>{props.children}</div>
 		</div>
 	);
 };

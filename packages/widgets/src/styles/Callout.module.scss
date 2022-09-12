@@ -5,15 +5,32 @@
 	padding: 5px 8px;
 	border-radius: 3px;
 	font-size: 12px;
+	line-height: 1.3;
+	display: flex;
+	flex-direction: column;
+	row-gap: 3px;
 }
 
 .title {
 	font-size: 13px;
 	font-weight: 500;
-	display: flex;
-	column-gap: 10px;
-	align-items: center;
-	margin-bottom: 3px;
+}
+
+.inline {
+	display: block;
+
+	.title {
+		display: inline;
+
+		&::after {
+			content: " "
+		}
+	}
+
+
+	.content {
+		display: inline;
+	}
 }
 
 .info {

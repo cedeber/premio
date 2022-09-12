@@ -2,6 +2,7 @@ import { Route, Router, Routes, useMatch, useNavigate } from "@solidjs/router";
 import { lazy, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { ActionButton, ActionButtonIntent } from "widgets";
+import { OverlayProvider } from "@solid-aria/primitives";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
@@ -76,7 +77,9 @@ if ("serviceWorker" in navigator) {
 render(
 	() => (
 		<Router>
-			<App />
+			<OverlayProvider>
+				<App />
+			</OverlayProvider>
 		</Router>
 	),
 	root,
