@@ -1,7 +1,8 @@
+import { createSeparator } from "@solid-aria/primitives";
 import type { JSX } from "solid-js";
+
 import style from "../styles/HeaderBar.module.scss";
 import { Tag, TagIntent } from "./Tag";
-import { createSeparator } from "@solid-aria/primitives";
 
 interface HeaderBarProps {
 	title?: string;
@@ -19,7 +20,12 @@ export const HeaderBar = (props: HeaderBarProps) => {
 	const hasLeft = props.icon || props.title || props.subtitle || props.tag;
 
 	return (
-		<div class={`${style.bar} ${props.class}`} style={props.style} ref={props.ref}>
+		<div
+			class={`${style.bar} ${props.class}`}
+			classList={{ [style.toolbar]: !hasLeft }}
+			style={props.style}
+			ref={props.ref}
+		>
 			{hasLeft && (
 				<div class={style.left}>
 					{props.icon && (
@@ -55,14 +61,14 @@ export const HeaderBar = (props: HeaderBarProps) => {
 	);
 };
 
-export const HeaderDivider = ({ invisible }: { invisible?: boolean }) => {
-	let { separatorProps } = createSeparator({ orientation: "horizontal" });
+export const HeaderDivider = (props) => {
+	const { separatorProps } = createSeparator({ orientation: "horizontal" });
 
 	return (
 		<div
 			{...separatorProps}
 			class={style.divider}
-			classList={{ [style.dividerInvisible]: invisible }}
+			classList={{ [style.dividerInvisible]: props.invisible }}
 		/>
 	);
 };

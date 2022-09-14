@@ -7,3 +7,4 @@ export const left: string;
 export const subtitle: string;
 export const title: string;
 export const titleWrapper: string;
+export const toolbar: string;
