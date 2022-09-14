@@ -1,24 +1,25 @@
+import { OverlayProvider } from "@solid-aria/primitives";
 import { Route, Router, Routes, useMatch, useNavigate } from "@solidjs/router";
 import { lazy, Suspense } from "solid-js";
 import { render } from "solid-js/web";
 import { ActionButton, ActionButtonIntent } from "widgets";
-import { OverlayProvider } from "@solid-aria/primitives";
 
 const root = document.getElementById("app") as HTMLDivElement;
 const Games = lazy(() => import("@premio/games"));
 const Components = lazy(() => import("./pages/Components"));
 
-const ButtonLink = (props: { href: string; label: string }) => {
+const ButtonLink = (props: { href: string; label: string; icon?: string }) => {
 	const match = useMatch(() => props.href);
 	const navigate = useNavigate();
 
 	return (
 		<ActionButton
+			icon={props.icon}
 			label={props.label}
 			onPress={() => {
 				navigate(props.href);
 			}}
-			intent={Boolean(match()) ? ActionButtonIntent.Tinted : ActionButtonIntent.Gray}
+			intent={match() ? ActionButtonIntent.Tinted : ActionButtonIntent.Gray}
 		/>
 	);
 };
@@ -34,8 +35,8 @@ const App = () => {
 					"justify-content": "center",
 				}}
 			>
-				<ButtonLink href="/" label="Components" />
-				<ButtonLink href="/games/cedeber" label="Games (GraphQL)" />
+				<ButtonLink href="/" label="Design System (SolidJS)" />
+				<ButtonLink href="/games/cedeber" label="Board Game Geek (GraphQL)" />
 			</nav>
 			<Routes base={import.meta.env.BASE_URL}>
 				<Route path="/" component={Components} />
