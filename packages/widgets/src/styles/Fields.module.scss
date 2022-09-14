@@ -23,6 +23,12 @@
 			box-shadow: inset 0 0 0 1px colors.$sky-300;
 		}
 	}
+
+	&.read-only {
+		&.focus {
+			box-shadow: 0 0 0 1px colors.$amber-500, 0 0 0 5px colors.$amber-100;
+		}
+	}
 }
 
 .label {
@@ -63,12 +69,17 @@
 	background-color: colors.$rose-200;
 }
 
-.optional {
+.optional, .read-only-tag {
 	position: absolute;
 	top: 3px;
 	right: 5px;
 	font-size: 11px;
 	color: colors.$stone-400;
+}
+
+.read-only-tag {
+	color: colors.$amber-700;
+	font-weight: 600;
 }
 
 .disabled {
@@ -88,6 +99,10 @@
 	}
 
 	.description, .error-message {
-		background: colors.$stone-200 !important;
+		background: transparent !important;
+	}
+
+	.input {
+		background: colors.$stone-50;
 	}
 }

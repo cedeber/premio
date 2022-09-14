@@ -67,10 +67,15 @@
 	}
 }
 
+.loading {
+	cursor: progress;
+}
+
 .disabled {
 	background: colors.$stone-100 !important;
 	color: colors.$stone-400 !important;
 	box-shadow: none !important;
+	cursor: not-allowed !important;
 }
 
 .icon {
@@ -81,7 +86,7 @@
 	font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
 }
 
-.loading {
+.loading-circle {
 	position: absolute;
 	top: 50%;
 	left: 50%;

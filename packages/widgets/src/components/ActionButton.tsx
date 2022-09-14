@@ -4,10 +4,11 @@ import {
 	createFocusRing,
 	createHover,
 } from "@solid-aria/primitives";
+import { mergeRefs } from "@solid-primitives/refs";
 import { JSX, mergeProps, Ref } from "solid-js";
+
 import style from "../styles/ActionButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
-import { mergeRefs } from "@solid-primitives/refs";
 
 export interface ActionButtonProps extends Omit<AriaButtonProps, "children"> {
 	label: string;
@@ -69,6 +70,7 @@ export const ActionButton = (props: ActionButtonProps) => {
 				[style.press]: isPressed(),
 				[style.focus]: isFocusVisible(),
 				[style.disabled]: props.isDisabled,
+				[style.loading]: props.progress != undefined,
 			}}
 			ref={mergeRefs((el) => (ref = el), props.ref)}
 			data-intent={props.intent}
@@ -95,7 +97,7 @@ export const ActionButton = (props: ActionButtonProps) => {
 				</span>
 			)}
 			{props.progress != undefined && (
-				<div class={style.loading}>
+				<div class={style.loadingCircle}>
 					<ProgressCircle size={18} progress={props.progress} />
 				</div>
 			)}

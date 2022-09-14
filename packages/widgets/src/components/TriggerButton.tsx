@@ -1,8 +1,9 @@
-import type { JSX } from "solid-js";
-import { mergeProps } from "solid-js";
-import style from "../styles/TriggerButton.module.scss";
 import type { AriaButtonProps } from "@solid-aria/primitives";
 import { createButton, createFocusRing, createHover } from "@solid-aria/primitives";
+import type { JSX } from "solid-js";
+import { mergeProps } from "solid-js";
+
+import style from "../styles/TriggerButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
 
 interface TriggerButtonProps extends Omit<AriaButtonProps, "children"> {
@@ -52,12 +53,13 @@ export const TriggerButton = (props: TriggerButtonProps) => {
 				[style.press]: isPressed(),
 				[style.focus]: isFocusVisible(),
 				[style.disabled]: props.isDisabled,
+				[style.loading]: props.progress != undefined,
 			}}
 			ref={props.ref}
 			data-intent={props.intent}
 		>
 			{props.progress != undefined ? (
-				<span class={style.loading}>
+				<span class={style.loadingCircle}>
 					<ProgressCircle size={18} progress={props.progress} />
 				</span>
 			) : (

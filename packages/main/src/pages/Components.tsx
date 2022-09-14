@@ -434,6 +434,7 @@ const Components = () => {
 						label={"Label"}
 						description={"This is a description of the field."}
 					/>
+					<TextField label={"Label"} value={"Hello, world!"} isReadOnly />
 					<TextField label={"Label"} errorMessage={"This is an error message."} />
 					<TextField
 						label={"Label"}

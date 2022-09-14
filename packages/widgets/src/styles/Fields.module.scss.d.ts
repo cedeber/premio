@@ -7,3 +7,5 @@ export const group: string;
 export const input: string;
 export const label: string;
 export const optional: string;
+export const readOnly: string;
+export const readOnlyTag: string;

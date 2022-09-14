@@ -24,18 +24,22 @@ export const TextField = (props: TextFieldProps) => {
 			classList={{
 				[style.disabled]: !!props.isDisabled,
 				[style.error]: !!props.errorMessage,
+				[style.readOnly]: props.isReadOnly,
 				[style.focus]: isFocusWithin(),
 			}}
 			style={props.style}
 		>
-			<Show when={!props.isRequired} keyed>
+			<Show when={props.isReadOnly} keyed>
+				<div class={style.readOnlyTag}>read only</div>
+			</Show>
+			<Show when={!props.isRequired && !props.isReadOnly} keyed>
 				<div class={style.optional}>optional</div>
 			</Show>
 			<label class={style.label} {...labelProps}>
 				{props.label}
 			</label>
 			<input class={style.input} {...inputProps} ref={ref} />
-			<Show when={props.errorMessage} keyed>
+			<Show when={props.errorMessage && !props.isDisabled} keyed>
 				<div {...errorMessageProps} class={style.errorMessage}>
 					{props.errorMessage}
 				</div>

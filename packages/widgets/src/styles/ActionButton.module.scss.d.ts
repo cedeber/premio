@@ -8,6 +8,7 @@ export const hidden: string;
 export const hover: string;
 export const icon: string;
 export const loading: string;
+export const loadingCircle: string;
 export const outlined: string;
 export const plain: string;
 export const press: string;
