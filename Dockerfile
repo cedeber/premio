@@ -3,7 +3,7 @@ RUN apk add --update --no-cache build-base musl-dev libc-dev openssl-dev binarye
 RUN rustup toolchain install nightly-2022-01-20
 RUN rustup component add rust-src --toolchain nightly-2022-01-20
 RUN rustup target add wasm32-unknown-unknown
-RUN cargo install wasm-bindgen-cli
+RUN cargo install -f wasm-bindgen-cli
 WORKDIR app
 COPY . .
 RUN npm clean-install
