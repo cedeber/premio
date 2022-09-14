@@ -64,6 +64,10 @@ const Components = () => {
 					/>
 				</svg>
 			</a>
+			<h1 class={style.title}>Premio Design System</h1>
+			<div class={style.subtitle} style={{ "margin-bottom": "40px" }}>
+				Condensed UI for Web application
+			</div>
 			<Card
 				title={"Progress Circle"}
 				subtitle={"Indeterminate or with percentage"}
