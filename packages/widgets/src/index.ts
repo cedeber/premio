@@ -5,6 +5,7 @@ export {
 } from "./components/ActionButton";
 export { AlertDialog } from "./components/AlertDialog";
 export { Callout, CalloutIntent } from "./components/Callout";
+export { Card } from "./components/Card";
 export { ColoredLabel, ColoredLabelIntent } from "./components/ColoredLabel";
 export { Dialog } from "./components/Dialog";
 export { HeaderBar, HeaderDivider } from "./components/HeaderBar";
