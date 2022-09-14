@@ -1,0 +1,56 @@
+@use "colors";
+
+.colored-label {
+	display: inline-flex;
+	align-items: baseline;
+	column-gap: 5px;
+}
+
+.color {
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 8px;
+	border: 1px solid;
+}
+
+.primary .color {
+	background-color: colors.$sky-200;
+	border-color: colors.$sky-400;
+}
+
+// default
+.secondary .color {
+	background-color: colors.$stone-200;
+	border-color: colors.$stone-400;
+}
+
+.success .color {
+	background-color: colors.$emerald-200;
+	border-color: colors.$emerald-400;
+}
+
+.warning .color {
+	background-color: colors.$amber-200;
+	border-color: colors.$amber-400;
+}
+
+.danger .color {
+	background-color: colors.$rose-200;
+	border-color: colors.$rose-400;
+}
+
+.fuchsia .color {
+	background-color: colors.$fuchsia-200;
+	border-color: colors.$fuchsia-400;
+}
+
+.indigo .color {
+	background-color: colors.$indigo-200;
+	border-color: colors.$indigo-400;
+}
+
+.lime .color {
+	background-color: colors.$lime-200;
+	border-color: colors.$lime-400;
+}

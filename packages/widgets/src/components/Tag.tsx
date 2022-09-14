@@ -1,7 +1,8 @@
-import type { JSX } from "solid-js";
-import { readableColor, shade, tint } from "polished";
-import style from "../styles/Tag.module.scss";
 import { createVisuallyHidden } from "@solid-aria/primitives";
+import { readableColor, shade, tint } from "polished";
+import type { JSX } from "solid-js";
+
+import style from "../styles/Tag.module.scss";
 
 export enum TagIntent {
 	Primary = "primary",
@@ -27,8 +28,11 @@ export const Tag = (props: TagProps) => {
 	let bgColor, txtColor;
 
 	try {
-		if (!Object.values(TagIntent).includes(props.intentColor as TagIntent)) {
-			bgColor = props.intentColor || TagIntent.Secondary;
+		if (
+			props.intentColor &&
+			!Object.values(TagIntent).includes(props.intentColor as TagIntent)
+		) {
+			bgColor = props.intentColor;
 			txtColor = readableColor(bgColor, shade(0.8, bgColor), tint(0.9, bgColor), false);
 		}
 	} catch {

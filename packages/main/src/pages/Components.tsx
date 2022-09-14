@@ -1,3 +1,4 @@
+import { createSignal, Show } from "solid-js";
 import {
 	ActionButton,
 	ActionButtonIconPlacement,
@@ -5,6 +6,8 @@ import {
 	AlertDialog,
 	Callout,
 	CalloutIntent,
+	ColoredLabel,
+	ColoredLabelIntent,
 	createDialog,
 	Dialog,
 	HeaderBar,
@@ -16,8 +19,8 @@ import {
 	TriggerButtonGroup,
 	TriggerButtonIntent,
 } from "widgets";
+
 import style from "../styles/common.module.scss";
-import { createSignal, Show } from "solid-js";
 
 const Components = () => {
 	let alertRef!: HTMLDivElement;
@@ -135,6 +138,22 @@ const Components = () => {
 				<Tag label={"Outlined"} intentColor={TagIntent.Outlined} />
 			</div>
 			<HeaderBar
+				title={"Colored Label"}
+				subtitle={"Use in Table"}
+				icon={"sell"}
+				class={style.headerBar}
+			/>
+			<div class={style.vertical}>
+				<ColoredLabel label={"Primary"} intentColor={ColoredLabelIntent.Primary} />
+				<ColoredLabel label={"Secondary"} intentColor={ColoredLabelIntent.Secondary} />
+				<ColoredLabel label={"Success"} intentColor={ColoredLabelIntent.Success} />
+				<ColoredLabel label={"Warning"} intentColor={ColoredLabelIntent.Warning} />
+				<ColoredLabel label={"Danger"} intentColor={ColoredLabelIntent.Danger} />
+				<ColoredLabel label={"Fuchsia"} intentColor={ColoredLabelIntent.Fuchsia} />
+				<ColoredLabel label={"Indigo"} intentColor={ColoredLabelIntent.Indigo} />
+				<ColoredLabel label={"Lime"} intentColor={ColoredLabelIntent.Lime} />
+			</div>
+			<HeaderBar
 				title={"Header Bar"}
 				icon={"format_h1"}
 				subtitle={"Use me in Dialogs, Pages, Cards..."}
@@ -230,6 +249,7 @@ const Components = () => {
 								label={"Download the application"}
 							/>,
 						]}
+						ref={dialogRef}
 						mainButton={{ label: "Sign in", icon: "login" }}
 						secondaryButton={{ label: "Create an account", icon: "person_add" }}
 					>
