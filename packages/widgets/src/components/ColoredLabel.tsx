@@ -1,4 +1,4 @@
-import { readableColor, shade, tint } from "polished";
+import { darken, saturate } from "polished";
 import type { JSX } from "solid-js";
 
 import style from "../styles/ColoredLabel.module.scss";
@@ -28,7 +28,7 @@ export const ColoredLabel = (props: ColoredLabelProps) => {
 	try {
 		if (!Object.values(ColoredLabelIntent).includes(props.intentColor as ColoredLabelIntent)) {
 			bgColor = props.intentColor || TagIntent.Secondary;
-			borderColor = readableColor(bgColor, shade(0.8, bgColor), tint(0.9, bgColor), false);
+			borderColor = darken(0.15, saturate(0.1, bgColor));
 		}
 	} catch {
 		/* do nothing, will use default color: Secondary */

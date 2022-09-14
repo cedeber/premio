@@ -136,6 +136,7 @@ const Components = () => {
 				<Tag label={"Lime"} intentColor={TagIntent.Lime} />
 				<HeaderDivider />
 				<Tag label={"Outlined"} intentColor={TagIntent.Outlined} />
+				<Tag label={"Personalized"} intentColor={"#abcdef"} />
 			</div>
 			<HeaderBar
 				title={"Colored Label"}
@@ -152,6 +153,7 @@ const Components = () => {
 				<ColoredLabel label={"Fuchsia"} intentColor={ColoredLabelIntent.Fuchsia} />
 				<ColoredLabel label={"Indigo"} intentColor={ColoredLabelIntent.Indigo} />
 				<ColoredLabel label={"Lime"} intentColor={ColoredLabelIntent.Lime} />
+				<ColoredLabel label={"Personalized"} intentColor={"#abcdef"} />
 			</div>
 			<HeaderBar
 				title={"Header Bar"}
