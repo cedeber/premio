@@ -16,6 +16,7 @@ import {
 	ProgressCircle,
 	Tag,
 	TagIntent,
+	TextField,
 	TriggerButton,
 	TriggerButtonGroup,
 	TriggerButtonIntent,
@@ -419,6 +420,30 @@ const Components = () => {
 						kuglopf gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac
 						geht's sit und Richard Schirmeck vulputate ftomi!
 					</Callout>
+				</div>
+			</Card>
+			<Card title={"Text Field"} icon={"title"} subtitle={"Form"}>
+				<div class={style.vertical} style={{ margin: "10px auto", "max-width": "380px" }}>
+					<TextField label={"Label"} />
+					<TextField label={"Label"} placeholder={"Placeholder"} />
+					<TextField
+						label={"Label"}
+						description={"This is a description of the field."}
+					/>
+					<TextField label={"Label"} errorMessage={"This is an error message."} />
+					<TextField
+						label={"Label"}
+						placeholder={"Placeholder"}
+						description={"This is a description of the field."}
+						errorMessage={"This is an error message."}
+					/>
+					<TextField
+						label={"Disabled"}
+						placeholder={"Placeholder"}
+						description={"This is a description of the field."}
+						errorMessage={"This is an error message."}
+						isDisabled
+					/>
 				</div>
 			</Card>
 		</div>

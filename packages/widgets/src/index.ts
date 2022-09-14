@@ -11,5 +11,6 @@ export { Dialog } from "./components/Dialog";
 export { HeaderBar, HeaderDivider } from "./components/HeaderBar";
 export { ProgressCircle } from "./components/ProgressCircle";
 export { Tag, TagIntent } from "./components/Tag";
+export { TextField } from "./components/TextField";
 export { TriggerButton, TriggerButtonGroup, TriggerButtonIntent } from "./components/TriggerButton";
 export { createDialog } from "./utils/createDialog";

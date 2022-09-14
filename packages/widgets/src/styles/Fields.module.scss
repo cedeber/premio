@@ -1,0 +1,93 @@
+@use "sass:color";
+@use "colors";
+
+.group {
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	position: relative;
+
+	&.focus {
+		box-shadow: 0 0 0 1px colors.$sky-500, 0 0 0 5px colors.$sky-100;
+	}
+
+	&.error {
+		background-color: colors.$rose-50;
+		box-shadow: 0 0 0 1px colors.$rose-500;
+
+		&.focus {
+			box-shadow: 0 0 0 1px colors.$rose-500, 0 0 0 5px colors.$rose-100;
+		}
+
+		.description {
+			box-shadow: inset 0 0 0 1px colors.$sky-300;
+		}
+	}
+}
+
+.label {
+	font-weight: 450;
+	line-height: 1.15;
+	color: colors.$stone-500;
+	padding: 5px 5px 0 5px
+}
+
+.input {
+	outline: 0;
+	height: 30px;
+	padding: 5px;
+	margin: 3px;
+	border: 1px solid colors.$stone-300;
+	border-radius: 2px 2px 3px 3px;
+	background: white;
+
+	&::placeholder {
+		color: colors.$stone-300;
+	}
+}
+
+.description, .error-message {
+	font-size: 12px;
+	border-radius: 3px;
+	margin: 3px;
+	padding: 5px;
+}
+
+.description {
+	background-color: colors.$sky-100;
+	color: colors.$sky-700;
+}
+
+.error-message {
+	color: colors.$rose-700;
+	background-color: colors.$rose-200;
+}
+
+.optional {
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	font-size: 11px;
+	color: colors.$stone-400;
+}
+
+.disabled {
+	border-color: transparent !important;
+	background: colors.$stone-100 !important;
+	color: colors.$stone-400 !important;
+	cursor: not-allowed !important;
+	box-shadow: none !important;
+
+	> * {
+		cursor: not-allowed !important;
+	}
+
+	.label, .description, .error-message {
+		box-shadow: none !important;
+		color: inherit !important;
+	}
+
+	.description, .error-message {
+		background: colors.$stone-200 !important;
+	}
+}
