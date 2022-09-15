@@ -45,7 +45,7 @@ export const ProgressCircle = (props: ProgressCircleProps) => {
 					attributeName="transform"
 					type="rotate"
 					begin="0s"
-					dur={isIndeterminate ? "1.2s" : "0s"}
+					dur={isIndeterminate ? "1s" : "0s"}
 					from={`90 ${center} ${center}`}
 					to={`450 ${center} ${center}`}
 					repeatCount={isIndeterminate ? "indefinite" : 0}
