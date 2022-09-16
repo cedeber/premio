@@ -337,7 +337,7 @@ const Components = () => {
 							}}
 							dialogProps={alert.dialogProps}
 							underlayProps={alert.underlayProps}
-							errorCallout={error() ? { title: error() } : undefined}
+							errorCallout={error() ? { message: error() } : undefined}
 							ref={alertRef}
 						>
 							Are you sure you want to delete <strong>README.md</strong>?

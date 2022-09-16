@@ -1,6 +1,3 @@
-import style from "../styles/Dialog.module.scss";
-import { ActionButton, ActionButtonIntent, ActionButtonProps } from "./ActionButton";
-import { Callout, CalloutIntent } from "./Callout";
 import {
 	createDialog,
 	createModal,
@@ -8,9 +5,13 @@ import {
 	FocusScope,
 	OverlayContainer,
 } from "@solid-aria/primitives";
+import { mergeRefs } from "@solid-primitives/refs";
 import type { JSX, Ref } from "solid-js";
 import { mergeProps, Show } from "solid-js";
-import { mergeRefs } from "@solid-primitives/refs";
+
+import style from "../styles/Dialog.module.scss";
+import { ActionButton, ActionButtonIntent, ActionButtonProps } from "./ActionButton";
+import { Callout, CalloutIntent } from "./Callout";
 
 interface AlertDialogProps {
 	ref?: Ref<HTMLDivElement | undefined>;
@@ -59,7 +60,7 @@ export const AlertDialog = (props: AlertDialogProps) => {
 						<Show when={!!props.errorCallout}>
 							<Callout
 								title={props.errorCallout?.title}
-								intent={props.errorCallout?.intent ?? CalloutIntent.Danger}
+								intent={props.errorCallout?.intent ?? CalloutIntent.Error}
 								inline
 							>
 								{props.errorCallout?.message}
