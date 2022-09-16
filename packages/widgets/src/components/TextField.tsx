@@ -2,7 +2,8 @@ import type { AriaTextFieldProps } from "@solid-aria/primitives";
 import { createFocus, createTextField } from "@solid-aria/primitives";
 import { createSignal, JSX, mergeProps, Show } from "solid-js";
 
-import style from "../styles/Fields.module.scss";
+import style from "../styles/TextField.module.scss";
+import { Callout, CalloutIntent } from "./Callout";
 
 interface TextFieldProps extends AriaTextFieldProps<"input"> {
 	style?: JSX.CSSProperties;
@@ -53,9 +54,13 @@ export const TextField = (props: TextFieldProps) => {
 				</Show>
 			</div>
 			<Show when={props.errorMessage && !props.isDisabled} keyed>
-				<div {...errorMessageProps} class={style.errorMessage}>
+				<Callout
+					intent={CalloutIntent.Error}
+					messageProps={errorMessageProps}
+					class={style.errorMessage}
+				>
 					{props.errorMessage}
-				</div>
+				</Callout>
 			</Show>
 			<Show when={props.description} keyed>
 				<div {...descriptionProps} class={style.description}>

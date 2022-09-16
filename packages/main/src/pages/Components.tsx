@@ -7,6 +7,7 @@ import {
 	Callout,
 	CalloutIntent,
 	Card,
+	Checkbox,
 	ColoredLabel,
 	ColoredLabelIntent,
 	createDialog,
@@ -425,12 +426,19 @@ const Components = () => {
 						kuglopf gal non Gal ! yeuh. Pfourtz ! Christkindelsmärik leo auctor, leo ac
 						geht's sit und Richard Schirmeck vulputate ftomi!
 					</Callout>
+					<Callout
+						title={"Error Callout."}
+						style={{ "max-width": "320px" }}
+						intent={CalloutIntent.Error}
+					>
+						This one is always inline and is designed to be used on forms.
+					</Callout>
 				</div>
 			</Card>
 			<Card title={"Text Field and Simple Text Field"} icon={"title"} subtitle={"Form"}>
 				<div
 					class={style.horizontal}
-					style={{ margin: "10px", "align-items": "self-start" }}
+					style={{ margin: "10px 0", "align-items": "self-start" }}
 				>
 					<div class={style.vertical} style={{ flex: "1" }}>
 						<TextField label={"Label"} />
@@ -501,6 +509,21 @@ const Components = () => {
 							]}
 						/>
 					</div>
+				</div>
+			</Card>
+			<Card title={"Checkbox"} icon={"check"} subtitle={"Form"}>
+				<div class={style.vertical} style={{ margin: "10px" }}>
+					<Checkbox>Checkbox</Checkbox>
+					<Checkbox isIndeterminate defaultSelected>
+						Indeterminate
+					</Checkbox>
+					<Checkbox isReadOnly defaultSelected>
+						Read only
+					</Checkbox>
+					<Checkbox isRequired defaultSelected>
+						Required?
+					</Checkbox>
+					<Checkbox isDisabled>Disabled</Checkbox>
 				</div>
 			</Card>
 		</div>

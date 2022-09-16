@@ -21,10 +21,9 @@
 		display: inline;
 
 		&::after {
-			content: " "
+			content: " ";
 		}
 	}
-
 
 	.content {
 		display: inline;
@@ -69,5 +68,16 @@
 
 	.title {
 		color: colors.$rose-700;
+	}
+}
+
+.error {
+	@extend .inline;
+	color: colors.$rose-700;
+	background-color: colors.$rose-100;
+	font-size: 12px;
+
+	.title {
+		font-weight: 600;
 	}
 }

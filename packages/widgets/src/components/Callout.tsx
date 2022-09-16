@@ -1,4 +1,5 @@
 import type { JSX } from "solid-js";
+
 import style from "../styles/Callout.module.scss";
 
 export interface CalloutProps {
@@ -10,6 +11,7 @@ export interface CalloutProps {
 	style?: JSX.CSSProperties;
 	ref?: HTMLDivElement;
 	inline?: boolean;
+	messageProps?: JSX.HTMLAttributes<HTMLDivElement>;
 }
 
 export enum CalloutIntent {
@@ -17,6 +19,7 @@ export enum CalloutIntent {
 	Success = "success",
 	Warning = "warning",
 	Danger = "danger",
+	Error = "error",
 }
 
 export const Callout = (props: CalloutProps) => {
@@ -30,8 +33,10 @@ export const Callout = (props: CalloutProps) => {
 				[style.success]: props.intent === CalloutIntent.Success,
 				[style.warning]: props.intent === CalloutIntent.Warning,
 				[style.danger]: props.intent === CalloutIntent.Danger,
+				[style.error]: props.intent === CalloutIntent.Error,
 			}}
 			style={props.style}
+			{...props.messageProps}
 		>
 			{props.title && <div class={style.title}>{props.title}</div>}
 			<div class={`${style.content} ${props.contentClass}`}>{props.children}</div>
