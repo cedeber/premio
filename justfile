@@ -16,6 +16,10 @@ codegen-graphql:
 clean:
 	rm -rf packages/wasm_* dist
 
+sqlx:
+	sqlx database create
+	sqlx migrate run
+
 wasm:
 	just crates/wasm_async/release
 	just crates/wasm_threads/release
