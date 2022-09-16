@@ -1,10 +1,6 @@
 use wasm_bindgen::prelude::*;
 pub use wasm_bindgen_rayon::init_thread_pool;
 
-#[cfg(feature = "wee_alloc")]
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
 #[wasm_bindgen(start)]
 pub fn main_wasm() -> Result<(), JsValue> {
 	#[cfg(feature = "console_error_panic_hook")]
@@ -24,9 +20,10 @@ pub async fn par_sum() -> u32 {
 
 #[cfg(test)]
 mod tests {
-	use super::*;
 	use wasm_bindgen_test::wasm_bindgen_test_configure;
 	use wasm_bindgen_test::*;
+
+	use super::*;
 
 	wasm_bindgen_test_configure!(run_in_browser);
 
