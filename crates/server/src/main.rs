@@ -23,10 +23,13 @@ use tower_http::{
 };
 use tracing::info;
 
-use graphql::schema::{build_schema, AppSchema};
+use crate::gqlite::schema::{build_schema, QuerySchema};
 
-mod graphql;
-mod prisma;
+// use graphql::schema::{build_schema, AppSchema};
+
+// mod graphql;
+// mod prisma;
+mod gqlite;
 
 /// Simple program to list all board games from a BoardGameGeek user.
 #[derive(Parser, Debug)]
@@ -134,7 +137,11 @@ async fn hello() -> impl IntoResponse {
 	)
 }
 
-async fn graphql_handler(schema: Extension<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
+// async fn graphql_handler(schema: Extension<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
+// 	schema.execute(req.into_inner()).await.into()
+// }
+
+async fn graphql_handler(schema: Extension<QuerySchema>, req: GraphQLRequest) -> GraphQLResponse {
 	schema.execute(req.into_inner()).await.into()
 }
 
