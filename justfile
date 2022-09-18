@@ -32,4 +32,4 @@ build: wasm vite
 
 # Run
 start: build
-	cargo run --release -p server
+	cargo run --release --package server

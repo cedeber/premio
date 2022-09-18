@@ -1,3 +1,6 @@
 [alias]
 serve = "run --release --bin server --"
 prisma = "run --release --bin prisma-cli --"
+
+[target.build]
+rustflags = ["-C", "target-cpu=native"]
