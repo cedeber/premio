@@ -23,7 +23,7 @@ use tower_http::{
 };
 use tracing::info;
 
-use crate::gqlite::schema::{build_schema, QuerySchema};
+use crate::gqlite::schema::{build_schema, AppSchema};
 
 // use graphql::schema::{build_schema, AppSchema};
 
@@ -141,7 +141,7 @@ async fn hello() -> impl IntoResponse {
 // 	schema.execute(req.into_inner()).await.into()
 // }
 
-async fn graphql_handler(schema: Extension<QuerySchema>, req: GraphQLRequest) -> GraphQLResponse {
+async fn graphql_handler(schema: Extension<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
 	schema.execute(req.into_inner()).await.into()
 }
 

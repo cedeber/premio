@@ -1,23 +1,7 @@
+use crate::gqlite::types::BoardGame;
 use async_graphql::SimpleObject;
 use serde::Serialize;
 use sqlx::{query, query_as, FromRow, Pool, Sqlite};
-
-// Each board game struct
-#[derive(Debug, Clone, Serialize, SimpleObject, FromRow)]
-pub struct BoardGame {
-	pub id: i64,
-	pub name: String,
-	pub year: Option<i64>,
-	pub min_players: Option<i64>,
-	pub max_players: Option<i64>,
-	pub playtime: Option<i64>, // minutes
-}
-
-#[derive(Debug, Clone, Serialize, SimpleObject, FromRow)]
-pub struct User {
-	pub id: Option<i64>,
-	pub username: String,
-}
 
 // Fetch the list of games for a specific user from BGG.
 // Also parse the XML and return a list of BoardGames.
