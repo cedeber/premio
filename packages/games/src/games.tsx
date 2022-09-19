@@ -1,11 +1,12 @@
-import { GraphQLClient } from "graphql-request";
-import { getSdk } from "./games.gql.js";
-import { Accessor, createSignal } from "solid-js";
 import { useParams } from "@solidjs/router";
+import { GraphQLClient } from "graphql-request";
+import { Accessor, createSignal } from "solid-js";
+
+import { getSdk } from "./games.gql.js";
 import style from "./games.module.scss";
 
 const client = new GraphQLClient("http://localhost:4000/graphql", { headers: {} });
-const { Games } = getSdk(client);
+const sdk = getSdk(client);
 
 const loadGraphql = <T extends object>(
 	query: Promise<T>,
@@ -18,7 +19,7 @@ const loadGraphql = <T extends object>(
 	const [data, setData] = createSignal<T>();
 	const [error, setError] = createSignal<any>();
 
-	query
+	void query
 		.then(setData)
 		.catch(setError)
 		.then(() => setLoading(false));
@@ -29,7 +30,7 @@ const loadGraphql = <T extends object>(
 const GamesPage = () => {
 	const { username } = useParams<{ username: string }>();
 
-	const { loading, data, error } = loadGraphql(Games({ username }));
+	const { loading, data, error } = loadGraphql(sdk.Games({ username }));
 
 	return (
 		<main>
