@@ -2,31 +2,31 @@
 	"short_name": "Premio",
 	"name": "Premio",
 	"description": "Web startup with WebAssembly.",
-	"start_url": "./",
+	"start_url": "/",
 	"display": "minimal-ui",
 	"theme_color": "#242526",
 	"background_color": "#242526",
 	"icons": [
 		{
-			"src": "./assets/icons/touch-icon.png",
+			"src": "/icons/touch-icon.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "any"
 		},
 		{
-			"src": "./assets/icons/touch-icon-maskable.png",
+			"src": "/icons/touch-icon-maskable.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "./assets/icons/touch-icon-large.png",
+			"src": "/icons/touch-icon-large.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any"
 		},
 		{
-			"src": "./assets/icons/touch-icon-large-maskable.png",
+			"src": "/icons/touch-icon-large-maskable.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"
