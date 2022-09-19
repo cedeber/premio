@@ -1,6 +1,6 @@
 # Developement
 watch-server:
-	DEV_MODE=1 RUST_LOG=trace cargo watch --watch ./crates/server --exec "run --bin server"
+	DEV_MODE=1 RUST_LOG=trace PORT=3000 cargo watch --watch ./crates/server --exec "run --bin server -- ./dist"
 
 watch-app:
 	npx vite
