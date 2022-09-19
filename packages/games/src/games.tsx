@@ -31,10 +31,7 @@ const loadGraphql = <T extends object>(
 };
 
 const GamesPage = () => {
-	console.log("port", import.meta.env.VITE_PORT);
-
 	const { username } = useParams<{ username: string }>();
-
 	const { loading, data, error } = loadGraphql(sdk.Games({ username }));
 
 	return (
