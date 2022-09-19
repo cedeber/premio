@@ -3,10 +3,8 @@ packages/wasm_*/
 .vscode/
 target/
 dist/
-pkg/
 node_modules/
 .DS_Store
 *.log
-*.tsbuildinfo
 *.db*
 *.sqlite*

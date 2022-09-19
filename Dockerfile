@@ -17,5 +17,4 @@ WORKDIR app
 COPY --from=builder /app/target/release/server /app/
 COPY --from=builder /app/dist /app/dist
 COPY --from=builder /app/db.sqlite /app/
-#COPY --from=builder ./db.sqlite /usr/local/bin/dev.db
 CMD ["/app/server", "/app/dist"]

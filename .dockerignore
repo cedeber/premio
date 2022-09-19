@@ -1,6 +1,11 @@
-target
-node_modules
-.github
-dist
-.idea
-*.sqlite
+packages/wasm_*/
+.idea/
+.vscode/
+.github/
+target/
+dist/
+node_modules/
+.DS_Store
+*.log
+*.db*
+*.sqlite*
