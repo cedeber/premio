@@ -3,7 +3,7 @@ watch-server:
 	DEV_MODE=1 RUST_LOG=trace PORT=3000 cargo watch --watch ./crates/server --exec "run --bin server -- ./dist"
 
 watch-app:
-	npx vite
+	VITE_PORT=3001 npx vite
 
 watch-scss:
 	npx typed-scss-modules "packages/*/src/**/*.module.scss" --watch
@@ -25,7 +25,7 @@ wasm:
 	just crates/wasm_threads/release
 
 vite:
-	npx vite build
+	VITE_PORT=8080 npx vite build
 
 build: wasm vite
 	cargo build --release --package server

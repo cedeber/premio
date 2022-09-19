@@ -5,7 +5,10 @@ import { Accessor, createSignal } from "solid-js";
 import { getSdk } from "./games.gql.js";
 import style from "./games.module.scss";
 
-const client = new GraphQLClient("http://localhost:4000/graphql", { headers: {} });
+const { hostname } = window.location;
+const client = new GraphQLClient(`//${hostname}:${import.meta.env.VITE_PORT}/graphql`, {
+	headers: {},
+});
 const sdk = getSdk(client);
 
 const loadGraphql = <T extends object>(
@@ -28,6 +31,8 @@ const loadGraphql = <T extends object>(
 };
 
 const GamesPage = () => {
+	console.log("port", import.meta.env.VITE_PORT);
+
 	const { username } = useParams<{ username: string }>();
 
 	const { loading, data, error } = loadGraphql(sdk.Games({ username }));
