@@ -9,7 +9,7 @@ use axum::{
 	},
 	response,
 	response::IntoResponse,
-	routing::{get, get_service},
+	routing::{get, get_service, post},
 	Extension, Router, Server,
 };
 use clap::Parser;
@@ -100,7 +100,8 @@ async fn main() {
 		// TODO: .nest() for /api + CORS
 		let app = Router::new()
 			.route("/hello", get(hello))
-			.route("/graphql", get(graphql_playground).post(graphql_handler))
+			.route("/graphql", get(graphql_playground))
+			.route("/graphql", post(graphql_handler))
 			.layer(Extension(schema))
 			.layer(cors);
 		serve(app, port + 1).await
