@@ -55,7 +55,6 @@ async fn main() {
 		.unwrap();
 
 	let frontend = tokio::spawn(async move {
-		let allowed_methods = vec![Method::GET];
 		let path_index = frontend_path.join("index.html");
 		let spa_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
@@ -80,14 +79,6 @@ async fn main() {
 					)
 				}),
 			)
-			.layer(
-				// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
-				// for more details
-				CorsLayer::new()
-					.allow_origin(Any)
-					.allow_methods(allowed_methods)
-					.allow_headers(Any),
-			)
 			.layer(TraceLayer::new_for_http());
 
 		// The local webserver will be managed by Parcel in DEV_MODE
@@ -98,22 +89,20 @@ async fn main() {
 
 	let schema = build_schema().await;
 	let backend = tokio::spawn(async move {
-		let allowed_methods = vec![Method::GET, Method::POST];
-		// let origins = ["http://localhost:3000".parse::<HeaderValue>().unwrap()];
+		// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
+		let cors = CorsLayer::new()
+			// allow `GET` and `POST` when accessing the resource
+			.allow_methods([Method::GET, Method::POST])
+			// allow requests from any origin
+			.allow_origin(Any)
+			.allow_headers(Any);
 
 		// TODO: .nest() for /api + CORS
 		let app = Router::new()
 			.route("/hello", get(hello))
 			.route("/graphql", get(graphql_playground).post(graphql_handler))
 			.layer(Extension(schema))
-			.layer(
-				// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
-				// for more details
-				CorsLayer::new()
-					.allow_origin(Any)
-					.allow_methods(allowed_methods)
-					.allow_headers(Any),
-			);
+			.layer(cors);
 		serve(app, port + 1).await
 	});
 
