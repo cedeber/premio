@@ -7,7 +7,8 @@ import style from "./games.module.scss";
 
 const { hostname } = window.location;
 const client = new GraphQLClient(`//${hostname}:${import.meta.env.VITE_PORT}/graphql`, {
-	headers: {},
+	// headers: {},
+	mode: "cors",
 });
 const sdk = getSdk(client);
 
