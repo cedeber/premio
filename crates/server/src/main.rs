@@ -14,9 +14,8 @@ use axum::{
 };
 use clap::Parser;
 use tower::ServiceBuilder;
-use tower_http::cors::Any;
 use tower_http::{
-	cors::CorsLayer,
+	cors::{Any, CorsLayer},
 	services::{ServeDir, ServeFile},
 	trace::TraceLayer,
 	ServiceBuilderExt,
@@ -56,6 +55,7 @@ async fn main() {
 		.unwrap();
 
 	let frontend = tokio::spawn(async move {
+		let allowed_methods = vec![Method::GET];
 		let path_index = frontend_path.join("index.html");
 		let spa_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
@@ -79,6 +79,14 @@ async fn main() {
 						format!("Unhandled internal error: {}", error),
 					)
 				}),
+			)
+			.layer(
+				// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
+				// for more details
+				CorsLayer::new()
+					.allow_origin(Any)
+					.allow_methods(allowed_methods)
+					.allow_headers(Any),
 			)
 			.layer(TraceLayer::new_for_http());
 
@@ -136,10 +144,6 @@ async fn hello() -> impl IntoResponse {
 		String::from("Hello, World!"),
 	)
 }
-
-// async fn graphql_handler(schema: Extension<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
-// 	schema.execute(req.into_inner()).await.into()
-// }
 
 async fn graphql_handler(schema: Extension<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
 	schema.execute(req.into_inner()).await.into()
