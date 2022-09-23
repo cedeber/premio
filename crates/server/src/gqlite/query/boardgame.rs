@@ -44,7 +44,11 @@ impl BoardGameQuery {
 				// Fetch and save the games into the db.
 				let games = fetch_collection(&username).await;
 				if let Ok(games) = games {
-					db(&username, &games, pool).await.expect("Could not save in the DB");
+					let result = db(&username, &games, pool).await;
+					if result.is_err() {
+						error!("Saving the games to the DB failed.");
+						return Err("Saving the games to the DB failed.".to_string());
+					}
 				}
 
 				match query_as::<_, BoardGame>(
@@ -62,8 +66,8 @@ impl BoardGameQuery {
 					.await {
 					Ok(games) => Ok(games),
 					_ => {
-						error!("Error getting the games list");
-						Err(String::from("Error getting the games list"))
+						error!("Error getting the games list from the DB.");
+						Err("Error getting the games list from the DB.".to_string())
 					}
 				}
 			}

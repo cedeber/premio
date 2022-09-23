@@ -1,11 +1,13 @@
-use crate::gqlite::types::BoardGame;
 use async_graphql::SimpleObject;
 use serde::Serialize;
 use sqlx::{query, query_as, FromRow, Pool, Sqlite};
+use tracing::{error, info};
+
+use crate::gqlite::types::BoardGame;
 
 // Fetch the list of games for a specific user from BGG.
 // Also parse the XML and return a list of BoardGames.
-pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, reqwest::Error> {
+pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, String> {
 	let mut games: Vec<BoardGame> = Vec::new();
 
 	// Fetch the BGG API ans save the XML as text.
@@ -13,24 +15,39 @@ pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, reqwest:
 		"https://boardgamegeek.com/xmlapi/collection/{}",
 		username
 	))
-	.await?
-	.text()
-	.await
-	.unwrap(); // parsing to text should be fine.
+	.await;
+
+	let resp = match resp {
+		Ok(r) => r,
+		_ => {
+			error!("Request to BGG failed.");
+			return Err("Request to BGG failed.".to_string());
+		}
+	};
+
+	let resp = resp.text().await; // parsing to text should be fine.
+
+	let resp = match resp {
+		Ok(resp) => resp,
+		_ => {
+			error!("Parsing the BGG answer to Text failed.");
+			return Err("Parsing the BGG answer to Text failed.".to_string());
+		}
+	};
 
 	// Parse the XML.
 	let doc = match roxmltree::Document::parse(&resp) {
 		Ok(doc) => doc,
 		Err(_) => {
-			// TODO Export parsing error
-			return Ok(games);
+			error!("Parsing to XML failed.");
+			return Err("Parsing to XML failed.".to_string());
 		}
 	};
 
 	// Check if the returned XML does not contain <message>
 	if doc.root_element().has_tag_name("message") {
 		let message = doc.root_element().text().unwrap();
-		println!("{}", message.trim());
+		info!("{}", message.trim());
 		return Ok(vec![]);
 	}
 
@@ -44,7 +61,7 @@ pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, reqwest:
 			.unwrap()
 			.text()
 			.unwrap();
-		println!("Error: {}", message.trim());
+		error!("Error from BGG: {}", message.trim());
 		return Ok(vec![]);
 	}
 
