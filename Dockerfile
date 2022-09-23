@@ -14,7 +14,7 @@ RUN sqlite3 db.sqlite .dump > dump.sql
 RUN just build
 
 FROM alpine:latest
-RUN apk add --update --no-cache sqlite libc6-compat # Because of musl linker
+RUN apk add --update --no-cache openssl sqlite libc6-compat # Because of musl linker
 WORKDIR app
 COPY --from=builder /app/target/release/server /app/
 COPY --from=builder /app/dist /app/dist
