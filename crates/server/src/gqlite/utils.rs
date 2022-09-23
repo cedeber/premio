@@ -10,6 +10,8 @@ use crate::gqlite::types::BoardGame;
 pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, String> {
 	let mut games: Vec<BoardGame> = Vec::new();
 
+	info!("Will fetch the games.");
+
 	// Fetch the BGG API ans save the XML as text.
 	let resp = reqwest::get(format!(
 		"https://boardgamegeek.com/xmlapi/collection/{}",
@@ -64,6 +66,8 @@ pub async fn fetch_collection(username: &str) -> Result<Vec<BoardGame>, String> 
 		error!("Error from BGG: {}", message.trim());
 		return Ok(vec![]);
 	}
+
+	info!("Will dive in the BGG XML.");
 
 	// Go trough the XML Nodes and extract useful information.
 	// We use unwrap because we believe the XML API is stable and trustable.
