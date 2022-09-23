@@ -2,6 +2,7 @@ use std::{env, fs, net::SocketAddr};
 
 use async_graphql::http::{playground_source, GraphQLPlaygroundConfig};
 use async_graphql_axum::{GraphQLRequest, GraphQLResponse};
+use axum::response::Redirect;
 use axum::{
 	http::{
 		header::{HeaderName, HeaderValue},
@@ -47,15 +48,21 @@ async fn main() {
 	// parse the CLI arguments
 	let args = Args::parse();
 	let frontend_path = fs::canonicalize(args.path).expect("Failed to parse path");
+	let path_index = frontend_path.join("index.html");
 
+	// env: PORT
 	let port: u16 = env::var("PORT")
 		.unwrap_or_else(|_| String::from("5000"))
 		.trim()
 		.parse()
 		.unwrap();
+	// Need 0.0.0.0 instead of 127.0.0.1 for Docker to expose outside of the container
+	let addr = SocketAddr::from(([0, 0, 0, 0], port));
 
-	let frontend = tokio::spawn(async move {
-		let path_index = frontend_path.join("index.html");
+	// GraphQL Schema
+	let schema = build_schema().await;
+
+	let server = tokio::task::spawn(async move {
 		let spa_service = ServiceBuilder::new()
 			// These Headers are required to activate SharedArrayBuffer and Wasm Threads.
 			// Need to be written in lowercase :-/
@@ -69,26 +76,6 @@ async fn main() {
 			)
 			.service(ServeDir::new(frontend_path).fallback(ServeFile::new(path_index)));
 
-		let app = Router::new()
-			.nest(
-				"/",
-				get_service(spa_service).handle_error(|error: std::io::Error| async move {
-					(
-						StatusCode::INTERNAL_SERVER_ERROR,
-						format!("Unhandled internal error: {}", error),
-					)
-				}),
-			)
-			.layer(TraceLayer::new_for_http());
-
-		// The local webserver will be managed by Parcel in DEV_MODE
-		if env::var("DEV_MODE").is_err() {
-			serve(app, port).await
-		}
-	});
-
-	let schema = build_schema().await;
-	let backend = tokio::spawn(async move {
 		// see https://docs.rs/tower-http/latest/tower_http/cors/index.html
 		let cors = CorsLayer::new()
 			// allow `GET` and `POST` when accessing the resource
@@ -97,33 +84,34 @@ async fn main() {
 			.allow_origin(Any)
 			.allow_headers(Any);
 
-		// TODO: .nest() for /api + CORS
 		let app = Router::new()
-			.route("/hello", get(hello))
 			.route("/graphql", get(graphql_playground).post(graphql_handler))
 			.layer(Extension(schema))
-			.layer(cors);
-		serve(app, port + 1).await
+			.layer(cors)
+			.route("/hello", get(hello))
+			.nest(
+				"/app",
+				get_service(spa_service).handle_error(|error: std::io::Error| async move {
+					(
+						StatusCode::INTERNAL_SERVER_ERROR,
+						format!("Unhandled internal error: {}", error),
+					)
+				}),
+			)
+			.route("/", get(|| async { Redirect::permanent("/app") }))
+			.layer(TraceLayer::new_for_http());
+
+		// The local webserver will be managed by Parcel in DEV_MODE
+		// if env::var("DEV_MODE").is_err() {
+		info!("listening on {}", addr);
+		Server::bind(&addr)
+			.serve(app.into_make_service())
+			.await
+			.expect("The server crashed");
+		// }
 	});
 
-	// Concurrently mode but we spawn each server on its own thread
-	if env::var("DEV_MODE").is_ok() {
-		tokio::join!(backend).0.unwrap();
-	} else {
-		tokio::join!(frontend, backend).0.unwrap();
-	}
-}
-
-/// Run the app with hyper.
-// `axum::Server` is a re-export of `hyper::Server`
-async fn serve(app: Router, port: u16) {
-	// Need 0.0.0.0 instead of 127.0.0.1 for Docker to expose outside of the container
-	let addr = SocketAddr::from(([0, 0, 0, 0], port));
-	info!("listening on {}", addr);
-	Server::bind(&addr)
-		.serve(app.into_make_service())
-		.await
-		.unwrap();
+	server.await.unwrap();
 }
 
 async fn hello() -> impl IntoResponse {

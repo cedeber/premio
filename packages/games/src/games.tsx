@@ -6,7 +6,8 @@ import { getSdk } from "./games.gql.js";
 import style from "./games.module.scss";
 
 const { hostname } = window.location;
-const client = new GraphQLClient(`//${hostname}:${import.meta.env.VITE_PORT}/graphql`, {
+// const client = new GraphQLClient(`//${hostname}:${import.meta.env.VITE_PORT}/graphql`, {
+const client = new GraphQLClient(`//${hostname}/graphql`, {
 	// headers: {},
 });
 const sdk = getSdk(client);

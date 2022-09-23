@@ -24,34 +24,32 @@ const ButtonLink = (props: { href: string; label: string; icon?: string }) => {
 	);
 };
 
-const App = () => {
-	return (
-		<div class={"hello"}>
-			<nav
-				style={{
-					display: "flex",
-					gap: "10px",
-					margin: "20px 10px",
-					"justify-content": "center",
-				}}
-			>
-				<ButtonLink href="/" label="Design System (SolidJS)" />
-				<ButtonLink href="/games/cedeber" label="Board Game Geek (GraphQL)" />
-			</nav>
-			<Routes base={import.meta.env.BASE_URL}>
-				<Route path="/" component={Components} />
-				<Route
-					path="/games/:username"
-					element={
-						<Suspense fallback={<p>Loading...</p>}>
-							<Games />
-						</Suspense>
-					}
-				/>
-			</Routes>
-		</div>
-	);
-};
+const App = () => (
+	<div class={"hello"}>
+		<nav
+			style={{
+				display: "flex",
+				gap: "10px",
+				margin: "20px 10px",
+				"justify-content": "center",
+			}}
+		>
+			<ButtonLink href="/" label="Design System (SolidJS)" />
+			<ButtonLink href="/games/cedeber" label="Board Game Geek (GraphQL)" />
+		</nav>
+		<Routes>
+			<Route path="/" component={Components} />
+			<Route
+				path="/games/:username"
+				element={
+					<Suspense fallback={<p>Loading...</p>}>
+						<Games />
+					</Suspense>
+				}
+			/>
+		</Routes>
+	</div>
+);
 
 if ("serviceWorker" in navigator) {
 	navigator.serviceWorker
@@ -77,7 +75,7 @@ if ("serviceWorker" in navigator) {
 
 render(
 	() => (
-		<Router>
+		<Router base={import.meta.env.VITE_BASE_URL}>
 			<OverlayProvider>
 				<App />
 			</OverlayProvider>
