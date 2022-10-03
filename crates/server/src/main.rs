@@ -98,7 +98,7 @@ async fn main() {
 					)
 				}),
 			)
-			.route("/", get(|| async { Redirect::permanent("/app") }))
+			.route("/", get(|| async { Redirect::temporary("/app") }))
 			.layer(TraceLayer::new_for_http());
 
 		// The local webserver will be managed by Parcel in DEV_MODE
