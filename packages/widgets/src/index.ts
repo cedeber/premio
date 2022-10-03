@@ -11,6 +11,7 @@ export { ColoredLabel, ColoredLabelIntent } from "./components/ColoredLabel";
 export { Dialog } from "./components/Dialog";
 export { HeaderBar, HeaderDivider } from "./components/HeaderBar";
 export { ProgressCircle } from "./components/ProgressCircle";
+export { Switch } from "./components/Switch";
 export { Tag, TagIntent } from "./components/Tag";
 export { SimpleTextField, TextField } from "./components/TextField";
 export { TriggerButton, TriggerButtonGroup, TriggerButtonIntent } from "./components/TriggerButton";

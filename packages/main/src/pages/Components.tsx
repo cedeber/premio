@@ -7,12 +7,13 @@ import { ColoredLabelCard } from "../components/ColoredLabelCard";
 import { DialogCard } from "../components/DialogCard";
 import { HeaderBarCard } from "../components/HeaderBarCard";
 import { ProgressCircleCard } from "../components/ProgressCircleCard";
+import { SwitchCard } from "../components/SwitchCard";
 import { TagCard } from "../components/TagCard";
 import { TextFieldCard } from "../components/TextFieldCard";
 import { ToolbarCard } from "../components/ToolbarCard";
 import { TriggerButtonCard } from "../components/TriggerButtonCard";
 import { TriggerButtonGroupCard } from "../components/TriggerButtonGroupCard";
-import style from "../styles/common.module.scss";
+import * as style from "../styles/common.module.scss";
 
 const Components = () => {
 	return (
@@ -64,6 +65,7 @@ const Components = () => {
 			<CalloutCard />
 			<TextFieldCard />
 			<CheckboxCard />
+			<SwitchCard />
 		</div>
 	);
 };
