@@ -2,7 +2,7 @@ import { createVisuallyHidden } from "@solid-aria/primitives";
 import { readableColor, shade, tint } from "polished";
 import type { JSX } from "solid-js";
 
-import style from "../styles/Tag.module.scss";
+import * as style from "../styles/Tag.module.scss";
 
 export enum TagIntent {
 	Primary = "primary",

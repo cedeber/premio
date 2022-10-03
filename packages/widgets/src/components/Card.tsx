@@ -1,7 +1,7 @@
 import type { JSX } from "solid-js";
 import { Show } from "solid-js";
 
-import style from "../styles/Card.module.scss";
+import * as style from "../styles/Card.module.scss";
 import { HeaderBar } from "./HeaderBar";
 import type { TagIntent } from "./Tag";
 

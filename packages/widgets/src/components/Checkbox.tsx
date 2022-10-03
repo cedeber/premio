@@ -8,7 +8,7 @@ import {
 } from "@solid-aria/primitives";
 import { Show } from "solid-js";
 
-import style from "../styles/Checkbox.module.scss";
+import * as style from "../styles/Checkbox.module.scss";
 
 export const CheckboxGroup = (props: AriaCheckboxGroupProps) => {
 	const { CheckboxGroupProvider, groupProps, labelProps, state } = createCheckboxGroup(props);
@@ -23,6 +23,7 @@ export const CheckboxGroup = (props: AriaCheckboxGroupProps) => {
 	);
 };
 
+/** Only use in a CheckboxGroup. If you want a single Checkbox, use the Switch instead. */
 export const Checkbox = (props: AriaCheckboxGroupItemProps) => {
 	let ref!: HTMLInputElement;
 

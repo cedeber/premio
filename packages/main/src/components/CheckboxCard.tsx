@@ -3,11 +3,11 @@ import { Card, Checkbox, CheckboxGroup } from "widgets";
 
 import style from "../styles/common.module.scss";
 
-export const CheckboxeCard = () => {
+export const CheckboxCard = () => {
 	const [values, setValues] = createSignal(["Indeterminate", "Read only", "Required"]);
 
 	return (
-		<Card title={"Checkbox"} icon={"check"} subtitle={"Form"}>
+		<Card title={"Checkbox"} icon={"check"} subtitle={"In a Group"}>
 			<div class={style.vertical} style={{ margin: "10px" }}>
 				<CheckboxGroup
 					defaultValue={values()}

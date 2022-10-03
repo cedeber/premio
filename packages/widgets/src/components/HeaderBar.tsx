@@ -1,7 +1,7 @@
 import { createSeparator } from "@solid-aria/primitives";
 import type { JSX } from "solid-js";
 
-import style from "../styles/HeaderBar.module.scss";
+import * as style from "../styles/HeaderBar.module.scss";
 import { Tag, TagIntent } from "./Tag";
 
 interface HeaderBarProps {

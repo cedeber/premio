@@ -2,7 +2,7 @@ import type { AriaTextFieldProps } from "@solid-aria/primitives";
 import { createFocus, createTextField } from "@solid-aria/primitives";
 import { createSignal, JSX, mergeProps, Show } from "solid-js";
 
-import style from "../styles/TextField.module.scss";
+import * as style from "../styles/TextField.module.scss";
 import { Callout, CalloutIntent } from "./Callout";
 
 interface TextFieldProps extends AriaTextFieldProps<"input"> {

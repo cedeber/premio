@@ -3,7 +3,7 @@ import { createButton, createFocusRing, createHover } from "@solid-aria/primitiv
 import type { JSX } from "solid-js";
 import { mergeProps } from "solid-js";
 
-import style from "../styles/TriggerButton.module.scss";
+import * as style from "../styles/TriggerButton.module.scss";
 import { ProgressCircle } from "./ProgressCircle";
 
 interface TriggerButtonProps extends Omit<AriaButtonProps, "children"> {

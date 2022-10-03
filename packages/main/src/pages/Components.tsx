@@ -2,7 +2,7 @@ import { ActionButtonCard } from "../components/ActionButtonCard";
 import { AlertDialogCard } from "../components/AlertDialogCard";
 import { CalloutCard } from "../components/CalloutCard";
 import { CardCard } from "../components/CardCard";
-import { CheckboxeCard } from "../components/CheckboxeCard";
+import { CheckboxCard } from "../components/CheckboxCard";
 import { ColoredLabelCard } from "../components/ColoredLabelCard";
 import { DialogCard } from "../components/DialogCard";
 import { HeaderBarCard } from "../components/HeaderBarCard";
@@ -63,7 +63,7 @@ const Components = () => {
 			<ColoredLabelCard />
 			<CalloutCard />
 			<TextFieldCard />
-			<CheckboxeCard />
+			<CheckboxCard />
 		</div>
 	);
 };

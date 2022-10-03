@@ -1,7 +1,7 @@
 import { darken, saturate } from "polished";
 import type { JSX } from "solid-js";
 
-import style from "../styles/ColoredLabel.module.scss";
+import * as style from "../styles/ColoredLabel.module.scss";
 import { TagIntent } from "./Tag";
 
 export enum ColoredLabelIntent {

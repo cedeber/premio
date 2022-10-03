@@ -1,9 +1,3 @@
-import style from "../styles/Dialog.module.scss";
-import { ActionButton, ActionButtonIntent, ActionButtonProps } from "./ActionButton";
-import { HeaderBar, HeaderDivider } from "./HeaderBar";
-import type { JSX, Ref } from "solid-js";
-import { mergeProps, Show } from "solid-js";
-import { Callout, CalloutIntent } from "./Callout";
 import {
 	createDialog,
 	createModal,
@@ -12,6 +6,13 @@ import {
 	OverlayContainer,
 } from "@solid-aria/primitives";
 import { mergeRefs } from "@solid-primitives/refs";
+import type { JSX, Ref } from "solid-js";
+import { mergeProps, Show } from "solid-js";
+
+import * as style from "../styles/Dialog.module.scss";
+import { ActionButton, ActionButtonIntent, ActionButtonProps } from "./ActionButton";
+import { Callout, CalloutIntent } from "./Callout";
+import { HeaderBar, HeaderDivider } from "./HeaderBar";
 import { TriggerButton, TriggerButtonIntent } from "./TriggerButton";
 
 interface DialogProps {
