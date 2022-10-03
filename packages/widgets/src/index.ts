@@ -6,7 +6,7 @@ export {
 export { AlertDialog } from "./components/AlertDialog";
 export { Callout, CalloutIntent } from "./components/Callout";
 export { Card } from "./components/Card";
-export { Checkbox } from "./components/Checkbox";
+export { Checkbox, CheckboxGroup } from "./components/Checkbox";
 export { ColoredLabel, ColoredLabelIntent } from "./components/ColoredLabel";
 export { Dialog } from "./components/Dialog";
 export { HeaderBar, HeaderDivider } from "./components/HeaderBar";
