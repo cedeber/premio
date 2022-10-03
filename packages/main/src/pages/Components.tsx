@@ -7,6 +7,7 @@ import { ColoredLabelCard } from "../components/ColoredLabelCard";
 import { DialogCard } from "../components/DialogCard";
 import { HeaderBarCard } from "../components/HeaderBarCard";
 import { ProgressCircleCard } from "../components/ProgressCircleCard";
+import { RadioCard } from "../components/RadioCard";
 import { SwitchCard } from "../components/SwitchCard";
 import { TagCard } from "../components/TagCard";
 import { TextFieldCard } from "../components/TextFieldCard";
@@ -66,6 +67,7 @@ const Components = () => {
 			<TextFieldCard />
 			<CheckboxCard />
 			<SwitchCard />
+			<RadioCard />
 		</div>
 	);
 };

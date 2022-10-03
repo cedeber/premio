@@ -24,7 +24,7 @@ export const Switch = (props: AriaSwitchProps) => {
 			class={style.group}
 			classList={{
 				[style.disabled]: isDisabled(),
-				[style.hasPointer]: !props.isDisabled && !props.isReadOnly,
+				[style.hasPointer]: !isDisabled() && !isReadOnly(),
 			}}
 		>
 			<div {...visuallyHiddenProps}>
