@@ -17,7 +17,9 @@ export const RadioGroup = (props: AriaRadioGroupProps) => {
 			<span {...labelProps} class={style.checkboxesGroupLabel}>
 				{props.label}
 			</span>
-			<RadioGroupProvider>{props.children}</RadioGroupProvider>
+			<RadioGroupProvider>
+				<div class={style.groupInline}>{props.children}</div>
+			</RadioGroupProvider>
 		</div>
 	);
 };
@@ -54,7 +56,7 @@ export const Radio = (props: AriaRadioProps) => {
 				aria-hidden="true"
 			>
 				<Show when={isSelected()}>
-					<span class={`${style.check} material-symbols-outlined`}>check</span>
+					<span class={`${style.check} material-symbols-outlined`}>check_small</span>
 				</Show>
 			</div>
 			{props.children}
