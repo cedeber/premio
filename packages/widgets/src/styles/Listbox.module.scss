@@ -1,0 +1,104 @@
+@use "sass:color";
+@use "colors";
+
+.component {
+	display: flex;
+	flex-direction: column;
+	row-gap: 3px;
+}
+
+.component-label {
+	font-weight: 450;
+	line-height: 1.15;
+	color: colors.$stone-600;
+	padding: 5px 5px 0 2px;
+	position: relative;
+	bottom: 1px;
+}
+
+.container {
+	list-style: none;
+	border: 1px solid colors.$stone-300;
+	border-radius: 4px;
+	padding: 1px;
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	margin-top: 3px;
+
+	&:not(:first-child) {
+		margin-top: 10px;
+	}
+}
+
+.section-label {
+	font-size: 11px;
+	color: colors.$stone-500;
+	margin-left: 3px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1px;
+}
+
+.line {
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+	padding: 2px 5px;
+	border-radius: 3px;
+	outline: none;
+}
+
+.has-pointer {
+	cursor: pointer;
+}
+
+.checkbox {
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	//background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 18px;
+	user-select: none;
+	-webkit-user-select: none;
+	color: colors.$stone-300;
+}
+
+.check {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.hover {
+	background: colors.$stone-100;
+}
+
+.checked {
+	background: colors.$sky-100;
+
+	.check {
+		color: colors.$sky-600;
+	}
+}
+
+.focus {
+	box-shadow: inset 0 0 0 2px colors.$sky-600;
+}
+
+.disabled {
+	color: colors.$stone-400 !important;
+	cursor: not-allowed !important;
+
+	.checkbox {
+		color: colors.$stone-100 !important;
+	}
+}

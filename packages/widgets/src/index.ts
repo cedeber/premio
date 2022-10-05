@@ -10,6 +10,7 @@ export { Checkbox, CheckboxGroup } from "./components/Checkbox";
 export { ColoredLabel, ColoredLabelIntent } from "./components/ColoredLabel";
 export { Dialog } from "./components/Dialog";
 export { HeaderBar, HeaderDivider } from "./components/HeaderBar";
+export { ListBox } from "./components/ListBox";
 export { ProgressCircle } from "./components/ProgressCircle";
 export { Radio, RadioGroup } from "./components/Radio";
 export { Switch } from "./components/Switch";
