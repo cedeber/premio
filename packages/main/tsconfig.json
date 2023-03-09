@@ -1,20 +1,14 @@
 {
-	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"composite": true,
-		"rootDir": "src"
-	},
-	"include": ["./src", "./src/intl/*.json"],
-	"exclude": ["**/*.spec.ts", "**/*.test.ts"],
-	"references": [
-		{
-			"path": "../wasm"
-		},
-		{
-			"path": "../games"
-		},
-		{
-			"path": "../widgets"
-		}
-	]
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
 }
