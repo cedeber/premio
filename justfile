@@ -25,7 +25,7 @@ wasm:
 	just crates/wasm_threads/release
 
 vite:
-	VITE_BASE_URL=app npx vite build --base /app
+	VITE_BASE_URL=app npm run build-app -w main
 
 build: wasm vite
 	cargo build --release --package server

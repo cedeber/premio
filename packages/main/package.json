@@ -10,6 +10,7 @@
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "build-only": "vite build",
+    "build-app": "vite build --base /app",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -20,7 +21,7 @@
     "vue-router": "^4.1.6",
     "wasm-feature-detect": "^1.5.1",
     "wasm-async": "file:../wasm_async",
-		"wasm-threads": "file:../wasm_threads"
+    "wasm-threads": "file:../wasm_threads"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
