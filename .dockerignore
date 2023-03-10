@@ -1,11 +1,18 @@
-packages/wasm_*/
-.idea/
-.vscode/
-.github/
+# Output
 target/
 dist/
 node_modules/
-.DS_Store
 *.log
+
+# Wasm generated packages
+packages/wasm_*/
+
+# Database
 *.db*
 *.sqlite*
+
+# IDE, GitHub & OS
+.idea/
+.vscode/
+.github/
+.DS_Store
