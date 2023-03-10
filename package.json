@@ -14,35 +14,10 @@
 		"@graphql-codegen/schema-ast": "^2.4.1",
 		"@graphql-codegen/typescript": "^2.5.1",
 		"@graphql-codegen/typescript-graphql-request": "^4.5.3",
-		"@graphql-codegen/typescript-operations": "^2.4.2",
-		"@types/node": "^16.11.56",
-		"@types/ramda": "^0.28.15",
-		"@typescript-eslint/eslint-plugin": "^5.35.0",
-		"@typescript-eslint/parser": "^5.35.0",
-		"@vitejs/plugin-basic-ssl": "^0.1.2",
-		"eslint": "^8.23.1",
-		"eslint-plugin-jsx-a11y": "^6.5.1",
-		"eslint-plugin-simple-import-sort": "^8.0.0",
-		"eslint-plugin-solid": "^0.7.2",
-		"prettier": "^2.6.2",
-		"sass": "^1.50.1",
-		"typed-scss-modules": "^7.0.0",
-		"typescript": "^4.6.3",
-		"vite": "^3.1.3",
-		"vite-plugin-solid": "^2.3.0",
-		"vitest": "^0.23.0"
+		"@graphql-codegen/typescript-operations": "^2.4.2"
 	},
 	"dependencies": {
-		"@solid-aria/primitives": "^0.4.0",
-		"@solid-primitives/refs": "^0.3.2",
-		"@solidjs/router": "^0.4.2",
 		"graphql": "^16.6.0",
-		"graphql-request": "^5.0.0",
-		"material-symbols": "^0.2.9",
-		"polished": "^4.2.2",
-		"ramda": "^0.28.0",
-		"sass-extras": "^1.0.0",
-		"solid-js": "^1.5.3",
-		"solid-transition-group": "^0.0.11"
+		"graphql-request": "^5.0.0"
 	}
 }
