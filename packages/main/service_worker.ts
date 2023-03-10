@@ -1,6 +1,6 @@
 /// <reference lib="WebWorker" />
 
-import { cacheFirst, networkFirst, networkOnly } from "./src/workers/sw-strategies";
+import { cacheFirst, networkFirst, networkOnly } from "@/workers/sw-strategies";
 
 const ctx = self as unknown as ServiceWorkerGlobalScope;
 
