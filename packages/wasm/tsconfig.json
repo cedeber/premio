@@ -1,10 +1,25 @@
 {
-	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"composite": true,
-		"rootDir": "src",
-		"noEmit": false
-	},
-	"include": ["./src"],
-	"exclude": ["**/*.spec.ts", "**/*.test.ts"]
+    "allowJs": true,
+    "composite": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "noEmitHelpers": true,
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+	"exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }

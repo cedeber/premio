@@ -2,10 +2,11 @@
 target/
 dist/
 node_modules/
+coverage/
 *.log
 
 # Wasm generated packages
-packages/wasm_*/
+packages/main/src/wasm/*
 
 # Database
 *.db*

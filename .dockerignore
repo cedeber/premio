@@ -5,7 +5,7 @@ node_modules/
 *.log
 
 # Wasm generated packages
-packages/wasm_*/
+packages/main/src/wasm/
 
 # Database
 *.db*

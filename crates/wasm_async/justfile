@@ -1,9 +1,9 @@
 debug:
 	cargo build --lib --target wasm32-unknown-unknown
-	wasm-bindgen --target web --out-dir ../../packages/wasm_async --out-name async ../../target/wasm32-unknown-unknown/release/wasm_async.wasm
-	wasm-opt -O1 ../../packages/wasm_async/async_bg.wasm -o ../../packages/wasm_async/async_bg.wasm
+	wasm-bindgen --target web --out-dir ../../packages/main/src/wasm/async --out-name async ../../target/wasm32-unknown-unknown/release/wasm_async.wasm
+	wasm-opt -O1 ../../packages/main/src/wasm/async/async_bg.wasm -o ../../packages/main/src/wasm/async/async_bg.wasm
 
 release:
 	cargo build --release --lib --target wasm32-unknown-unknown
-	wasm-bindgen --target web --out-dir ../../packages/wasm_async --out-name async ../../target/wasm32-unknown-unknown/release/wasm_async.wasm
-	wasm-opt -Os ../../packages/wasm_async/async_bg.wasm -o ../../packages/wasm_async/async_bg.wasm
+	wasm-bindgen --target web --out-dir ../../packages/main/src/wasm/async --out-name async ../../target/wasm32-unknown-unknown/release/wasm_async.wasm
+	wasm-opt -Os ../../packages/main/src/wasm/async/async_bg.wasm -o ../../packages/main/src/wasm/async/async_bg.wasm
