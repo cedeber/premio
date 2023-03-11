@@ -27,8 +27,7 @@ wasm:
 vite:
 	VITE_BASE_URL=app npm run build-app -w main
 
-#build: wasm vite
-build: vite
+build: wasm vite
 	cargo build --release --package server
 
 # Run
