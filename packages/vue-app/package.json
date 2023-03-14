@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "vue-app",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,12 +16,21 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "graphql": "^16.6.0",
+    "graphql-request": "^5.2.0",
     "pinia": "^2.0.32",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "wasm-feature-detect": "^1.5.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.2.2",
+    "@graphql-codegen/fragment-matcher": "^4.0.1",
+    "@graphql-codegen/near-operation-file-preset": "^2.5.0",
+    "@graphql-codegen/schema-ast": "^3.0.1",
+    "@graphql-codegen/typescript": "^3.0.2",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.8",
+    "@graphql-codegen/typescript-operations": "^3.0.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/jsdom": "^21.1.0",
     "@types/node": "^18.14.2",
