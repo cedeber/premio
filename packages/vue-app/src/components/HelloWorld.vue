@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
+const _props = defineProps<{
 	msg: string;
 }>();
-
-console.log(props.msg);
 </script>
 
 <template>
