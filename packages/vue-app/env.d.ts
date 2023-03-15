@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="@histoire/plugin-vue/components" />
 
 interface Extern {
 	add_cb?: (result: number) => void;
