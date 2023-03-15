@@ -12,6 +12,6 @@ describe("HelloWorld", () => {
 
 	it("renders properly with @testing-library/vue", () => {
 		const { getByText } = render(HelloWorld, { props: { msg: "Hello Vitest" } });
-		expect(getByText("Hello Vitest")).toBeTruthy();
+		getByText("Hello Vitest");
 	});
 });
