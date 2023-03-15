@@ -10,8 +10,10 @@ node_modules
 .DS_Store
 dist
 dist-ssr
-coverage
 *.local
 
+coverage
 /cypress/videos/
 /cypress/screenshots/
+test-results/
+playwright-report/
