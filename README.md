@@ -18,16 +18,12 @@ Web application with WebAssembly and a Rust Web server.
 - Vue
 - Vue Router
 - Pinia
-
 - Vite
 - Vitest
 - Vue Testing Library (+ Jest-DOM ; leverage Vue Test Utils)
-
 - Histoire
-
 - Cypress
 - Playwright
-
 - Eslint
 - Prettier
 
@@ -36,12 +32,9 @@ Web application with WebAssembly and a Rust Web server.
 - React
 - (TanStack Router)
 - Jotai + Jotai Signals
-
 - Vite
 - Vitest
 - React Testing Library (+ Jest-DOM)
-
 - Storybook
-
 - Eslint
 - Prettier
