@@ -11,6 +11,10 @@ module.exports = {
 	],
 	overrides: [
 		{
+			files: ["__tests__/**/*.{spec}.{js,ts,jsx,tsx}"],
+			extends: ["plugin:testing-library/vue", "plugin:jest-dom/recommended"],
+		},
+		{
 			files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}"],
 			extends: ["plugin:cypress/recommended"],
 		},
