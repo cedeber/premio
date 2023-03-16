@@ -2,6 +2,8 @@ import { fileURLToPath, URL } from "node:url";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import autoprefixer from "autoprefixer";
+import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,5 +29,16 @@ export default defineConfig({
 	},
 	worker: {
 		format: "es",
+	},
+	css: {
+		postcss: {
+			plugins: [
+				autoprefixer({
+					overrideBrowserslist:
+						"> 0.2% and supports es6-module and last 5 versions and not dead",
+				}),
+				tailwindcss({ content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"] }),
+			],
+		},
 	},
 });
