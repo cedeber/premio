@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from "vue";
-import MyWorker from "@/workers/worker?worker";
-import init, { async_fib } from "@/wasm/async/async";
 import * as extern from "@/utils/extern";
+import init, { async_fib } from "@/wasm/async/async";
+import MyWorker from "@/workers/worker?worker";
+import { onBeforeMount, onMounted, ref } from "vue";
 import { simd, threads } from "wasm-feature-detect";
 
 const result_worker = ref("loading...");

@@ -1,9 +1,8 @@
-import { fileURLToPath, URL } from "node:url";
-
-import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import autoprefixer from "autoprefixer";
+import { fileURLToPath, URL } from "node:url";
 import tailwindcss from "tailwindcss";
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,7 +36,7 @@ export default defineConfig({
 					overrideBrowserslist:
 						"> 0.2% and supports es6-module and last 5 versions and not dead",
 				}),
-				tailwindcss({ content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"] }),
+				tailwindcss(),
 			],
 		},
 	},

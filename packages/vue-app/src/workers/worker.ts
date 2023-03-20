@@ -1,5 +1,5 @@
-import init, { fib } from "@/wasm/async/async";
 import * as extern from "@/utils/extern";
+import init, { fib } from "@/wasm/async/async";
 
 // Declare ctx as Worker and not as Window
 const ctx = self as unknown as Worker;
