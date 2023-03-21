@@ -3,6 +3,8 @@
   "exclude": [],
   "compilerOptions": {
     "composite": true,
+    "verbatimModuleSyntax": false,
+    "ignoreDeprecations": "5.0",
     "lib": [],
     "types": ["node", "jsdom"]
   }
