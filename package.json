@@ -1,10 +1,10 @@
 {
-	"name": "premio",
-	"version": "1.0.0",
-	"description": "Web startup with WebAssembly.",
-	"private": true,
-	"workspaces": [
-		"packages/*"
-	],
-	"type": "module"
+  "name": "premio",
+  "version": "1.0.0",
+  "description": "Web startup with WebAssembly.",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ]
 }
