@@ -2,12 +2,6 @@
 watch-server:
 	DEV_MODE=1 RUST_LOG=trace PORT=3000 BASE_URL=/app cargo watch --watch ./crates/server --exec "run --bin server -- ./dist"
 
-watch-app:
-	npx vite
-
-watch-scss:
-	npx typed-scss-modules "packages/*/src/**/*.module.scss" --watch
-
 # Generated during development. Keep the files in the repository.
 codegen-graphql:
 	cd packages/games/ && npx graphql-codegen --config schema.codegen.yml
